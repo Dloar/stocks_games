@@ -8,7 +8,8 @@ DROP TABLE stocks_list;
 CREATE TABLE stocks_list (
     stock_id numeric(3,0),
     stock_name varchar(255),
-    stock_symbol varchar(32)
+    stock_symbol varchar(32),
+	CONSTRAINT stock_pk PRIMARY KEY (stock_id)
 );
 
 DROP TABLE stocks_volume;
