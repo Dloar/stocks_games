@@ -6,7 +6,7 @@
 DROP TABLE stocks_list;
 
 CREATE TABLE `stocks_list` (
-  `stock_id` decimal(3,0) NOT NULL AUTO_INCREMENT,
+  `stock_id` MEDIUMINT NOT NULL AUTO_INCREMENT,
   `stock_name` varchar(255) DEFAULT NULL,
   `stock_symbol` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`stock_id`)
@@ -26,16 +26,10 @@ CREATE TABLE exposures (
     exposure numeric(13,0)
 );
 
-DROP TABLE exposures;
-
-CREATE TABLE exposures (
-    cur_date DATE,
-    exposure numeric(13,0)
-);
 
 DROP TABLE purchases;
 
-CREATE TABLE purchases (
+CREATE TABLE stocks_purchases (
     cur_date DATE,
     stock_id numeric(3,0),
     buy_price numeric(13,0),
@@ -44,7 +38,7 @@ CREATE TABLE purchases (
 
 DROP TABLE sells;
 
-CREATE TABLE sells (
+CREATE TABLE stocks_sells (
     cur_date DATE,
     stock_id numeric(3,0),
     sell_price numeric(13,0),
