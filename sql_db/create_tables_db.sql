@@ -2,7 +2,7 @@
 -- Purpose of this is script is to create a database. --
 --                                                    --
 --------------------------------------------------------
-
+-- Table 1
 DROP TABLE stocks_list;
 
 CREATE TABLE stocks_list (
@@ -12,7 +12,7 @@ CREATE TABLE stocks_list (
   PRIMARY KEY (`stock_id`)
 );
 
-
+-- Table 2
 DROP TABLE stocks_volume;
 
 CREATE TABLE stocks_volume (
@@ -20,6 +20,7 @@ CREATE TABLE stocks_volume (
     cur_volume numeric(13,0)
 );
 
+-- Table 3
 DROP TABLE exposures;
 
 CREATE TABLE exposures (
@@ -27,7 +28,7 @@ CREATE TABLE exposures (
     exposure numeric(13,0)
 );
 
-
+-- Table 4
 DROP TABLE stocks_purchases;
 
 CREATE TABLE stocks_purchases (
@@ -37,6 +38,7 @@ CREATE TABLE stocks_purchases (
     buy_amount numeric(13,0)
 );
 
+-- Table 5
 DROP TABLE stocks_sells;
 
 CREATE TABLE stocks_sells (
