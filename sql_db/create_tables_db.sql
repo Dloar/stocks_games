@@ -28,7 +28,7 @@ CREATE TABLE exposures (
 );
 
 
-DROP TABLE purchases;
+DROP TABLE stocks_purchases;
 
 CREATE TABLE stocks_purchases (
     cur_date DATE,
@@ -37,7 +37,7 @@ CREATE TABLE stocks_purchases (
     buy_amount numeric(13,0)
 );
 
-DROP TABLE sells;
+DROP TABLE stocks_sells;
 
 CREATE TABLE stocks_sells (
     cur_date DATE,
