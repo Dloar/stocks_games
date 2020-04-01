@@ -10,7 +10,7 @@ CREATE TABLE stocks_list (
   stock_name varchar(255) DEFAULT NULL,
   stock_symbol varchar(32) DEFAULT NULL,
   PRIMARY KEY (`stock_id`)
-)
+);
 
 
 DROP TABLE stocks_volume;
