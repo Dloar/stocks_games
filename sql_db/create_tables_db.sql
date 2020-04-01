@@ -5,12 +5,12 @@
 
 DROP TABLE stocks_list;
 
-CREATE TABLE stocks_list (
-    stock_id numeric(3,0),
-    stock_name varchar(255),
-    stock_symbol varchar(32),
-	CONSTRAINT stock_pk PRIMARY KEY (stock_id)
-);
+CREATE TABLE `stocks_list` (
+  `stock_id` decimal(3,0) NOT NULL AUTO_INCREMENT,
+  `stock_name` varchar(255) DEFAULT NULL,
+  `stock_symbol` varchar(32) DEFAULT NULL,
+  PRIMARY KEY (`stock_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
 
 DROP TABLE stocks_volume;
 
