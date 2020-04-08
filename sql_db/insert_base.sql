@@ -1,4 +1,4 @@
-delete from stocks_list
+delete from stocks_list;
 INSERT INTO stocks_list
     (stock_name, stock_symbol)
 VALUES
@@ -17,4 +17,4 @@ VALUES
     ('Alibaba', 'BABA'),
     ('Amgen', 'AMGN'),
     ('Blizzard', 'ATVI'),
-    ('Moneta', 'MONET.PR')
+    ('Moneta', 'MONET.PR');
