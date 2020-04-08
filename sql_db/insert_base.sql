@@ -19,7 +19,7 @@ VALUES
     ('Blizzard', 'ATVI'),
     ('Moneta', 'MONET.PR');
 
-delete from stocks_list;
+delete from stock_volume;
 INSERT INTO stock_volume (stock_name, cur_volume)
 VALUES
     ('Merck', 11),
