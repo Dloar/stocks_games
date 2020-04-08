@@ -18,3 +18,25 @@ VALUES
     ('Amgen', 'AMGN'),
     ('Blizzard', 'ATVI'),
     ('Moneta', 'MONET.PR');
+
+delete from stocks_list;
+INSERT INTO stock_volume (stock_name, cur_volume)
+VALUES
+    ('Merck', 11),
+    ('Amazon', 0),
+    ('BMW', 16),
+    ('Boeing', 10),
+    ('Microsoft', 15),
+    ('NVIDIA', 4),
+    ('Veolia', 80),
+    ('Avast', 1000),
+    ('Qualcomm', 20),
+    ('Intel', 0),
+    ('KB', 50),
+    ('Total SA', 23),
+    ('Alibaba', 0),
+    ('Amgen', 0),
+    ('Blizzard', 0),
+    ('Moneta', 0);
+
+
