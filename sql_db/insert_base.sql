@@ -17,7 +17,10 @@ VALUES
     ('Alibaba', 'BABA'),
     ('Amgen', 'AMGN'),
     ('Blizzard', 'ATVI'),
-    ('Moneta', 'MONET.PR');
+    ('Moneta', 'MONET.PR'),
+    ('Apache', 'APA'),
+    ('Walt', 'DIS'),
+    ('Agree', 'ADC');
 
 delete from stocks_volume;
 INSERT INTO stocks_volume (stock_name, cur_volume)
@@ -37,6 +40,9 @@ VALUES
     ('Alibaba', 0),
     ('Amgen', 0),
     ('Blizzard', 0),
-    ('Moneta', 0);
+    ('Moneta', 0),
+    ('Apache', 100),
+    ('Walt', 10),
+    ('Agree', 13);
 
 
