@@ -3,7 +3,7 @@
 --                                                    --
 --------------------------------------------------------
 -- Table 1
--- DROP TABLE stocks_list;
+DROP TABLE stocks_list;
 
 CREATE TABLE stocks_list (
   stock_id MEDIUMINT NOT NULL AUTO_INCREMENT,
