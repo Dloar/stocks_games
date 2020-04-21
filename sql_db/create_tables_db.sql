@@ -10,7 +10,7 @@ CREATE TABLE stocks_list (
   stock_name varchar(255) NOT NULL,
   stock_symbol varchar(32) NOT NULL,
   currency numeric(13,5),
-  market varchar(32)
+  market varchar(32),
   PRIMARY KEY (`stock_id`)
 );
 

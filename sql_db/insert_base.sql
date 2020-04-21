@@ -115,19 +115,19 @@ VALUES
 delete from stocks_sells;
 INSERT INTO stocks_sells (provider, stock_name, market, volume, currency, purchase_date, price, fee)
 VALUES
-    ('patria', "CETV", "PRA", 15, "CZK", "31.03.2020", 79.0000, 80),
-    ('patria', "Intel", "NSQ", 30, "USD", "25.03.2020", 51.3000, 14.9),
-    ('patria', "NVIDIA", "NSQ", 5, "USD", "25.03.2020", 255.0100, 14.9),
-    ('patria', "AVAST", "PRA", 1000, "CZK", "25.03.2020", 115.0000, 545),
-    ('patria', "Amazon com Inc", "NSQ", 1, "USD", "19.03.2020", 1900.2000, 14.9),
-    ('patria', "Alibaba Group", "NYQ", 8, "USD", "10.03.2020", 201.6900, 14.9),
-    ('patria', "Intel", "NSQ", 35, "USD", "31.01.2020", 64.7900, 14.9),
-    ('patria', "Amgen Inc", "NSQ", 6, "USD", "31.01.2020", 212.2100, 14.9),
-    ('patria', "Activision Inc", "NSQ", 24, "USD", "31.01.2020", 59.0100, 14.9),
-    ('patria', "MONETA MONEY BANK", "PRA", 100, "CZK", "10.01.2020", 83.9000, 80),
-    ('patria', "STOCK", "PRA", 315, "CZK", "10.01.2020", 63.6000, 90.15),
-    ('patria', "CETV", "PRA", 120, "CZK", "03.12.2018", 76.2000, 80),
-    ('patria', "CETV", "PRA", 300, "CZK", "22.03.2018", 87.6000, 98.55);
+    ('patria', 'CETV', 'PRA', 15, 'CZK', '31.03.2020', 79.0000, 80),
+    ('patria', 'Intel', 'NSQ', 30, 'USD', '25.03.2020', 51.3000, 14.9),
+    ('patria', 'NVIDIA', 'NSQ', 5, 'USD', '25.03.2020', 255.0100, 14.9),
+    ('patria', 'AVAST', 'PRA', 1000, 'CZK', '25.03.2020', 115.0000, 545),
+    ('patria', 'Amazon com Inc', 'NSQ', 1, 'USD', '19.03.2020', 1900.2000, 14.9),
+    ('patria', 'Alibaba Group', 'NYQ', 8, 'USD', '10.03.2020', 201.6900, 14.9),
+    ('patria', 'Intel', 'NSQ', 35, 'USD', '31.01.2020', 64.7900, 14.9),
+    ('patria', 'Amgen Inc', 'NSQ', 6, 'USD', '31.01.2020', 212.2100, 14.9),
+    ('patria', 'Activision Inc', 'NSQ', 24, 'USD', '31.01.2020', 59.0100, 14.9),
+    ('patria', 'MONETA MONEY BANK', 'PRA', 100, 'CZK', '10.01.2020', 83.9000, 80),
+    ('patria', 'STOCK', 'PRA', 315, 'CZK', '10.01.2020', 63.6000, 90.15),
+    ('patria', 'CETV', 'PRA', 120, 'CZK', '03.12.2018', 76.2000, 80),
+    ('patria', 'CETV', 'PRA', 300, 'CZK', '22.03.2018', 87.6000, 98.55);
 
 
 
