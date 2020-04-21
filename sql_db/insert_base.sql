@@ -97,7 +97,7 @@ VALUES
     ('patria', 'Intel', 'NSQ', 35, 'USD', '19.06.2019', 47.3700, 14.9),
     ('patria', 'Arotech Corp.', 'NSQ', 300, 'USD', '19.06.2019', 2.0400, 14.9),
     ('patria', 'Total SA', 'PAR', 13, 'EUR', '11.04.2019', 50.1700, 16.9),
-    ('patria', 'Amazon com Inc', 'NSQ', 1, 'USD', '18.03.2019', 1 736.4000, 14.9),
+    ('patria', 'Amazon com Inc', 'NSQ', 1, 'USD', '18.03.2019', 1736.4000, 14.9),
     ('patria', 'Amgen Inc', 'NSQ', 6, 'USD', '25.02.2019', 188.1700, 14.9),
     ('patria', 'Veolia Environ', 'PAR', 50, 'EUR', '25.02.2019', 19.7350, 16.9),
     ('patria', 'Alibaba Group', 'NYQ', 8, 'USD', '18.10.2018', 146.1500, 14.9),
