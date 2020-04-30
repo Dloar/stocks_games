@@ -23,6 +23,16 @@ with SSHTunnelForwarder(
                            passwd=config_conn.sql_password.iloc[0], db=config_conn.sql_main_database.iloc[0],
                            port=tunnel.local_bind_port)
     query = '''SELECT * FROM stocks_list;'''
-    data = pd.read_sql_query(query, conn)
-    print(data)
+    stocks_list = pd.read_sql_query(query, conn)
+    query = '''SELECT * FROM exposures;'''
+    stocks_exposures = pd.read_sql_query(query, conn)
+    query = '''SELECT * FROM stocks_purchases;'''
+    stocks_purchases = pd.read_sql_query(query, conn)
+    query = '''SELECT * FROM stocks_sells;'''
+    stocks_sells = pd.read_sql_query(query, conn)
+    query = '''SELECT * FROM stocks_volume;'''
+    stocks_volume = pd.read_sql_query(query, conn)
+    print(stocks_volume)
     conn.close()
+
+    list_of_stocks = stocks_list['stock_symbol'].tolist()
