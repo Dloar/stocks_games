@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44e9d97d-3f73-4265-8413-eb87eaa660a4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/sql_db/create_tables_db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql_db/create_tables_db.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql_db/insert_base.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql_db/insert_base.sql" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,7 +24,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sql_db/create_tables_db.sql">
           <provider editor-type-id="OdpsQlGraph" />
           <provider selected="true" editor-type-id="OdpsQlEditor">
@@ -46,12 +46,12 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sql_db/insert_base.sql">
           <provider editor-type-id="OdpsQlGraph" />
           <provider selected="true" editor-type-id="OdpsQlEditor">
-            <state relative-caret-position="210">
-              <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
+            <state relative-caret-position="250">
+              <caret line="45" column="22" lean-forward="true" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -97,9 +97,9 @@
       <list>
         <option value="53dae319-e672-4a58-ae14-011bcde8b0a1/consoles/Connection" />
         <option value="$PROJECT_DIR$/functions.py" />
-        <option value="$PROJECT_DIR$/sql_db/insert_base.sql" />
         <option value="$PROJECT_DIR$/load_data.py" />
         <option value="$PROJECT_DIR$/sql_db/create_tables_db.sql" />
+        <option value="$PROJECT_DIR$/sql_db/insert_base.sql" />
       </list>
     </option>
   </component>
@@ -286,19 +286,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sql_db/insert_base.sql">
-      <provider selected="true" editor-type-id="OdpsQlEditor">
-        <state relative-caret-position="210">
-          <caret line="14" column="29" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="67" column="27" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
-        </state>
-      </provider>
-      <provider editor-type-id="OdpsQlGraph" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/sql_db/create_tables_db.sql">
       <provider selected="true" editor-type-id="OdpsQlEditor">
         <state relative-caret-position="309">
@@ -308,6 +295,19 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="405">
           <caret line="27" column="12" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="12" />
+        </state>
+      </provider>
+      <provider editor-type-id="OdpsQlGraph" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql_db/insert_base.sql">
+      <provider selected="true" editor-type-id="OdpsQlEditor">
+        <state relative-caret-position="250">
+          <caret line="45" column="22" lean-forward="true" selection-start-line="45" selection-start-column="22" selection-end-line="45" selection-end-column="22" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="67" column="27" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
         </state>
       </provider>
       <provider editor-type-id="OdpsQlGraph" />

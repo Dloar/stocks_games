@@ -24,28 +24,28 @@ VALUES
     ('Grupa Lotos', 'LTS', 'PLN', 'WSE'),
     ('WISDOMTREE WTI CRUDE OIL', 'CRUD.L', 'USD', 'LSE');
 
-delete from stocks_volume;
-INSERT INTO stocks_volume (stock_name, cur_volume)
-VALUES
-    ('Merck', 11),
-    ('Amazon', 0),
-    ('BMW', 16),
-    ('Boeing', 10),
-    ('Microsoft', 15),
-    ('NVIDIA', 4),
-    ('Veolia', 80),
-    ('Avast', 1000),
-    ('Qualcomm', 20),
-    ('Intel', 0),
-    ('KB', 50),
-    ('Total', 23),
-    ('Alibaba', 0),
-    ('Amgen', 0),
-    ('Blizzard', 0),
-    ('Moneta', 0),
-    ('Apache', 100),
-    ('Walt', 10),
-    ('Agree', 13);
+--delete from stocks_volume;
+--INSERT INTO stocks_volume (stock_name, cur_volume)
+--VALUES
+--    ('Merck', 11),
+--    ('Amazon', 0),
+--    ('BMW', 16),
+--    ('Boeing', 10),
+--    ('Microsoft', 15),
+--    ('NVIDIA', 4),
+--    ('Veolia', 80),
+--    ('Avast', 1000),
+--    ('Qualcomm', 20),
+--    ('Intel', 0),
+--    ('KB', 50),
+--    ('Total', 23),
+--    ('Alibaba', 0),
+--    ('Amgen', 0),
+--    ('Blizzard', 0),
+--    ('Moneta', 0),
+--    ('Apache', 100),
+--    ('Walt', 10),
+--    ('Agree', 13);
 
 delete from exposures;
 INSERT INTO exposures (cur_date, exposure)
