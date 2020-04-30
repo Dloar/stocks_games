@@ -16,7 +16,6 @@ stocks_data = loadData()
 list_of_stocks = stocks_data.stocks_list['stock_symbol'].tolist()
 print(list_of_stocks)
 
-symbol = 'AMZN'
 stocks_data = {name: pd.DataFrame() for name in list_of_stocks}
 for symbol in list_of_stocks:
     # get data on this ticker
