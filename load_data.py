@@ -32,7 +32,7 @@ with SSHTunnelForwarder(
     stocks_sells = pd.read_sql_query(query, conn)
     query = '''SELECT * FROM stocks_volume;'''
     stocks_volume = pd.read_sql_query(query, conn)
-    print(stocks_volume)
     conn.close()
 
-    list_of_stocks = stocks_list['stock_symbol'].tolist()
+list_of_stocks = stocks_list['stock_symbol'].tolist()
+print(list_of_stocks)
