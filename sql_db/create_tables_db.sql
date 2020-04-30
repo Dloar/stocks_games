@@ -14,13 +14,13 @@ CREATE TABLE stocks_list (
   PRIMARY KEY (`stock_id`)
 );
 
--- Table 2
-DROP TABLE stocks_volume;
-
-CREATE TABLE stocks_volume (
-    stock_name varchar(255) DEFAULT NULL,
-    cur_volume numeric(13,0)
-);
+---- Table 2
+--DROP TABLE stocks_volume;
+--
+--CREATE TABLE stocks_volume (
+--    stock_name varchar(255) DEFAULT NULL,
+--    cur_volume numeric(13,0)
+--);
 
 -- Table 3
 DROP TABLE exposures;
