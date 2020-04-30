@@ -21,7 +21,7 @@ VALUES
     ('Apache Corp', 'APA', 'USD', 'NYQ'),
     ('Walt Disney Co', 'DIS', 'USD', 'NYQ'),
     ('Agree Realty', 'ADC', 'USD', 'NYQ'),
-    ('Grupa Lotos', 'LTS', 'PLN', 'WSE'),
+    ('Grupa Lotos', 'G17.BE', 'EUR', 'WSE'),
     ('WISDOMTREE WTI CRUDE OIL', 'CRUD.L', 'USD', 'LSE');
 
 --delete from stocks_volume;

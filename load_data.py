@@ -2,37 +2,37 @@
 # This is a project to display a current situation regarding my stock situation.
 # Done by OK
 
+from functions import loadData
 import logging
-import pymysql
+import yfinance as yf
 import pandas as pd
-from sshtunnel import SSHTunnelForwarder
-from functions import getConfigFile
+logging.basicConfig(format='%(asctime)s:%(lineno)d:%(message)s', level=logging.DEBUG)
 
 print('AAA')
 logging.info('The process initiated.')
 
-config_conn = getConfigFile()
+stocks_data = loadData()
 
-
-with SSHTunnelForwarder(
-        (config_conn.ssh_host.iloc[0], int(config_conn.ssh_port.iloc[0])),
-        ssh_username=config_conn.ssh_user.iloc[0],
-        ssh_password=config_conn.ssh_psw.iloc[0],
-        remote_bind_address=(config_conn.sql_hostname.iloc[0], int(config_conn.sql_port.iloc[0]))) as tunnel:
-    conn = pymysql.connect(host=config_conn.sql_hostname.iloc[0], user=config_conn.sql_username.iloc[0],
-                           passwd=config_conn.sql_password.iloc[0], db=config_conn.sql_main_database.iloc[0],
-                           port=tunnel.local_bind_port)
-    query = '''SELECT * FROM stocks_list;'''
-    stocks_list = pd.read_sql_query(query, conn)
-    query = '''SELECT * FROM exposures;'''
-    stocks_exposures = pd.read_sql_query(query, conn)
-    query = '''SELECT * FROM stocks_purchases;'''
-    stocks_purchases = pd.read_sql_query(query, conn)
-    query = '''SELECT * FROM stocks_sells;'''
-    stocks_sells = pd.read_sql_query(query, conn)
-    query = '''SELECT * FROM stocks_volume;'''
-    stocks_volume = pd.read_sql_query(query, conn)
-    conn.close()
-
-list_of_stocks = stocks_list['stock_symbol'].tolist()
+list_of_stocks = stocks_data.stocks_list['stock_symbol'].tolist()
 print(list_of_stocks)
+
+symbol = 'AMZN'
+stocks_data = {name: pd.DataFrame() for name in list_of_stocks}
+for symbol in list_of_stocks:
+    # get data on this ticker
+    logging.info(' Downloading ' + symbol)
+    tickerData = yf.Ticker(symbol)
+
+    # get the historical prices for this ticker
+    tickerDf = tickerData.history(period='1d', start='2020-3-28', end='2020-4-30')
+    # tickerDf['deviation'] = ((tickerDf['High']-tickerDf['Low'])/tickerDf['Low'])*100
+    # tickerDf['differenceOC'] = (tickerDf['Open']-tickerDf['Close'])
+    # tickerDf['differenceHL'] = (tickerDf['High']-tickerDf['Low'])
+    # tickerDf['mean'] = ((tickerDf['Open']+tickerDf['Close'])/2)
+    # tickerDf['MA_per5'] = tickerDf['mean'].rolling(window=5).mean()
+    # tickerDf['MA_per3'] = tickerDf['mean'].rolling(window=3).mean()
+    # tickerDf = tickerDf[['mean', 'deviation', 'differenceOC', 'differenceHL', 'MA_per3', 'MA_per5']]
+
+    stocks_data[symbol] = tickerDf
+    print(tickerDf.index[-1])
+

@@ -4,7 +4,7 @@ import pandas as pd
 from datetime import datetime
 import matplotlib.pyplot as plt
 from pandas.plotting import register_matplotlib_converters
-logging.basicConfig(format='%(asctime)s:%(lineno)d:%(message)s', level=logging.DEBUG)
+
 register_matplotlib_converters()
 
 yest_day = datetime.today().strftime('%Y-%m-%d')
