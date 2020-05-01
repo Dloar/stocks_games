@@ -3,6 +3,7 @@ import os
 import pymysql
 import pandas as pd
 from sshtunnel import SSHTunnelForwarder
+import pandas_datareader.data as web
 
 def getConfigFile():
     """
@@ -85,3 +86,15 @@ def loadData():
 
         stocks_data = sourceData(stocks_list, stocks_exposures, stocks_purchases, stocks_sells, stocks_volume)
     return stocks_data
+
+
+def getCurrencyRates(currencies_list, yest_day):
+    exchange_rates = pd.DataFrame(columns=['Currency', 'Open', 'Close'])
+    for cur in currencies_list:
+        cur_name = cur + '=X'
+        print(cur_name)
+        rate = web.DataReader(name=cur_name, data_source='yahoo', start=yest_day, end=yest_day).loc[:, ['Open', 'Close']]
+        rate['Currency'] = cur
+        exchange_rates = exchange_rates.append(rate)
+
+    return exchange_rates

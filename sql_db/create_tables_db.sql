@@ -9,7 +9,7 @@ CREATE TABLE stocks_list (
   stock_id MEDIUMINT NOT NULL AUTO_INCREMENT,
   stock_name varchar(255) NOT NULL,
   stock_symbol varchar(32) NOT NULL,
-  currency numeric(13,5),
+  currency varchar(32),
   market varchar(32),
   PRIMARY KEY (`stock_id`)
 );
@@ -19,7 +19,7 @@ CREATE TABLE stocks_list (
 --
 --CREATE TABLE stocks_volume (
 --    stock_name varchar(255) DEFAULT NULL,
---    cur_volume numeric(13,0)
+--    cur_volume DECIMAL(13,0)
 --);
 
 -- Table 3
@@ -27,7 +27,7 @@ DROP TABLE exposures;
 
 CREATE TABLE exposures (
     cur_date DATE,
-    exposure numeric(13,0)
+    exposure DECIMAL(13,0)
 );
 
 -- Table 4
@@ -37,11 +37,11 @@ CREATE TABLE stocks_purchases (
   provider varchar(255) NOT NULL,
   stock_name varchar(255) NOT NULL,
   market varchar(32),
-  volume numeric(13,0),
-  currency numeric(13,5),
+  volume DECIMAL(13,1),
+  currency varchar(32),
   purchase_date DATE,
-  price numeric(13,0),
-  fee numeric(6,5)
+  price DECIMAL(13,0),
+  fee DECIMAL(6,5)
 );
 
 -- Table 5
@@ -51,10 +51,10 @@ CREATE TABLE stocks_sells (
   provider varchar(255) NOT NULL,
   stock_name varchar(255) NOT NULL,
   market varchar(32),
-  volume numeric(13,0),
-  currency numeric(13,5),
+  volume DECIMAL(13,0),
+  currency varchar(32),
   purchase_date DATE,
-  price numeric(13,0),
-  fee numeric(6,5)
+  price DECIMAL(13,0),
+  fee DECIMAL(6,5)
 );
 
