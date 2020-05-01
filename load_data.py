@@ -5,7 +5,6 @@
 import logging
 import yfinance as yf
 import pandas as pd
-import pandas as pd
 from datetime import date, timedelta
 from functions import loadData, getCurrencyRates
 logging.basicConfig(format='%(asctime)s:%(lineno)d:%(message)s', level=logging.DEBUG)
@@ -15,13 +14,13 @@ logging.info('The process initiated.')
 
 stocks_data = loadData()
 
-# yesterday = date.today() - timedelta(days=1)
-yest_day = date.today().strftime('%Y-%m-%d')
+yesterday = (date.today() - timedelta(days=1)).strftime('%Y-%m-%d')
+today = date.today().strftime('%Y-%m-%d')
+list_of_cur = list(stocks_data.stocks_list['currency'].unique())
 
-exchange_rate = getCurrencyRates(yest_day=yest_day)
+exchange_rate = getCurrencyRates(currencies_list=list_of_cur, yest_day=yesterday)
 
 list_of_stocks = stocks_data.stocks_list['stock_symbol'].tolist()
-print(list_of_stocks)
 
 stocks_data = {name: pd.DataFrame() for name in list_of_stocks}
 for symbol in list_of_stocks:
@@ -30,7 +29,7 @@ for symbol in list_of_stocks:
     tickerData = yf.Ticker(symbol)
 
     # get the historical prices for this ticker
-    tickerDf = tickerData.history(period='1d', start='2020-3-28', end='2020-4-30')
+    tickerDf = tickerData.history(period='1d', start='2020-3-28', end=today)
     # tickerDf['deviation'] = ((tickerDf['High']-tickerDf['Low'])/tickerDf['Low'])*100
     # tickerDf['differenceOC'] = (tickerDf['Open']-tickerDf['Close'])
     # tickerDf['differenceHL'] = (tickerDf['High']-tickerDf['Low'])

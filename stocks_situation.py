@@ -2,7 +2,6 @@ import yfinance as yf
 import logging
 import pandas as pd
 from datetime import datetime
-import matplotlib.pyplot as plt
 from pandas.plotting import register_matplotlib_converters
 
 register_matplotlib_converters()

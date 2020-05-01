@@ -58,3 +58,9 @@ CREATE TABLE stocks_sells (
   fee DECIMAL(6,5)
 );
 
+DROP TABLE exchange_rates;
+
+CREATE TABLE exchange_rates (
+  cur_name varchar(255),
+  source_date DATE,
+  cur_rate  DECIMAL(13,13));
