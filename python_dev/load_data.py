@@ -6,7 +6,7 @@ import logging
 import yfinance as yf
 import pandas as pd
 from datetime import date, timedelta
-from functions import loadData, getCurrencyRates
+from python_dev.functions import loadData, getCurrencyRates
 logging.basicConfig(format='%(asctime)s:%(lineno)d:%(message)s', level=logging.DEBUG)
 
 print('AAA')

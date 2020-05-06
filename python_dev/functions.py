@@ -26,9 +26,11 @@ def getConfigFile():
         ssh_user = str()
         ssh_port = int()
         sql_ip = str()
+        email_user = str()
+        email_psw = str()
 
         def __init__(self, sql_hostname, sql_username, sql_password, sql_main_database, sql_port, ssh_host,
-                     ssh_psw, ssh_user, ssh_port, sql_ip):
+                     ssh_psw, ssh_user, ssh_port, sql_ip, email_user, email_psw):
             self.sql_hostname = sql_hostname
             self.sql_username = sql_username
             self.sql_password = sql_password
@@ -39,11 +41,13 @@ def getConfigFile():
             self.ssh_user = ssh_user
             self.ssh_port = ssh_port
             self.sql_ip = sql_ip
+            self.email_user = email_user
+            self.email_psw = email_psw
 
     config_conn = ConfigFile(config_source.sql_hostname, config_source.sql_username, config_source.sql_password,
                              config_source.sql_main_database, config_source.sql_port, config_source.ssh_host,
                              config_source.ssh_psw, config_source.ssh_user, config_source.ssh_port,
-                             config_source.sql_ip)
+                             config_source.sql_ip, config_source.email_user, config_source.email_psw)
     return config_conn
 
 
