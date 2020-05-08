@@ -6,18 +6,33 @@ from email.message import EmailMessage
 
 config_conn = getConfigFile()
 
+# sending to multiple people
+contacts = ['xkrao11@gmail.com', config_conn.email_user[0]]
 msg = EmailMessage()
-msg['Subject'] = 'test1'
+msg['Subject'] = 'test2'
 msg['From'] = config_conn.email_user[0]
-msg['To'] = config_conn.email_user[0]
-msg.set_content('Attachemnts in the mail.')
+msg['To'] = ', '.join(contacts)
+msg.set_content('This is a plain text.')
 
-with open('heic1107a.jpg', 'rb') as f:
-    file_data = f.read()
-    file_type = imghdr.what(f.name)
-    file_name = f.name
+msg.add_alternative("""\
+<!DOCTYPE html>
+<html>
+    <body>
+     <h1 style="color:SlateGray;">  This is html email!</h1>
+    </body>
+</html>
+""", subtype='html')
 
-msg.add_attachment(file_data, maintype='image', subtype=file_type, filename=file_name)
+
+
+# file_names = ['heic1107a.jpg', 'heic1501a.jpg']
+# for name in file_names:
+#     with open(name, 'rb') as f:
+#         file_data = f.read()
+#         file_type = imghdr.what(f.name)
+#         file_name = f.name
+#
+#     msg.add_attachment(file_data, maintype='image', subtype=file_type, filename=file_name)
 
 
 with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:  #Google connection SSL
