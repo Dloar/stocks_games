@@ -22,7 +22,8 @@ VALUES
     ('Walt Disney Co', 'DIS', 'USD', 'NYQ'),
     ('Agree Realty', 'ADC', 'USD', 'NYQ'),
     ('Grupa Lotos', 'G17.BE', 'EUR', 'WSE'),
-    ('WISDOMTREE WTI CRUDE OIL', 'CRUD.L', 'USD', 'LSE');
+    ('WISDOMTREE WTI CRUDE OIL', 'CRUD.L', 'USD', 'LSE'),
+    ('Wizz Air', 'WIZZ.L', 'GBP', 'LSE');
 
 --delete from stocks_volume;
 --INSERT INTO stocks_volume (stock_name, cur_volume)
