@@ -14,15 +14,7 @@ CREATE TABLE stocks_list (
   PRIMARY KEY (`stock_id`)
 );
 
----- Table 2
---DROP TABLE stocks_volume;
---
---CREATE TABLE stocks_volume (
---    stock_name varchar(255) DEFAULT NULL,
---    cur_volume DECIMAL(13,0)
---);
-
--- Table 3
+-- Table 2
 DROP TABLE exposures;
 
 CREATE TABLE exposures (
@@ -30,7 +22,7 @@ CREATE TABLE exposures (
     exposure DECIMAL(13,0)
 );
 
--- Table 4
+-- Table 3
 DROP TABLE stocks_purchases;
 
 CREATE TABLE stocks_purchases (
@@ -44,7 +36,7 @@ CREATE TABLE stocks_purchases (
   fee DECIMAL(6,5)
 );
 
--- Table 5
+-- Table 4
 DROP TABLE stocks_sells;
 
 CREATE TABLE stocks_sells (
@@ -58,6 +50,7 @@ CREATE TABLE stocks_sells (
   fee DECIMAL(6,5)
 );
 
+-- Table 5
 DROP TABLE exchange_rates;
 
 CREATE TABLE exchange_rates (
