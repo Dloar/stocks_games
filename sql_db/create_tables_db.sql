@@ -19,7 +19,7 @@ DROP TABLE exposures;
 
 CREATE TABLE exposures (
     cur_date DATE,
-    exposure DECIMAL(10,0)
+    exposure DECIMAL(10,1)
 );
 
 -- Table 3
@@ -29,11 +29,11 @@ CREATE TABLE stocks_purchases (
   provider varchar(255) NOT NULL,
   stock_name varchar(255) NOT NULL,
   market varchar(32),
-  volume DECIMAL(10,0),
+  volume DECIMAL(10,1),
   currency varchar(32),
   purchase_date DATE,
-  price DECIMAL(5,8),
-  fee DECIMAL(5,8)
+  price DECIMAL(10,5),
+  fee DECIMAL(10,5)
 );
 
 -- Table 4
@@ -43,11 +43,11 @@ CREATE TABLE stocks_sells (
   provider varchar(255) NOT NULL,
   stock_name varchar(255) NOT NULL,
   market varchar(32),
-  volume DECIMAL(10,0),
+  volume DECIMAL(10,1),
   currency varchar(32),
   purchase_date DATE,
-  price DECIMAL(5,8),
-  fee DECIMAL(5,8)
+  price DECIMAL(10,5),
+  fee DECIMAL(10,5)
 );
 
 -- Table 5
@@ -56,4 +56,4 @@ DROP TABLE exchange_rates;
 CREATE TABLE exchange_rates (
   cur_name varchar(32),
   source_date DATE,
-  cur_rate DECIMAL(5,8));
+  cur_rate DECIMAL(10,5));
