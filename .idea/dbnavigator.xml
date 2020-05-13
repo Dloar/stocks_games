@@ -23,11 +23,17 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="53dae319-e672-4a58-ae14-011bcde8b0a1">
+        <schema name="stocks" object-types="view, table" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="53dae319-e672-4a58-ae14-011bcde8b0a1">
-      <console name="Connection" type="STANDARD" schema="" session="Main"><![CDATA[SELECT * FROM stocks_volume]]></console>
+      <console name="Connection" type="STANDARD" schema="stocks" session="Main">DELETE FROM exchange_rates;
+SELECT * FROM exchange_rates;
+--SELECT * FROM stocks_list;</console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -55,14 +61,16 @@
     <filters />
   </component>
   <component name="DBNavigator.Project.ScriptExecutionManager" clear-outputs="true">
-    <recently-used-interfaces />
+    <recently-used-interfaces>
+      <mapping database-type="MYSQL" interface-id="DEFAULT" />
+    </recently-used-interfaces>
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
       <connection id="53dae319-e672-4a58-ae14-011bcde8b0a1" active="true">
         <database>
           <name value="Connection" />
-          <description value="" />
+          <description value="Stocks DB" />
           <database-type value="MYSQL" />
           <config-type value="BASIC" />
           <database-version value="5.5" />
@@ -70,8 +78,8 @@
           <driver-library value="" />
           <driver value="" />
           <url-type value="DATABASE" />
-          <host value="127.0.0.1" />
-          <port value="3306" />
+          <host value="192.168.0.141" />
+          <port value="8585" />
           <database value="stocks" />
           <type value="USER_PASSWORD" />
           <user value="dloar" />
@@ -81,7 +89,7 @@
           <auto-commit value="false" />
         </properties>
         <ssh-settings>
-          <active value="true" />
+          <active value="false" />
           <proxy-host value="192.168.0.142" />
           <proxy-port value="22" />
           <proxy-user value="pi" />

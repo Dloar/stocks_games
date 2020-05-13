@@ -1,9 +1,15 @@
+#####
+#
+#'''''''
+#
+#######
 import yaml
 import os
-import pymysql
 import pandas as pd
-from sshtunnel import SSHTunnelForwarder
 import pandas_datareader.data as web
+import mysql.connector
+from datetime import datetime
+
 
 def getConfigFile():
     """
@@ -53,52 +59,104 @@ def getConfigFile():
 
 def loadData():
     config_conn = getConfigFile()
+    conn = mysql.connector.connect(
+        host=config_conn.sql_hostname.iloc[0],
+        user=config_conn.sql_username.iloc[0],
+        passwd=config_conn.sql_password.iloc[0],
+        database=config_conn.sql_main_database.iloc[0],
+        port=config_conn.sql_port[0]
+    )
 
-    with SSHTunnelForwarder(
-            (config_conn.ssh_host.iloc[0], int(config_conn.ssh_port.iloc[0])),
-            ssh_username=config_conn.ssh_user.iloc[0],
-            ssh_password=config_conn.ssh_psw.iloc[0],
-            remote_bind_address=(config_conn.sql_hostname.iloc[0], int(config_conn.sql_port.iloc[0]))) as tunnel:
-        conn = pymysql.connect(host=config_conn.sql_hostname.iloc[0], user=config_conn.sql_username.iloc[0],
-                               passwd=config_conn.sql_password.iloc[0], db=config_conn.sql_main_database.iloc[0],
-                               port=tunnel.local_bind_port)
-        query = '''SELECT * FROM stocks_list;'''
-        stocks_list = pd.read_sql_query(query, conn)
-        query = '''SELECT * FROM exposures;'''
-        stocks_exposures = pd.read_sql_query(query, conn)
-        query = '''SELECT * FROM stocks_purchases;'''
-        stocks_purchases = pd.read_sql_query(query, conn)
-        query = '''SELECT * FROM stocks_sells;'''
-        stocks_sells = pd.read_sql_query(query, conn)
-        query = '''SELECT * FROM stocks_volume;'''
-        stocks_volume = pd.read_sql_query(query, conn)
-        conn.close()
+    query = '''SELECT * FROM stocks_list;'''
+    stocks_list = pd.read_sql_query(query, conn)
+    query = '''SELECT * FROM exposures;'''
+    stocks_exposures = pd.read_sql_query(query, conn)
+    query = '''SELECT * FROM stocks_purchases;'''
+    stocks_purchases = pd.read_sql_query(query, conn)
+    query = '''SELECT * FROM stocks_sells;'''
+    stocks_sells = pd.read_sql_query(query, conn)
+    query = '''SELECT * FROM stocks_volume;'''
+    stocks_volume = pd.read_sql_query(query, conn)
+    conn.close()
 
-        class sourceData(object):
-            stocks_list = pd.DataFrame()
-            stocks_exposures = pd.DataFrame()
-            stocks_purchases = pd.DataFrame()
-            stocks_sells = pd.DataFrame()
-            stocks_volume = pd.DataFrame()
+    class sourceData(object):
+        stocks_list = pd.DataFrame()
+        stocks_exposures = pd.DataFrame()
+        stocks_purchases = pd.DataFrame()
+        stocks_sells = pd.DataFrame()
+        stocks_volume = pd.DataFrame()
 
-            def __init__(self, stocks_list, stocks_exposures, stocks_purchases, stocks_sells, stocks_volume):
-                self.stocks_list = stocks_list
-                self.stocks_exposures = stocks_exposures
-                self.stocks_purchases = stocks_purchases
-                self.stocks_sells = stocks_sells
-                self.stocks_volume = stocks_volume
+        def __init__(self, stocks_list, stocks_exposures, stocks_purchases, stocks_sells, stocks_volume):
+            self.stocks_list = stocks_list
+            self.stocks_exposures = stocks_exposures
+            self.stocks_purchases = stocks_purchases
+            self.stocks_sells = stocks_sells
+            self.stocks_volume = stocks_volume
 
-        stocks_data = sourceData(stocks_list, stocks_exposures, stocks_purchases, stocks_sells, stocks_volume)
+    stocks_data = sourceData(stocks_list, stocks_exposures, stocks_purchases, stocks_sells, stocks_volume)
+
     return stocks_data
 
 
-def getCurrencyRates(currencies_list, yest_day):
-    exchange_rates = pd.DataFrame(columns=['Currency', 'Open', 'Close'])
+def getCurrencyRates(currencies_list, yesterday):
+    """
+    Downloading actual currency from the yahoo webpages.
+    :param currencies_list:
+    :param yest_day:
+    :return:
+    """
+    exchange_rates = pd.DataFrame(columns=['Close'])
     for cur in currencies_list:
         cur_name = cur + '=X'
         print(cur_name)
-        rate = web.DataReader(name=cur_name, data_source='yahoo', start=yest_day, end=yest_day).loc[:, ['Open', 'Close']]
-        rate['Currency'] = cur
+        rate = web.DataReader(name=cur_name, data_source='yahoo', start=yesterday, end=yesterday).loc[:,
+               ['Close']]
+        rate['cur_name'] = cur
         exchange_rates = exchange_rates.append(rate)
+    max_date = max(exchange_rates.index)
+    exchange_rates = exchange_rates.loc[exchange_rates.index == max_date]
+    exchange_rates.index.name = 'source_date'
+    exchange_rates.reset_index(inplace=True)
+    exchange_rates.rename(columns={'Close': 'cur_rate'}, inplace=True)
+    exchange_rates = exchange_rates.loc[:, ['cur_name', 'source_date', 'cur_rate']]
 
     return exchange_rates
+
+
+def updateExchangeRates(exchange_rate):
+    """
+
+    :param exchange_rate:
+    :return:
+    """
+    config_conn = getConfigFile()
+    conn = mysql.connector.connect(
+        host=config_conn.sql_hostname.iloc[0],
+        user=config_conn.sql_username.iloc[0],
+        passwd=config_conn.sql_password.iloc[0],
+        database=config_conn.sql_main_database.iloc[0],
+        port=config_conn.sql_port[0]
+    )
+
+    query = '''SELECT * FROM exchange_rates;'''
+    exchange_date = pd.read_sql_query(query, conn)
+    if exchange_date.shape[0] > 0:
+        exchange_date_max = max(pd.read_sql_query(query, conn)['source_date'])
+    else:
+        exchange_date_max = datetime(1600, 1, 11, 00, 00)
+
+    cursor = conn.cursor()
+    if max(exchange_rate['source_date']) > exchange_date_max:
+        exchange_rate = exchange_rate.astype(str)
+        query_s = "INSERT INTO exchange_rates (cur_name, source_date, cur_rate) values (%s, %s, %s)"
+
+        for i in range(len(exchange_rate)):
+            cursor.execute(query_s, (exchange_rate.iloc[i, 0], exchange_rate.iloc[i, 1], float(exchange_rate.iloc[i, 2])))
+        cursor.close()
+        conn.commit()
+    conn.close()
+    return 'Exchange Rates updated.'
+
+
+
+

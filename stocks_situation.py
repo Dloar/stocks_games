@@ -1,4 +1,4 @@
-import yfinance as yf
+import yfinance as yfgetCurrencyRates
 import logging
 import pandas as pd
 from datetime import datetime
