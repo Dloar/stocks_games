@@ -127,6 +127,7 @@ def updateExchangeRates(exchange_rate):
     """
 
     :param exchange_rate:
+    :param yesterday:
     :return:
     """
     config_conn = getConfigFile()
@@ -151,9 +152,10 @@ def updateExchangeRates(exchange_rate):
         query_s = "INSERT INTO exchange_rates (cur_name, source_date, cur_rate) values (%s, %s, %s)"
 
         for i in range(len(exchange_rate)):
-            cursor.execute(query_s, (exchange_rate.iloc[i, 0], exchange_rate.iloc[i, 1], float(exchange_rate.iloc[i, 2])))
-        cursor.close()
-        conn.commit()
+            cursor.execute(query_s, (exchange_rate.iloc[i, 0], exchange_rate.iloc[i, 1], float(exchange_rate.iloc[i,
+                                                                                                                  2])))
+            conn.commit()
+    cursor.close()
     conn.close()
     return 'Exchange Rates updated.'
 
