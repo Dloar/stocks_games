@@ -25,15 +25,14 @@
     <show-object-properties value="true" />
     <loaded-nodes>
       <connection connection-id="53dae319-e672-4a58-ae14-011bcde8b0a1">
-        <schema name="stocks" object-types="view, table" />
+        <schema name="stocks" object-types="table, view" />
       </connection>
     </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="53dae319-e672-4a58-ae14-011bcde8b0a1">
-      <console name="Connection" type="STANDARD" schema="stocks" session="Main">DELETE FROM exchange_rates;
-SELECT * FROM exchange_rates;
---SELECT * FROM stocks_list;</console>
+      <console name="Connection" type="STANDARD" schema="stocks" session="Main"><![CDATA[SELECT * FROM exchange_rates;
+DELETE FROM exchange_rates;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">

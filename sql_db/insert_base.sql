@@ -25,29 +25,6 @@ VALUES
     ('WISDOMTREE WTI CRUDE OIL', 'CRUD.L', 'USD', 'LSE'),
     ('Wizz Air', 'WIZZ.L', 'GBP', 'LSE');
 
---delete from stocks_volume;
---INSERT INTO stocks_volume (stock_name, cur_volume)
---VALUES
---    ('Merck', 11),
---    ('Amazon', 0),
---    ('BMW', 16),
---    ('Boeing', 10),
---    ('Microsoft', 15),
---    ('NVIDIA', 4),
---    ('Veolia', 80),
---    ('Avast', 1000),
---    ('Qualcomm', 20),
---    ('Intel', 0),
---    ('KB', 50),
---    ('Total', 23),
---    ('Alibaba', 0),
---    ('Amgen', 0),
---    ('Blizzard', 0),
---    ('Moneta', 0),
---    ('Apache', 100),
---    ('Walt', 10),
---    ('Agree', 13);
-
 delete from exposures;
 INSERT INTO exposures (cur_date, exposure)
 VALUES
@@ -69,7 +46,8 @@ VALUES
     ('2019-08-30', 200000),
     ('2019-11-28', -25000),
     ('2020-03-02', -100000),
-    ('2020-04-08', 140000);
+    ('2020-04-08', 140000),
+    ('2020-04-08', -13000);
 
 delete from stocks_purchases;
 INSERT INTO stocks_purchases (provider, stock_name, market, volume, currency, purchase_date, price, fee)
