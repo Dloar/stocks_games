@@ -103,6 +103,7 @@ VALUES
     ('patria', 'Intel', 'NSQ', 35, 'USD', '31.01.2020', 64.7900, 14.9),
     ('patria', 'Amgen Inc', 'NSQ', 6, 'USD', '31.01.2020', 212.2100, 14.9),
     ('patria', 'Activision Inc', 'NSQ', 24, 'USD', '31.01.2020', 59.0100, 14.9),
+    ('patria', 'Arotech Corp.', 'NSQ', 300, 'USD', '19.06.2019', 3.0000, 0.00),
     ('patria', 'MONETA MONEY BANK', 'PRA', 100, 'CZK', '10.01.2020', 83.9000, 80),
     ('patria', 'STOCK', 'PRA', 315, 'CZK', '10.01.2020', 63.6000, 90.15),
     ('patria', 'CETV', 'PRA', 120, 'CZK', '03.12.2018', 76.2000, 80),
