@@ -32,7 +32,7 @@
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="53dae319-e672-4a58-ae14-011bcde8b0a1">
       <console name="Connection" type="STANDARD" schema="stocks" session="Main"><![CDATA[SELECT * FROM exchange_rates;
-DELETE FROM exchange_rates;]]></console>
+--DELETE FROM exchange_rates;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">

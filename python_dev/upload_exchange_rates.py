@@ -1,5 +1,5 @@
 import logging
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 from python_dev.functions import loadData, getCurrencyRates, updateExchangeRates
 logging.basicConfig(format='%(asctime)s:%(lineno)d:%(message)s', level=logging.DEBUG)
 
@@ -12,3 +12,4 @@ list_of_cur = list(stocks_data.stocks_purchases['currency'].unique())
 exchange_rate = getCurrencyRates(currencies_list=list_of_cur, yesterday=yesterday)
 
 updateExchangeRates(exchange_rate=exchange_rate)
+logging.info('The exchange rates been updated at ' + str(datetime.now()))
