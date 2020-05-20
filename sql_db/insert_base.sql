@@ -47,7 +47,7 @@ VALUES
     ('2019-11-28', -25000),
     ('2020-03-02', -100000),
     ('2020-04-08', 140000),
-    ('2020-04-08', -13000);
+    ('2020-05-20', -13000);
 
 delete from stocks_purchases;
 INSERT INTO stocks_purchases (provider, stock_name, market, volume, currency, purchase_date, price, fee)

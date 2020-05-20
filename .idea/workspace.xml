@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44e9d97d-3f73-4265-8413-eb87eaa660a4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sql_db/insert_base.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql_db/insert_base.sql" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,7 +55,7 @@
         <entry file="file://$PROJECT_DIR$/sql_db/insert_base.sql">
           <provider selected="true" editor-type-id="OdpsQlEditor">
             <state relative-caret-position="382">
-              <caret line="49" column="22" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
+              <caret line="49" column="16" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
             </state>
           </provider>
           <provider editor-type-id="OdpsQlGraph" />
@@ -439,7 +437,7 @@
     <entry file="file://$PROJECT_DIR$/sql_db/insert_base.sql">
       <provider selected="true" editor-type-id="OdpsQlEditor">
         <state relative-caret-position="382">
-          <caret line="49" column="22" selection-start-line="49" selection-start-column="22" selection-end-line="49" selection-end-column="22" />
+          <caret line="49" column="16" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
         </state>
       </provider>
       <provider editor-type-id="text-editor">
