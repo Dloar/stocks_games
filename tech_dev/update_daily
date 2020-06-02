@@ -3,6 +3,7 @@ d=`date +%y-%m-%d_%H:%M:%S`
 echo 'Running update at' $d
 # Running daily update of the exchange rates.
 echo `pwd`
-echo $STOCK_PATH
+python3 ../python_dev/upload_exchange_rates.py
+echo 'ENDE'
 
 

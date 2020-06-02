@@ -1,5 +1,5 @@
 import logging
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 from functions import loadData, getCurrencyRates, updateExchangeRates
 logging.basicConfig(format='%(asctime)s:%(lineno)d:%(message)s', level=logging.DEBUG)
 
