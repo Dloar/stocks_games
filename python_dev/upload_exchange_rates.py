@@ -12,3 +12,4 @@ list_of_cur = list(stocks_data.stocks_purchases['currency'].unique())
 exchange_rate = getCurrencyRates(currencies_list=list_of_cur, yesterday=yesterday)
 
 updateExchangeRates(exchange_rate=exchange_rate)
+logging.info('The exchange rates been updated at ' + str(datetime.now()))

@@ -9,7 +9,7 @@ VALUES
     ('NVIDIA', 'NVDA', 'USD', 'NSQ'),
     ('Veolia Environ', 'VIE.PA', 'EUR', 'PAR'),
     ('Avast', 'AVST.PR', 'CZK', 'PRA'),
-    ('Qualcomm', 'QCOM', 'USD', 'NSQ'),
+    ('Qualcomm Inc', 'QCOM', 'USD', 'NSQ'),
     ('Microsoft', 'MSFT', 'USD', 'NSQ'),
     ('Intel', 'INTC', 'USD', 'NSQ'),
     ('KOMERCNI BANKA', 'KOMB.PR', 'CZK', 'PRA'),
@@ -24,29 +24,6 @@ VALUES
     ('Grupa Lotos', 'G17.BE', 'EUR', 'WSE'),
     ('WISDOMTREE WTI CRUDE OIL', 'CRUD.L', 'USD', 'LSE'),
     ('Wizz Air', 'WIZZ.L', 'GBP', 'LSE');
-
---delete from stocks_volume;
---INSERT INTO stocks_volume (stock_name, cur_volume)
---VALUES
---    ('Merck', 11),
---    ('Amazon', 0),
---    ('BMW', 16),
---    ('Boeing', 10),
---    ('Microsoft', 15),
---    ('NVIDIA', 4),
---    ('Veolia', 80),
---    ('Avast', 1000),
---    ('Qualcomm', 20),
---    ('Intel', 0),
---    ('KB', 50),
---    ('Total', 23),
---    ('Alibaba', 0),
---    ('Amgen', 0),
---    ('Blizzard', 0),
---    ('Moneta', 0),
---    ('Apache', 100),
---    ('Walt', 10),
---    ('Agree', 13);
 
 delete from exposures;
 INSERT INTO exposures (cur_date, exposure)
@@ -69,7 +46,8 @@ VALUES
     ('2019-08-30', 200000),
     ('2019-11-28', -25000),
     ('2020-03-02', -100000),
-    ('2020-04-08', 140000);
+    ('2020-04-08', 140000),
+    ('2020-05-20', -13000);
 
 delete from stocks_purchases;
 INSERT INTO stocks_purchases (provider, stock_name, market, volume, currency, purchase_date, price, fee)
@@ -91,9 +69,9 @@ VALUES
     ('patria', 'Grupa Lotos', 'WSE', 30, 'PLN', '27.03.2020', 53.1000, 60),
     ('patria', 'NVIDIA', 'NSQ', 5, 'USD', '23.03.2020', 209.3900, 14.9),
     ('patria', 'Intel', 'NSQ', 30, 'USD', '23.03.2020', 48.2400, 14.9),
-    ('patria', 'AVAST', 'PRA', 295, 'CZK', '31.01.2020', 126.0000, 167.27),
+    ('patria', 'Avast', 'PRA', 295, 'CZK', '31.01.2020', 126.0000, 167.27),
     ('patria', 'Merck', 'NYQ', 11, 'USD', '09.01.2020', 88.9400, 14.9),
-    ('patria', 'AVAST', 'PRA', 1600, 'CZK', '10.09.2019', 107.0000, 713.6),
+    ('patria', 'Avast', 'PRA', 1600, 'CZK', '10.09.2019', 107.0000, 713.6),
     ('patria', 'Activision Inc', 'NSQ', 24, 'USD', '27.06.2019', 47.0900, 14.9),
     ('patria', 'Intel', 'NSQ', 35, 'USD', '19.06.2019', 47.3700, 14.9),
     ('patria', 'Arotech Corp.', 'NSQ', 300, 'USD', '19.06.2019', 2.0400, 14.9),
@@ -102,7 +80,7 @@ VALUES
     ('patria', 'Amgen Inc', 'NSQ', 6, 'USD', '25.02.2019', 188.1700, 14.9),
     ('patria', 'Veolia Environ', 'PAR', 50, 'EUR', '25.02.2019', 19.7350, 16.9),
     ('patria', 'Alibaba Group', 'NYQ', 8, 'USD', '18.10.2018', 146.1500, 14.9),
-    ('patria', 'AVAST', 'PRA', 105, 'CZK', '26.09.2018', 85.0000, 80),
+    ('patria', 'Avast', 'PRA', 105, 'CZK', '26.09.2018', 85.0000, 80),
     ('patria', 'KOMERCNI BANKA', 'PRA', 25, 'CZK', '15.05.2018', 899.0000, 101.14),
     ('patria', 'CETV', 'PRA', 35, 'CZK', '07.02.2018', 95.7000, 80),
     ('patria', 'STOCK', 'PRA', 200, 'CZK', '07.02.2018', 82.6000, 80),
@@ -119,12 +97,13 @@ VALUES
     ('patria', 'CETV', 'PRA', 15, 'CZK', '31.03.2020', 79.0000, 80),
     ('patria', 'Intel', 'NSQ', 30, 'USD', '25.03.2020', 51.3000, 14.9),
     ('patria', 'NVIDIA', 'NSQ', 5, 'USD', '25.03.2020', 255.0100, 14.9),
-    ('patria', 'AVAST', 'PRA', 1000, 'CZK', '25.03.2020', 115.0000, 545),
+    ('patria', 'Avast', 'PRA', 1000, 'CZK', '25.03.2020', 115.0000, 545),
     ('patria', 'Amazon com Inc', 'NSQ', 1, 'USD', '19.03.2020', 1900.2000, 14.9),
     ('patria', 'Alibaba Group', 'NYQ', 8, 'USD', '10.03.2020', 201.6900, 14.9),
     ('patria', 'Intel', 'NSQ', 35, 'USD', '31.01.2020', 64.7900, 14.9),
     ('patria', 'Amgen Inc', 'NSQ', 6, 'USD', '31.01.2020', 212.2100, 14.9),
     ('patria', 'Activision Inc', 'NSQ', 24, 'USD', '31.01.2020', 59.0100, 14.9),
+    ('patria', 'Arotech Corp.', 'NSQ', 300, 'USD', '19.06.2019', 3.0000, 0.00),
     ('patria', 'MONETA MONEY BANK', 'PRA', 100, 'CZK', '10.01.2020', 83.9000, 80),
     ('patria', 'STOCK', 'PRA', 315, 'CZK', '10.01.2020', 63.6000, 90.15),
     ('patria', 'CETV', 'PRA', 120, 'CZK', '03.12.2018', 76.2000, 80),

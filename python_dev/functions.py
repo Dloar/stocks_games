@@ -8,7 +8,9 @@ import os
 import pandas as pd
 import pandas_datareader.data as web
 import mysql.connector
-from datetime import datetime
+import logging
+import yfinance as yf
+from datetime import datetime,date, timedelta
 
 
 def getConfigFile():
@@ -77,6 +79,8 @@ def loadData():
     stocks_sells = pd.read_sql_query(query, conn)
     query = '''SELECT * FROM stocks_volume;'''
     stocks_volume = pd.read_sql_query(query, conn)
+    query = '''SELECT * FROM exchange_rates;'''
+    exchange_rates = pd.read_sql_query(query, conn)
     conn.close()
 
     class sourceData(object):
@@ -85,15 +89,19 @@ def loadData():
         stocks_purchases = pd.DataFrame()
         stocks_sells = pd.DataFrame()
         stocks_volume = pd.DataFrame()
+        exchange_rates = pd.DataFrame()
 
-        def __init__(self, stocks_list, stocks_exposures, stocks_purchases, stocks_sells, stocks_volume):
+        def __init__(self, stocks_list, stocks_exposures, stocks_purchases, stocks_sells, stocks_volume,
+                     exchange_rates):
             self.stocks_list = stocks_list
             self.stocks_exposures = stocks_exposures
             self.stocks_purchases = stocks_purchases
             self.stocks_sells = stocks_sells
             self.stocks_volume = stocks_volume
+            self.exchange_rates = exchange_rates
 
-    stocks_data = sourceData(stocks_list, stocks_exposures, stocks_purchases, stocks_sells, stocks_volume)
+    stocks_data = sourceData(stocks_list, stocks_exposures, stocks_purchases, stocks_sells, stocks_volume,
+                             exchange_rates)
 
     return stocks_data
 
@@ -158,6 +166,45 @@ def updateExchangeRates(exchange_rate):
     cursor.close()
     conn.close()
     return 'Exchange Rates updated.'
+
+
+def getCurrentSituation(stocks_symbols_list, stocks_volume_df, stocks_data):
+    # today = (date.today() - timedelta(days=0)).strftime('%Y-%m-%d')
+    # time_init = (date.today() - timedelta(days=14)).strftime('%Y-%m-%d')
+
+    stocks_data_res = pd.DataFrame()
+    for symbol in stocks_symbols_list:
+        # get data on this ticker
+        logging.warning(' Downloading ' + symbol)
+        tickerData = yf.Ticker(symbol)
+        tickerDf = tickerData.history()
+        if symbol == 'WIZZ.L':
+            tickerDf['Close'] = tickerDf['Close']/100
+            tickerDf['Open'] = tickerDf['Open']/100
+        tickerDf_filtered = tickerDf.iloc[len(tickerDf.index)-1]
+        tickerDf_filtered['period'] = tickerDf_filtered.name.strftime('%Y-%m-%d')
+        tickerDf_filtered['stock_symbol'] = symbol
+        stocks_data_res = stocks_data_res.append(tickerDf_filtered)
+
+    stocks_prices_df = pd.merge(stocks_data.stocks_list[['stock_name', 'stock_symbol', 'currency']],
+                                stocks_data_res[['stock_symbol', 'Close', 'Open', 'period']],
+                                how='right', on='stock_symbol')
+
+    exchange_rates_df = stocks_data.exchange_rates.loc[stocks_data.exchange_rates['source_date'] == max(stocks_data.exchange_rates['source_date'])]
+    logging.warning('Exchange rates are from '+ str(exchange_rates_df['source_date'].iloc[0]))
+    stocks_prices_df = pd.merge(stocks_prices_df, exchange_rates_df, how='left', left_on='currency', right_on='cur_name')
+    stocks_prices_df['Open_USD'] = stocks_prices_df['Open']/stocks_prices_df['cur_rate']
+    stocks_prices_df['Close_USD'] = stocks_prices_df['Close']/stocks_prices_df['cur_rate']
+
+    portfolio_db = pd.merge(stocks_prices_df[['stock_name', 'period', 'stock_symbol', 'Open_USD', 'Close_USD']],
+                            stocks_volume_df, how='left', on='stock_name')
+
+    portfolio_db['absolut_change'] = portfolio_db['Close_USD'] - portfolio_db['Open_USD']
+    portfolio_db['total_absolut_change'] = (portfolio_db['Close_USD'] - portfolio_db['Open_USD']) * portfolio_db['curr_volume']
+    portfolio_db['percentage_change'] = (portfolio_db['absolut_change']/portfolio_db['Close_USD'])*100
+
+    return portfolio_db
+
 
 
 
