@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44e9d97d-3f73-4265-8413-eb87eaa660a4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/python_dev/daily_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_dev/daily_update.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_dev/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_dev/functions.py" afterDir="false" />
-    </list>
+    <list default="true" id="44e9d97d-3f73-4265-8413-eb87eaa660a4" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,8 +25,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="db://53dae319-e672-4a58-ae14-011bcde8b0a1/consoles/Connection">
           <provider selected="true" editor-type-id="0.CONSOLE">
-            <state line="3" column="23" selection-start="55" selection-end="55" vertical-scroll-proportion="-1.6071428">
+            <state line="2" column="29" selection-start="31" selection-end="31" vertical-scroll-proportion="-1.0714285">
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python_dev/upload_exchange_rates.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -37,8 +43,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/python_dev/daily_update.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="57" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="57" />
+            <state relative-caret-position="315">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
               <folding>
                 <element signature="e#1#20#0" expanded="true" />
               </folding>
@@ -184,7 +190,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.daily_update">
+  <component name="RunManager" selected="Python.upload_exchange_rates">
     <configuration name="create_tables_db.sql" type="OdpsQLRunnerConfigurationType" factoryName="MaxCompute SQL">
       <odps_target_file>$PROJECT_DIR$/sql_db/create_tables_db.sql</odps_target_file>
       <odps_output_dir>/var/folders/xy/0wvhpkg10mx2y0zg1zm5ws080000gn/T/</odps_output_dir>
@@ -300,8 +306,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.daily_update" />
         <item itemvalue="Python.upload_exchange_rates" />
+        <item itemvalue="Python.daily_update" />
         <item itemvalue="Python.load_data" />
         <item itemvalue="Python.send_mail" />
       </list>
@@ -324,7 +330,7 @@
     <frame x="0" y="23" width="1440" height="845" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" weight="0.20648344" />
@@ -340,7 +346,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32934928" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.7075405" weight="0.42629483" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.32135308" side_tool="true" weight="0.27224436" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="10" sideWeight="0.6786469" visible="true" weight="0.34661356" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.6786469" visible="true" weight="0.34661356" />
       <window_info anchor="bottom" id="DB Execution Console" order="11" weight="0.5139442" />
       <window_info anchor="bottom" id="Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -412,9 +418,6 @@
       </provider>
       <provider editor-type-id="OdpsQlGraph" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/python_dev/currency_update.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/python_dev/load_data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -422,20 +425,6 @@
           <folding>
             <element signature="e#178#192#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/python_dev/upload_exchange_rates.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="db://53dae319-e672-4a58-ae14-011bcde8b0a1/consoles/Connection">
-      <provider selected="true" editor-type-id="0.CONSOLE">
-        <state line="3" column="23" selection-start="55" selection-end="55" vertical-scroll-proportion="-1.6071428">
-          <folding />
         </state>
       </provider>
     </entry>
@@ -462,6 +451,13 @@
       </provider>
       <provider editor-type-id="OdpsQlGraph" />
     </entry>
+    <entry file="db://53dae319-e672-4a58-ae14-011bcde8b0a1/consoles/Connection">
+      <provider selected="true" editor-type-id="0.CONSOLE">
+        <state line="2" column="29" selection-start="31" selection-end="31" vertical-scroll-proportion="-1.0714285">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/python_dev/functions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="346">
@@ -472,10 +468,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/python_dev/currency_update.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_dev/upload_exchange_rates.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/python_dev/daily_update.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="57" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="57" />
+        <state relative-caret-position="315">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
           <folding>
             <element signature="e#1#20#0" expanded="true" />
           </folding>
