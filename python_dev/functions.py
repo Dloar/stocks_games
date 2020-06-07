@@ -10,7 +10,7 @@ import pandas_datareader.data as web
 import mysql.connector
 import logging
 import yfinance as yf
-from datetime import datetime,date, timedelta
+from datetime import datetime, date, timedelta
 
 
 def getConfigFile():
@@ -204,6 +204,32 @@ def getCurrentSituation(stocks_symbols_list, stocks_volume_df, stocks_data):
     portfolio_db['percentage_change'] = (portfolio_db['absolut_change']/portfolio_db['Close_USD'])*100
 
     return portfolio_db
+
+
+def getDailyChange():
+    stocks_data = loadData()
+
+    invested_amount = stocks_data.stocks_exposures['exposure'].sum()
+
+    stocks_volume_df = stocks_data.stocks_volume.loc[stocks_data.stocks_volume['curr_volume'] > 0]
+    owned_stocks_df = pd.merge(stocks_volume_df, stocks_data.stocks_list[['stock_name', 'stock_symbol']],
+                               how='left', on='stock_name')
+
+    stocks_symbols_list = owned_stocks_df['stock_symbol']
+
+    portfolio_db = getCurrentSituation(stocks_symbols_list, stocks_volume_df, stocks_data)
+
+    daily_looser = portfolio_db.loc[portfolio_db['percentage_change'] == min(portfolio_db['percentage_change'])]
+    daily_looser = daily_looser.to_html()
+    daily_gainer = portfolio_db.loc[portfolio_db['percentage_change'] == max(portfolio_db['percentage_change'])]
+    daily_gainer = daily_gainer.to_html()
+    daily_result = portfolio_db['total_absolut_change'].sum()
+    percentage_change = (((portfolio_db['Close_USD'] * portfolio_db['curr_volume']).sum()/
+                          (portfolio_db['Open_USD'] * portfolio_db['curr_volume']).sum()) - 1) * 100
+
+    return daily_looser, daily_gainer, daily_result, percentage_change
+
+
 
 
 

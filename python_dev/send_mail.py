@@ -1,46 +1,42 @@
 ###
 import smtplib
-import imghdr
-from python_dev.functions import getConfigFile
+from python_dev.functions import getDailyChange, getConfigFile
 from email.message import EmailMessage
 
+
 config_conn = getConfigFile()
+daily_looser, daily_gainer, daily_result, percentage_change = getDailyChange()
 
 # sending to multiple people
-contacts = ['xkrao11@gmail.com', config_conn.email_user[0]]
+contacts = [config_conn.email_user[0]]
 msg = EmailMessage()
 msg['Subject'] = 'test2'
 msg['From'] = config_conn.email_user[0]
 msg['To'] = ', '.join(contacts)
-msg.set_content('This is a plain text.')
 
 msg.add_alternative("""\
 <!DOCTYPE html>
 <html>
-    <body>
-     <h1 style="color:SlateGray;">  This is html email!</h1>
-    </body>
+  <head></head>
+  <body>
+    <p>Hi!<br>
+       Please see the results.
+    </p>
+  </body>
 </html>
 """, subtype='html')
+msg.add_attachment(daily_looser, subtype='html')
+msg.add_attachment("""
 
-
-
-# file_names = ['heic1107a.jpg', 'heic1501a.jpg']
-# for name in file_names:
-#     with open(name, 'rb') as f:
-#         file_data = f.read()
-#         file_type = imghdr.what(f.name)
-#         file_name = f.name
-#
-#     msg.add_attachment(file_data, maintype='image', subtype=file_type, filename=file_name)
+""")
+# msg.add_attachment('daily_result, percentage_change)
+msg.add_attachment(daily_gainer, subtype='html')
 
 
 with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:  #Google connection SSL
     smtp.login(user=config_conn.email_user[0], password=config_conn.email_psw[0])
 
     smtp.send_message(msg=msg)
-
-
 
 
 # with smtplib.SMTP('smtp.gmail.com', 587) as smtp:  #Google connection

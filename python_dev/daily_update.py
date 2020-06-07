@@ -19,3 +19,4 @@ daily_result = portfolio_db['total_absolut_change'].sum()
 
 
 
+
