@@ -1,7 +1,10 @@
 ###
 import smtplib
+import datetime
 from python_dev.functions import getDailyChange, getConfigFile
 from email.message import EmailMessage
+import warnings
+warnings.filterwarnings("ignore")
 
 
 config_conn = getConfigFile()
@@ -10,7 +13,7 @@ daily_looser, daily_gainer, daily_result, percentage_change = getDailyChange()
 # sending to multiple people
 contacts = [config_conn.email_user[0]]
 msg = EmailMessage()
-msg['Subject'] = 'test2'
+msg['Subject'] = 'Update at ' + datetime.datetime.today().strftime('%Y-%m-%d')
 msg['From'] = config_conn.email_user[0]
 msg['To'] = ', '.join(contacts)
 
