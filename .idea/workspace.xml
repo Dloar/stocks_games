@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44e9d97d-3f73-4265-8413-eb87eaa660a4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/python_dev/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_dev/functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_dev/send_mail.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_dev/send_mail.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql_db/insert_base.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql_db/insert_base.sql" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,17 +54,27 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python_dev/send_mail.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+            <state relative-caret-position="368">
+              <caret line="25" column="30" lean-forward="true" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
               <folding>
                 <element signature="e#4#18#0" expanded="true" />
                 <marker date="1591642271307" expanded="true" signature="711:845" ph="..." />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sql_db/insert_base.sql">
+          <provider selected="true" editor-type-id="OdpsQlEditor">
+            <state relative-caret-position="569">
+              <caret line="113" column="78" selection-start-line="113" selection-start-column="78" selection-end-line="113" selection-end-column="78" />
+            </state>
+          </provider>
+          <provider editor-type-id="OdpsQlGraph" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -106,6 +115,7 @@
       <find>daily_diff</find>
       <find>load</find>
       <find>date</find>
+      <find>NVIDIA</find>
     </findStrings>
     <replaceStrings>
       <replace>'</replace>
@@ -134,11 +144,11 @@
         <option value="53dae319-e672-4a58-ae14-011bcde8b0a1/consoles/Connection" />
         <option value="$PROJECT_DIR$/python_dev/upload_exchange_rates.py" />
         <option value="$PROJECT_DIR$/stocks_situation.py" />
-        <option value="$PROJECT_DIR$/sql_db/insert_base.sql" />
         <option value="$PROJECT_DIR$/python_dev/daily_update.py" />
         <option value="$PROJECT_DIR$/tech_dev/send_info_daily.sh" />
         <option value="$PROJECT_DIR$/python_dev/functions.py" />
         <option value="$PROJECT_DIR$/python_dev/send_mail.py" />
+        <option value="$PROJECT_DIR$/sql_db/insert_base.sql" />
       </list>
     </option>
   </component>
@@ -171,6 +181,11 @@
               <item name="stocks_games" type="b2602c69:ProjectViewProjectNode" />
               <item name="stocks_games" type="462c0819:PsiDirectoryNode" />
               <item name="python_dev" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="stocks_games" type="b2602c69:ProjectViewProjectNode" />
+              <item name="stocks_games" type="462c0819:PsiDirectoryNode" />
+              <item name="sql_db" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="stocks_games" type="b2602c69:ProjectViewProjectNode" />
@@ -366,7 +381,7 @@
     <frame x="0" y="23" width="1440" height="845" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" weight="0.20648344" />
@@ -374,7 +389,7 @@
       <window_info id="Job Explorer" order="5" weight="0.08386187" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.80972517" visible="true" weight="0.3798141" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.80972517" weight="0.3798141" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -457,19 +472,6 @@
     <entry file="file://$PROJECT_DIR$/python_dev/currency_update.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/sql_db/insert_base.sql">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="67" column="27" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="OdpsQlEditor">
-        <state relative-caret-position="247">
-          <caret line="29" column="6" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
-        </state>
-      </provider>
-      <provider editor-type-id="OdpsQlGraph" />
-    </entry>
     <entry file="db://53dae319-e672-4a58-ae14-011bcde8b0a1/consoles/Connection">
       <provider selected="true" editor-type-id="0.CONSOLE">
         <state line="1" column="0" selection-start="30" selection-end="30" vertical-scroll-proportion="0.0">
@@ -537,14 +539,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/python_dev/send_mail.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+        <state relative-caret-position="368">
+          <caret line="25" column="30" lean-forward="true" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
           <folding>
             <element signature="e#4#18#0" expanded="true" />
             <marker date="1591642271307" expanded="true" signature="711:845" ph="..." />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql_db/insert_base.sql">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="67" column="27" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="OdpsQlEditor">
+        <state relative-caret-position="569">
+          <caret line="113" column="78" selection-start-line="113" selection-start-column="78" selection-end-line="113" selection-end-column="78" />
+        </state>
+      </provider>
+      <provider editor-type-id="OdpsQlGraph" />
     </entry>
   </component>
 </project>

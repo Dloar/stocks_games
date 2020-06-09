@@ -107,4 +107,8 @@ VALUES
     ('patria', 'MONETA MONEY BANK', 'PRA', 100, 'CZK', '10.01.2020', 83.9000, 80),
     ('patria', 'STOCK', 'PRA', 315, 'CZK', '10.01.2020', 63.6000, 90.15),
     ('patria', 'CETV', 'PRA', 120, 'CZK', '03.12.2018', 76.2000, 80),
-    ('patria', 'CETV', 'PRA', 300, 'CZK', '22.03.2018', 87.6000, 98.55);
+    ('patria', 'CETV', 'PRA', 300, 'CZK', '22.03.2018', 87.6000, 98.55),
+    ('patria', 'Boeing', 'NYQ', 10, 'USD', '09.06.2020', 222.4100, 14.9),
+    ('patria', 'NVIDIA', 'NSQ', 4, 'USD', '09.06.2020', 361.9100, 14.9),
+    ('patria', 'Walt Disney Co', 'NYQ', 10, 'USD', '09.06.2020', 124.2300, 14.9),
+    ('patria', 'Qualcomm Inc', 'NSQ', 20, 'USD', '09.06.2020', 89.6000, 14.9);
