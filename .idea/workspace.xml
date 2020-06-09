@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44e9d97d-3f73-4265-8413-eb87eaa660a4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sql_db/insert_base.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql_db/insert_base.sql" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,7 +28,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="db://53dae319-e672-4a58-ae14-011bcde8b0a1/consoles/Connection">
           <provider selected="true" editor-type-id="0.CONSOLE">
-            <state line="1" column="0" selection-start="30" selection-end="30" vertical-scroll-proportion="0.0">
+            <state line="1" column="23" selection-start="53" selection-end="53" vertical-scroll-proportion="-0.53571427">
               <folding />
             </state>
           </provider>
@@ -70,8 +71,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sql_db/insert_base.sql">
           <provider selected="true" editor-type-id="OdpsQlEditor">
-            <state relative-caret-position="569">
-              <caret line="113" column="78" selection-start-line="113" selection-start-column="78" selection-end-line="113" selection-end-column="78" />
+            <state relative-caret-position="335">
+              <caret line="112" column="47" selection-start-line="112" selection-start-column="47" selection-end-line="112" selection-end-column="47" />
             </state>
           </provider>
           <provider editor-type-id="OdpsQlGraph" />
@@ -141,13 +142,13 @@
         <option value="$PROJECT_DIR$/stock_config.yaml" />
         <option value="$PROJECT_DIR$/sql_db/create_tables_db.sql" />
         <option value="$PROJECT_DIR$/python_dev/load_data.py" />
-        <option value="53dae319-e672-4a58-ae14-011bcde8b0a1/consoles/Connection" />
         <option value="$PROJECT_DIR$/python_dev/upload_exchange_rates.py" />
         <option value="$PROJECT_DIR$/stocks_situation.py" />
         <option value="$PROJECT_DIR$/python_dev/daily_update.py" />
         <option value="$PROJECT_DIR$/tech_dev/send_info_daily.sh" />
         <option value="$PROJECT_DIR$/python_dev/functions.py" />
         <option value="$PROJECT_DIR$/python_dev/send_mail.py" />
+        <option value="53dae319-e672-4a58-ae14-011bcde8b0a1/consoles/Connection" />
         <option value="$PROJECT_DIR$/sql_db/insert_base.sql" />
       </list>
     </option>
@@ -181,11 +182,6 @@
               <item name="stocks_games" type="b2602c69:ProjectViewProjectNode" />
               <item name="stocks_games" type="462c0819:PsiDirectoryNode" />
               <item name="python_dev" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="stocks_games" type="b2602c69:ProjectViewProjectNode" />
-              <item name="stocks_games" type="462c0819:PsiDirectoryNode" />
-              <item name="sql_db" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="stocks_games" type="b2602c69:ProjectViewProjectNode" />
@@ -381,10 +377,10 @@
     <frame x="0" y="23" width="1440" height="845" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.24947146" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info id="DB Browser" order="3" weight="0.20648344" />
+      <window_info id="DB Browser" order="3" visible="true" weight="0.20648344" />
       <window_info id="Project Explorer" order="4" weight="0.32980973" />
       <window_info id="Job Explorer" order="5" weight="0.08386187" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -398,7 +394,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.7075405" weight="0.42629483" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.32135308" side_tool="true" weight="0.27224436" />
       <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.6786469" weight="0.5325365" />
-      <window_info anchor="bottom" id="DB Execution Console" order="11" weight="0.2988048" />
+      <window_info active="true" anchor="bottom" id="DB Execution Console" order="11" visible="true" weight="0.21513945" />
       <window_info anchor="bottom" id="Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -472,13 +468,6 @@
     <entry file="file://$PROJECT_DIR$/python_dev/currency_update.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="db://53dae319-e672-4a58-ae14-011bcde8b0a1/consoles/Connection">
-      <provider selected="true" editor-type-id="0.CONSOLE">
-        <state line="1" column="0" selection-start="30" selection-end="30" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tech_dev/update_daily.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -548,6 +537,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="db://53dae319-e672-4a58-ae14-011bcde8b0a1/consoles/Connection">
+      <provider selected="true" editor-type-id="0.CONSOLE">
+        <state line="1" column="23" selection-start="53" selection-end="53" vertical-scroll-proportion="-0.53571427">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/sql_db/insert_base.sql">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -555,8 +551,8 @@
         </state>
       </provider>
       <provider selected="true" editor-type-id="OdpsQlEditor">
-        <state relative-caret-position="569">
-          <caret line="113" column="78" selection-start-line="113" selection-start-column="78" selection-end-line="113" selection-end-column="78" />
+        <state relative-caret-position="335">
+          <caret line="112" column="47" selection-start-line="112" selection-start-column="47" selection-end-line="112" selection-end-column="47" />
         </state>
       </provider>
       <provider editor-type-id="OdpsQlGraph" />
