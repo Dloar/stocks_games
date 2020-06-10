@@ -113,4 +113,4 @@ VALUES
     ('patria', 'Walt Disney Co', 'NYQ', 10, 'USD', '09-06-2020', 124.2300, 14.9),
     ('patria', 'Qualcomm Inc', 'NSQ', 20, 'USD', '09-06-2020', 89.6000, 14.9),
     ('patria', 'WISDOMTREE WTI CRUDE OIL', 'LSE', 160, 'USD', '10-06-2020', 3.6450, 18.35),
-    ('patria', 'Apache Corp', 'NYQ', 100, 'USD', '09-04-2020', 15.3900, 14.9);
+    ('patria', 'Apache Corp', 'NYQ', 100, 'USD', '10-04-2020', 15.3900, 14.9);
