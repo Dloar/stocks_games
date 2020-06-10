@@ -8,7 +8,7 @@ warnings.filterwarnings("ignore")
 
 
 config_conn = getConfigFile()
-daily_looser, daily_gainer, daily_result, percentage_change = getDailyChange()
+daily_looser, daily_gainer, daily_result, percentage_change, portfolio_db = getDailyChange()
 
 # sending to multiple people
 contacts = [config_conn.email_user[0]]
@@ -34,6 +34,10 @@ msg.add_attachment("""
 """)
 # msg.add_attachment('daily_result, percentage_change)
 msg.add_attachment(daily_gainer, subtype='html')
+msg.add_attachment("""
+
+""")
+msg.add_attachment(portfolio_db, subtype='html')
 
 
 with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:  #Google connection SSL
