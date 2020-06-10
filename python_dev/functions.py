@@ -207,6 +207,10 @@ def getCurrentSituation(stocks_symbols_list, stocks_volume_df, stocks_data):
 
 
 def getDailyChange():
+    """
+
+    :return:
+    """
     stocks_data = loadData()
 
     invested_amount = stocks_data.stocks_exposures['exposure'].sum()
@@ -228,8 +232,9 @@ def getDailyChange():
     daily_result = portfolio_db['total_absolut_change'].sum()
     percentage_change = (((portfolio_db['Close_USD'] * portfolio_db['curr_volume']).sum()/
                           (portfolio_db['Open_USD'] * portfolio_db['curr_volume']).sum()) - 1) * 100
+    portfolio_db = portfolio_db.to_html()
 
-    return daily_looser, daily_gainer, daily_result, percentage_change
+    return daily_looser, daily_gainer, daily_result, percentage_change, portfolio_db
 
 
 
