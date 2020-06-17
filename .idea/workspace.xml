@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44e9d97d-3f73-4265-8413-eb87eaa660a4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/python_dev/daily_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_dev/daily_update.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python_dev/send_mail.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_dev/send_mail.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_dev/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_dev/functions.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +76,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/python_dev/functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3360">
+            <state relative-caret-position="97">
               <caret line="224" column="55" selection-start-line="224" selection-start-column="55" selection-end-line="224" selection-end-column="55" />
               <folding>
                 <element signature="e#27#38#0" expanded="true" />
@@ -145,10 +144,10 @@
         <option value="$PROJECT_DIR$/stocks_situation.py" />
         <option value="$PROJECT_DIR$/tech_dev/send_info_daily.sh" />
         <option value="53dae319-e672-4a58-ae14-011bcde8b0a1/consoles/Connection" />
-        <option value="$PROJECT_DIR$/python_dev/functions.py" />
         <option value="$PROJECT_DIR$/sql_db/insert_base.sql" />
         <option value="$PROJECT_DIR$/python_dev/daily_update.py" />
         <option value="$PROJECT_DIR$/python_dev/send_mail.py" />
+        <option value="$PROJECT_DIR$/python_dev/functions.py" />
       </list>
     </option>
   </component>
@@ -549,7 +548,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/python_dev/functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3360">
+        <state relative-caret-position="97">
           <caret line="224" column="55" selection-start-line="224" selection-start-column="55" selection-end-line="224" selection-end-column="55" />
           <folding>
             <element signature="e#27#38#0" expanded="true" />
