@@ -1,5 +1,5 @@
 import pandas as pd
-from python_dev.functions import loadData, getCurrentSituation
+from functions import loadData, getCurrentSituation
 
 stocks_data = loadData()
 
