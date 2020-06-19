@@ -116,4 +116,4 @@ VALUES
     ('patria', 'Apache Corp', 'NYQ', 100, 'USD', '10-04-2020', 15.3900, 14.9),
     ('patria', 'BMW', 'GER', 16, 'EUR', '11-04-2020', 56.4700, 16.9),
     ('patria', 'Wizz Air', 'LSE', 30, 'GBP', '13-06-2020', 32.0600, 14.86),
-    ('patria', 'KOMERCNI BANKA', 'PRA', 25, 'CZK', '01-04-2020', 580.0000, 130);
+    ('patria', 'KOMERCNI BANKA', 'PRA', 50, 'CZK', '01-04-2020', 580.0000, 130);
