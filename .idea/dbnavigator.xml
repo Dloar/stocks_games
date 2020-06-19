@@ -23,18 +23,13 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="53dae319-e672-4a58-ae14-011bcde8b0a1">
-        <schema name="information_schema" object-types="procedure, view, table, function" />
-        <schema name="stocks" object-types="procedure, view, table, function" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="53dae319-e672-4a58-ae14-011bcde8b0a1">
-      <console name="Connection" type="STANDARD" schema="stocks" session="Main">SELECT * FROM exchange_rates;
+      <console name="Connection" type="STANDARD" schema="stocks" session="Main"><![CDATA[SELECT * FROM exchange_rates;
 SELECT * FROM stocks_sells;
---DELETE FROM exchange_rates;</console>
+--DELETE FROM exchange_rates;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
