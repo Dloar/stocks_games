@@ -240,5 +240,3 @@ def getDailyChange():
 
 
 
-
-
