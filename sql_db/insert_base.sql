@@ -23,7 +23,10 @@ VALUES
     ('Agree Realty', 'ADC', 'USD', 'NYQ'),
     ('Grupa Lotos', 'G17.BE', 'EUR', 'WSE'),
     ('WISDOMTREE WTI CRUDE OIL', 'CRUD.L', 'USD', 'LSE'),
-    ('Wizz Air', 'WIZZ.L', 'GBP', 'LSE');
+    ('Wizz Air', 'WIZZ.L', 'GBP', 'LSE'),
+    ('Ryanair Holdings', 'RYAAY', 'EUR', 'NMS'),
+    ('easyJet', 'EZJ.L', 'GBP', 'LSE'),
+    ('Tesla', 'TSLA', 'USD', 'NMS');
 
 delete from exposures;
 INSERT INTO exposures (cur_date, exposure)
@@ -89,7 +92,10 @@ VALUES
     ('patria', 'MONETA MONEY BANK', 'PRA', 100, 'CZK', '23-01-2018', 85.1500, 80),
     ('patria', 'STOCK', 'PRA', 65, 'CZK', '09-01-2018', 77.5000, 80),
     ('patria', 'CETV', 'PRA', 150, 'CZK', '09-01-2018', 99.5000, 80),
-    ('patria', 'CETV', 'PRA', 200, 'CZK', '04-01-2018', 100.4000, 90.36);
+    ('patria', 'CETV', 'PRA', 200, 'CZK', '04-01-2018', 100.4000, 90.36),
+    ('patria', 'Ryanair Holdings', 'EUR', 90, 'CZK', '05-08-2020', 11.41, 16.9),
+    ('patria', 'easyJet', 'NMS', 165, 'USD', '05-08-2020', 5.852, 15.27),
+    ('patria', 'Tesla', 'NMS', 3, 'USD', '12-08-2020', 1552.555, 16.9);
 
 delete from stocks_sells;
 INSERT INTO stocks_sells (provider, stock_name, market, volume, currency, purchase_date, price, fee)
