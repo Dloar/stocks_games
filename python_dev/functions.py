@@ -18,7 +18,7 @@ def getConfigFile():
     
     :return:
     """
-    with open(os.path.join(os.environ['STOCKS_PATH'] + "/stock_config.yaml")) as yml_file:
+    with open(os.path.join("/Users/ondrejkral/GitHub/stocks_games/stock_config.yaml")) as yml_file:
         cfg = yaml.safe_load(yml_file)
 
     config_source = pd.DataFrame(cfg, index=[0])
@@ -169,11 +169,20 @@ def updateExchangeRates(exchange_rate):
 
 
 def getCurrentSituation(stocks_symbols_list, stocks_volume_df, stocks_data):
-    # today = (date.today() - timedelta(days=0)).strftime('%Y-%m-%d')
-    # time_init = (date.today() - timedelta(days=14)).strftime('%Y-%m-%d')
+    """
+
+    :param stocks_symbols_list:
+    :param stocks_volume_df:
+    :param stocks_data:
+    :return:
+    """
+    sold_stock = getSoldStocksList(stocks_data=stocks_data)
 
     stocks_data_res = pd.DataFrame()
-    for symbol in stocks_symbols_list:
+    stocks_symbols_all_list = list(stocks_symbols_list) + list(sold_stock['stock_symbol'].unique())
+    stocks_symbols_all_list = set(stocks_symbols_all_list)
+
+    for symbol in stocks_symbols_all_list:
         # get data on this ticker
         logging.warning(' Downloading ' + symbol)
         tickerData = yf.Ticker(symbol)
@@ -190,7 +199,8 @@ def getCurrentSituation(stocks_symbols_list, stocks_volume_df, stocks_data):
                                 stocks_data_res[['stock_symbol', 'Close', 'Open', 'period']],
                                 how='right', on='stock_symbol')
 
-    exchange_rates_df = stocks_data.exchange_rates.loc[stocks_data.exchange_rates['source_date'] == max(stocks_data.exchange_rates['source_date'])]
+    exchange_rates_df = stocks_data.exchange_rates.loc[
+        stocks_data.exchange_rates['source_date'] == max(stocks_data.exchange_rates['source_date'])]
     logging.warning('Exchange rates are from '+ str(exchange_rates_df['source_date'].iloc[0]))
     stocks_prices_df = pd.merge(stocks_prices_df, exchange_rates_df, how='left', left_on='currency', right_on='cur_name')
     stocks_prices_df['Open_USD'] = stocks_prices_df['Open']/stocks_prices_df['cur_rate']
@@ -203,7 +213,31 @@ def getCurrentSituation(stocks_symbols_list, stocks_volume_df, stocks_data):
     portfolio_db['total_absolut_change'] = (portfolio_db['Close_USD'] - portfolio_db['Open_USD']) * portfolio_db['curr_volume']
     portfolio_db['percentage_change'] = (portfolio_db['absolut_change']/portfolio_db['Close_USD'])*100
 
-    return portfolio_db
+    sold_stock_tab = pd.merge(sold_stock, stocks_prices_df[['stock_symbol', 'Close_USD']], how='left',
+                              on='stock_symbol')
+    sold_stock_tab['curr_sit'] = (sold_stock_tab['price_usd'] - sold_stock_tab['Close_USD']) * sold_stock_tab['volume']
+
+
+    return portfolio_db, sold_stock_tab
+
+
+def getSoldStocksList(stocks_data):
+    """
+
+    :param stocks_data:
+    :return:
+    """
+    exchange_rates_df = stocks_data.exchange_rates.loc[
+        stocks_data.exchange_rates['source_date'] == max(stocks_data.exchange_rates['source_date'])]
+
+    sold_stocks = pd.merge(stocks_data.stocks_sells[['stock_name', 'volume', 'currency', 'price']],
+                           exchange_rates_df[['cur_name', 'cur_rate']],
+                           left_on='currency', right_on='cur_name')
+    sold_stocks['price_usd'] = sold_stocks['price'] / sold_stocks['cur_rate']
+    sold_stocks = pd.merge(sold_stocks, stocks_data.stocks_list[['stock_name', 'stock_symbol']],
+                           on='stock_name')
+    sold_stocks = sold_stocks[['stock_name', 'stock_symbol', 'volume', 'price_usd']]
+    return sold_stocks
 
 
 def getDailyChange():
@@ -221,9 +255,9 @@ def getDailyChange():
 
     stocks_symbols_list = owned_stocks_df['stock_symbol']
 
-    portfolio_db = getCurrentSituation(stocks_symbols_list=stocks_symbols_list,
-                                       stocks_volume_df=stocks_volume_df,
-                                       stocks_data=stocks_data)
+    portfolio_db, sold_stock_tab = getCurrentSituation(stocks_symbols_list=stocks_symbols_list,
+                                                       stocks_volume_df=stocks_volume_df,
+                                                       stocks_data=stocks_data)
 
     daily_looser = portfolio_db.loc[portfolio_db['percentage_change'] == min(portfolio_db['percentage_change'])]
     daily_looser = daily_looser.to_html()

@@ -1,7 +1,7 @@
 ###
 import smtplib
 import datetime
-from functions import getDailyChange, getConfigFile
+from python_dev.functions import getDailyChange, getConfigFile
 from email.message import EmailMessage
 import warnings
 warnings.filterwarnings("ignore")
