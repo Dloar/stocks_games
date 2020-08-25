@@ -14,7 +14,7 @@ VALUES
     ('Intel', 'INTC', 'USD', 'NSQ'),
     ('KOMERCNI BANKA', 'KOMB.PR', 'CZK', 'PRA'),
     ('Total SA', 'TOT', 'EUR', 'PAR'),
-    ('Alibaba', 'BABA', 'USD', 'NYQ'),
+    ('Alibaba Group', 'BABA', 'USD', 'NYQ'),
     ('Amgen Inc', 'AMGN', 'USD', 'NSQ'),
     ('Activision Inc', 'ATVI', 'USD', 'NSQ'),
     ('MONETA MONEY BANK', 'MONET.PR', 'CZK', 'PRA'),
@@ -24,6 +24,7 @@ VALUES
     ('Grupa Lotos', 'G17.BE', 'EUR', 'WSE'),
     ('WISDOMTREE WTI CRUDE OIL', 'CRUD.L', 'USD', 'LSE'),
     ('Wizz Air', 'WIZZ.L', 'GBP', 'LSE'),
+    ('Arotech Corp.', 'ARTX', 'USD', 'NYQ'),
     ('Ryanair Holdings', 'RYAAY', 'EUR', 'NMS'),
     ('easyJet', 'EZJ.L', 'GBP', 'LSE'),
     ('Tesla', 'TSLA', 'USD', 'NMS');
