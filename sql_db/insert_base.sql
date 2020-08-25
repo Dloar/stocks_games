@@ -24,7 +24,6 @@ VALUES
     ('Grupa Lotos', 'G17.BE', 'EUR', 'WSE'),
     ('WISDOMTREE WTI CRUDE OIL', 'CRUD.L', 'USD', 'LSE'),
     ('Wizz Air', 'WIZZ.L', 'GBP', 'LSE'),
-    ('Arotech Corp.', 'ARTX', 'USD', 'NYQ'),
     ('Ryanair Holdings', 'RYAAY', 'EUR', 'NMS'),
     ('easyJet', 'EZJ.L', 'GBP', 'LSE'),
     ('Tesla', 'TSLA', 'USD', 'NMS');
