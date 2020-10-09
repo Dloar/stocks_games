@@ -27,7 +27,8 @@ VALUES
     ('Ryanair Holdings', 'RYAAY', 'EUR', 'NMS'),
     ('easyJet', 'EZJ.L', 'GBP', 'LSE'),
     ('Tesla', 'TSLA', 'USD', 'NMS'),
-    ('Nortonlifelock Rg', 'NLOK', 'USD', 'NMS');
+    ('Nortonlifelock Rg', 'NLOK', 'USD', 'NMS'),
+    ('Rolls-Royce Holdings plc', 'RR.L', 'GBP', 'LSE');
 
 delete from exposures;
 INSERT INTO exposures (cur_date, exposure)
@@ -97,7 +98,9 @@ VALUES
     ('patria', 'Ryanair Holdings', 'EUR', 90, 'CZK', '05-08-2020', 11.41, 16.9),
     ('patria', 'easyJet', 'NMS', 165, 'USD', '05-08-2020', 5.852, 15.27),
     ('patria', 'Tesla', 'NMS', 3, 'USD', '12-08-2020', 1552.555, 16.9),
-    ('patria', 'Nortonlifelock Rg', 'NMS', 100, 'USD', '28-08-2020', 23.93, 14.9);
+    ('patria', 'Nortonlifelock Rg', 'NMS', 100, 'USD', '28-08-2020', 23.93, 14.9),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 800, 'GBP', '08-10-2020', 1.356, 5.42),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 550, 'GBP', '09-10-2020', 1.575, 4.33);
 
 delete from stocks_sells;
 INSERT INTO stocks_sells (provider, stock_name, market, volume, currency, purchase_date, price, fee)
@@ -127,5 +130,7 @@ VALUES
     ('patria', 'KOMERCNI BANKA', 'PRA', 50, 'CZK', '01-04-2020', 580.0000, 130),
     ('patria', 'Grupa Lotos', 'WSE', 47, 'PLN', '26-06-2020', 59.46, 60),
     ('patria', 'Agree Realty', 'NYQ', 13, 'USD', '28-08-2020', 67.3700, 14.9),
-    ('patria', 'Veolia Environ', 'PAR', 80, 'EUR', '09-10-2020', 19.8600, 16.9),
-    ('patria', 'Microsoft', 'NSQ', 15, 'USD', '09-10-2020', 208.9000, 14.9);
+    ('patria', 'Veolia Environ', 'PAR', 80, 'EUR', '10-09-2020', 19.8600, 16.9),
+    ('patria', 'Microsoft', 'NSQ', 15, 'USD', '10-09-2020', 208.9000, 14.9),
+    ('patria', 'Ryanair Holdings', 'EUR', 90, 'CZK', '21-09-2020', 12.345, 16.9),
+    ('patria', 'easyJet', 'NMS', 165, 'USD', '09-10-2020', 5.264, 15.27);
