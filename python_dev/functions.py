@@ -20,10 +20,10 @@ def getConfigFile():
     :return:
     """
     if sys.platform == 'darwin':
-        with open(os.path.join("/home/pi/Documents/GitHub/stocks_games/python_dev/stock_config.yaml")) as yml_file:
+        with open(os.path.join("/Users/ondrejkral/GitHub/stocks_games/stock_config.yaml")) as yml_file:
             cfg = yaml.safe_load(yml_file)
     else:
-        with open(os.path.join("/Users/ondrejkral/GitHub/stocks_games/stock_config.yaml")) as yml_file:
+        with open(os.path.join("/home/pi/Documents/GitHub/stocks_games/python_dev/stock_config.yaml")) as yml_file:
             cfg = yaml.safe_load(yml_file)
 
     config_source = pd.DataFrame(cfg, index=[0])
