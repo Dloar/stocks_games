@@ -10,6 +10,7 @@ import pandas_datareader.data as web
 import mysql.connector
 import logging
 import yfinance as yf
+import sys
 from datetime import datetime, date, timedelta
 
 
@@ -18,8 +19,12 @@ def getConfigFile():
     
     :return:
     """
-    with open(os.path.join("/Users/ondrejkral/GitHub/stocks_games/stock_config.yaml")) as yml_file:
-        cfg = yaml.safe_load(yml_file)
+    if sys.platform == 'darwin':
+        with open(os.path.join("/home/pi/Documents/GitHub/stocks_games/python_dev/stock_config.yaml")) as yml_file:
+            cfg = yaml.safe_load(yml_file)
+    else:
+        with open(os.path.join("/Users/ondrejkral/GitHub/stocks_games/stock_config.yaml")) as yml_file:
+            cfg = yaml.safe_load(yml_file)
 
     config_source = pd.DataFrame(cfg, index=[0])
 
@@ -216,7 +221,6 @@ def getCurrentSituation(stocks_symbols_list, stocks_volume_df, stocks_data):
     sold_stock_tab = pd.merge(sold_stock, stocks_prices_df[['stock_symbol', 'Close_USD']], how='left',
                               on='stock_symbol')
     sold_stock_tab['curr_sit'] = (sold_stock_tab['price_usd'] - sold_stock_tab['Close_USD']) * sold_stock_tab['volume']
-
 
     return portfolio_db, sold_stock_tab
 
