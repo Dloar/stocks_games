@@ -10,7 +10,7 @@ from functions import getConfigFile
 
 start = time.time()
 # Load stock tickers
-tickers_df = pd.read_csv('/Users/ondrejkral/GitHub/stocks_games/stock_list.csv', encoding="ISO-8859-1")
+tickers_df = pd.read_csv('/home/pi/Documents/GitHub/stocks_games/stock_list.csv', encoding="ISO-8859-1")
 tickers_df_index = tickers_df.set_index('Ticker')
 # tickers_df.shape
 #
