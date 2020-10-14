@@ -66,6 +66,7 @@ CREATE TABLE existing_stocks (
   symbol varchar(32),
   shortName varchar(128),
   longName varchar(255),
+  country varchar(255),
   currency varchar(32),
   market_cap DECIMAL(19,0),
   sector varchar(64)
