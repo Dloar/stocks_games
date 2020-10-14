@@ -42,8 +42,8 @@ results = pd.DataFrame(columns=['Open', 'High', 'Low', 'Close', 'Volume', 'Divid
 stocks_list_df = pd.DataFrame(columns=['symbol', 'shortName', 'longName', 'currency', 'country', 'market_cap',
                                        'sector'])
 
-# for i in range(len(tickers_df)):
-for i in range(4):
+for i in range(len(tickers_df)):
+# for i in range(4):
     # get data on this ticker
     ticker_str = tickers_df.loc[i, 'Ticker']
     logging.warning(' Downloading ' + ticker_str)
