@@ -57,3 +57,16 @@ CREATE TABLE exchange_rates (
   cur_name varchar(32),
   source_date DATE,
   cur_rate DECIMAL(10,5));
+
+
+-- Table 6 --['symbol', 'shortName', 'longName', 'currency', 'country', 'market_cap', 'sector']
+DROP TABLE existing_stocks;
+
+CREATE TABLE existing_stocks (
+  symbol varchar(32),
+  shortName varchar(128),
+  longName varchar(255),
+  currency varchar(32),
+  market_cap DECIMAL(19,0),
+  sector varchar(64)
+);
