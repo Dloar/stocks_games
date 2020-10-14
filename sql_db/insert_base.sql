@@ -100,7 +100,8 @@ VALUES
     ('patria', 'Tesla', 'NMS', 3, 'USD', '12-08-2020', 1552.555, 16.9),
     ('patria', 'Nortonlifelock Rg', 'NMS', 100, 'USD', '28-08-2020', 23.93, 14.9),
     ('patria', 'Rolls-Royce Holdings plc', 'LSE', 800, 'GBP', '08-10-2020', 1.356, 5.42),
-    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 550, 'GBP', '09-10-2020', 1.575, 4.33);
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 550, 'GBP', '09-10-2020', 1.575, 4.33),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1500, 'GBP', '15-10-2020', 1.883, 15.31);
 
 delete from stocks_sells;
 INSERT INTO stocks_sells (provider, stock_name, market, volume, currency, purchase_date, price, fee)
@@ -133,4 +134,5 @@ VALUES
     ('patria', 'Veolia Environ', 'PAR', 80, 'EUR', '10-09-2020', 19.8600, 16.9),
     ('patria', 'Microsoft', 'NSQ', 15, 'USD', '10-09-2020', 208.9000, 14.9),
     ('patria', 'Ryanair Holdings', 'EUR', 90, 'CZK', '21-09-2020', 12.345, 16.9),
-    ('patria', 'easyJet', 'NMS', 165, 'USD', '09-10-2020', 5.264, 15.27);
+    ('patria', 'easyJet', 'NMS', 165, 'USD', '09-10-2020', 5.264, 15.27),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1350, 'GBP', '13-10-2020', 2.2589, 15.38);
