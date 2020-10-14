@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="44e9d97d-3f73-4265-8413-eb87eaa660a4" name="Default Changelist" comment="">
+    <list default="true" id="44e9d97d-3f73-4265-8413-eb87eaa660a4" name="Default Changelist" comment="Up">
       <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_dev/daily_update.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_dev/daily_update.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python_dev/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_dev/functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql_db/insert_base.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql_db/insert_base.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_dev/send_mail.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_dev/send_mail.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_dev/upload_exchange_rates.py" beforeDir="false" afterPath="$PROJECT_DIR$/python_dev/upload_exchange_rates.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/stocks_situation.py" beforeDir="false" afterPath="$PROJECT_DIR$/stocks_situation.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,73 +19,37 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stocks_situation.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="48" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="db://53dae319-e672-4a58-ae14-011bcde8b0a1/consoles/Connection">
-          <provider selected="true" editor-type-id="0.CONSOLE">
-            <state line="2" column="29" selection-start="87" selection-end="87" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/python_dev/upload_exchange_rates.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="14" selection-start-column="14" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python_dev/daily_update.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
+            <state relative-caret-position="210">
+              <caret line="14" selection-start-line="14" selection-end-line="14" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/sql_db/insert_base.sql">
-          <provider selected="true" editor-type-id="OdpsQlEditor">
-            <state relative-caret-position="321">
-              <caret line="118" column="68" selection-start-line="118" selection-start-column="65" selection-end-line="118" selection-end-column="68" />
-            </state>
-          </provider>
-          <provider editor-type-id="OdpsQlGraph" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/python_dev/send_mail.py">
+        <entry file="file://$PROJECT_DIR$/python_dev/functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+            <state relative-caret-position="208">
+              <caret line="259" column="55" selection-start-line="259" selection-start-column="55" selection-end-line="259" selection-end-column="55" />
               <folding>
-                <marker date="1592376976004" expanded="true" signature="714:848" ph="..." />
+                <element signature="e#27#38#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/python_dev/functions.py">
+        <entry file="file://$PROJECT_DIR$/python_dev/send_mail.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="428">
-              <caret line="238" selection-start-line="238" selection-end-line="238" />
+            <state relative-caret-position="122">
+              <caret line="10" column="90" selection-start-line="10" selection-start-column="76" selection-end-line="10" selection-end-column="90" />
               <folding>
-                <element signature="e#27#38#0" expanded="true" />
+                <element signature="e#4#18#0" expanded="true" />
+                <marker date="1592591109130" expanded="true" signature="725:859" ph="..." />
               </folding>
             </state>
           </provider>
@@ -117,6 +84,10 @@
       <find>NVIDIA</find>
       <find>'09.06.2020'</find>
       <find>python_dev</find>
+      <find>loadData</find>
+      <find>portfolio_db</find>
+      <find>getDailyChange</find>
+      <find>sold_stock_tab</find>
     </findStrings>
     <replaceStrings>
       <replace>'</replace>
@@ -143,14 +114,14 @@
         <option value="$PROJECT_DIR$/stock_config.yaml" />
         <option value="$PROJECT_DIR$/sql_db/create_tables_db.sql" />
         <option value="$PROJECT_DIR$/python_dev/load_data.py" />
+        <option value="$PROJECT_DIR$/tech_dev/send_info_daily.sh" />
         <option value="$PROJECT_DIR$/python_dev/upload_exchange_rates.py" />
         <option value="$PROJECT_DIR$/stocks_situation.py" />
-        <option value="$PROJECT_DIR$/tech_dev/send_info_daily.sh" />
-        <option value="53dae319-e672-4a58-ae14-011bcde8b0a1/consoles/Connection" />
-        <option value="$PROJECT_DIR$/python_dev/daily_update.py" />
         <option value="$PROJECT_DIR$/python_dev/send_mail.py" />
-        <option value="$PROJECT_DIR$/python_dev/functions.py" />
+        <option value="53dae319-e672-4a58-ae14-011bcde8b0a1/consoles/Connection" />
         <option value="$PROJECT_DIR$/sql_db/insert_base.sql" />
+        <option value="$PROJECT_DIR$/python_dev/daily_update.py" />
+        <option value="$PROJECT_DIR$/python_dev/functions.py" />
       </list>
     </option>
   </component>
@@ -171,6 +142,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -183,21 +155,10 @@
               <item name="stocks_games" type="462c0819:PsiDirectoryNode" />
               <item name="python_dev" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="stocks_games" type="b2602c69:ProjectViewProjectNode" />
-              <item name="stocks_games" type="462c0819:PsiDirectoryNode" />
-              <item name="sql_db" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="stocks_games" type="b2602c69:ProjectViewProjectNode" />
-              <item name="stocks_games" type="462c0819:PsiDirectoryNode" />
-              <item name="tech_dev" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -221,7 +182,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.send_mail">
+  <component name="RunManager" selected="Python.daily_update">
     <configuration name="create_tables_db.sql" type="OdpsQLRunnerConfigurationType" factoryName="MaxCompute SQL">
       <odps_target_file>$PROJECT_DIR$/sql_db/create_tables_db.sql</odps_target_file>
       <odps_output_dir>/var/folders/xy/0wvhpkg10mx2y0zg1zm5ws080000gn/T/</odps_output_dir>
@@ -301,7 +262,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python_dev" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -335,7 +296,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="upload_exchange_rates" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="stocks_situation" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="stocks_games" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -343,11 +304,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python_dev" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python_dev/upload_exchange_rates.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/stocks_situation.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -358,11 +319,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.daily_update" />
+        <item itemvalue="Python.load_data" />
+        <item itemvalue="Python.stocks_situation" />
         <item itemvalue="Python.send_mail" />
         <item itemvalue="Python.functions" />
-        <item itemvalue="Python.daily_update" />
-        <item itemvalue="Python.upload_exchange_rates" />
-        <item itemvalue="Python.load_data" />
       </list>
     </recent_temporary>
   </component>
@@ -377,13 +338,21 @@
       <option name="presentableId" value="Default" />
       <updated>1585510958025</updated>
     </task>
+    <task id="LOCAL-00001" summary="Update of possition.">
+      <created>1592588195470</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1592588195470</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="845" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15151516" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="DB Browser" order="3" weight="0.20648344" />
@@ -396,16 +365,20 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" visible="true" weight="0.32934928" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32934928" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.7075405" weight="0.42629483" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.32135308" side_tool="true" weight="0.27224436" />
-      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.6786469" weight="0.25763613" />
-      <window_info anchor="bottom" id="DB Execution Console" order="11" weight="0.45683932" />
+      <window_info anchor="bottom" id="Python Console" order="10" sideWeight="0.6786469" visible="true" weight="0.39575034" />
+      <window_info anchor="bottom" id="DB Execution Console" order="11" weight="0.2988048" />
       <window_info anchor="bottom" id="Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Update of possition." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update of possition." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file:///usr/local/lib/python3.7/site-packages/sshtunnel.py">
@@ -448,32 +421,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sql_db/create_tables_db.sql">
-      <provider selected="true" editor-type-id="OdpsQlEditor">
-        <state relative-caret-position="199">
-          <caret line="47" column="21" lean-forward="true" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="12" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="12" />
-        </state>
-      </provider>
-      <provider editor-type-id="OdpsQlGraph" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/python_dev/load_data.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" selection-start-line="16" selection-end-line="16" selection-end-column="67" />
-          <folding>
-            <element signature="e#178#192#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/python_dev/currency_update.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/tech_dev/update_daily.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -495,69 +442,107 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/python_dev/upload_exchange_rates.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/stocks_situation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="48" />
+        <state relative-caret-position="150">
+          <caret line="10" column="24" lean-forward="true" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sql_db/insert_base.sql">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="67" column="27" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="OdpsQlEditor">
+        <state relative-caret-position="202">
+          <caret line="100" column="28" lean-forward="true" selection-start-line="100" selection-start-column="28" selection-end-line="100" selection-end-column="28" />
+        </state>
+      </provider>
+      <provider editor-type-id="OdpsQlGraph" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql_db/create_tables_db.sql">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="12" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="12" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="OdpsQlEditor">
+        <state relative-caret-position="840">
+          <caret line="56" column="23" lean-forward="true" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
+        </state>
+      </provider>
+      <provider editor-type-id="OdpsQlGraph" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql_db/views.sql">
+      <provider selected="true" editor-type-id="OdpsQlEditor">
+        <state relative-caret-position="135">
+          <caret line="9" column="23" lean-forward="true" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+        </state>
+      </provider>
+      <provider editor-type-id="OdpsQlGraph" />
+    </entry>
     <entry file="db://53dae319-e672-4a58-ae14-011bcde8b0a1/consoles/Connection">
       <provider selected="true" editor-type-id="0.CONSOLE">
-        <state line="2" column="29" selection-start="87" selection-end="87" vertical-scroll-proportion="0.0">
+        <state line="2" column="0" selection-start="58" selection-end="58" vertical-scroll-proportion="0.042857144">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python_dev/upload_exchange_rates.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="14" selection-start-column="14" selection-end-column="14" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/python_dev/currency_update.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/python_dev/daily_update.py">
+    <entry file="file://$PROJECT_DIR$/python_dev/load_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
+        <state relative-caret-position="165">
+          <caret line="11" column="12" lean-forward="true" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+          <folding>
+            <element signature="e#178#192#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/python_dev/send_mail.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+        <state relative-caret-position="122">
+          <caret line="10" column="90" selection-start-line="10" selection-start-column="76" selection-end-line="10" selection-end-column="90" />
           <folding>
-            <marker date="1592376976004" expanded="true" signature="714:848" ph="..." />
+            <element signature="e#4#18#0" expanded="true" />
+            <marker date="1592591109130" expanded="true" signature="725:859" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python_dev/daily_update.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" selection-start-line="14" selection-end-line="14" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/python_dev/functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="238" selection-start-line="238" selection-end-line="238" />
+        <state relative-caret-position="208">
+          <caret line="259" column="55" selection-start-line="259" selection-start-column="55" selection-end-line="259" selection-end-column="55" />
           <folding>
             <element signature="e#27#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sql_db/insert_base.sql">
-      <provider selected="true" editor-type-id="OdpsQlEditor">
-        <state relative-caret-position="321">
-          <caret line="118" column="68" selection-start-line="118" selection-start-column="65" selection-end-line="118" selection-end-column="68" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="67" column="27" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
-        </state>
-      </provider>
-      <provider editor-type-id="OdpsQlGraph" />
     </entry>
   </component>
 </project>

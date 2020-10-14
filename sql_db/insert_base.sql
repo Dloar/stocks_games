@@ -14,7 +14,7 @@ VALUES
     ('Intel', 'INTC', 'USD', 'NSQ'),
     ('KOMERCNI BANKA', 'KOMB.PR', 'CZK', 'PRA'),
     ('Total SA', 'TOT', 'EUR', 'PAR'),
-    ('Alibaba', 'BABA', 'USD', 'NYQ'),
+    ('Alibaba Group', 'BABA', 'USD', 'NYQ'),
     ('Amgen Inc', 'AMGN', 'USD', 'NSQ'),
     ('Activision Inc', 'ATVI', 'USD', 'NSQ'),
     ('MONETA MONEY BANK', 'MONET.PR', 'CZK', 'PRA'),
@@ -26,7 +26,9 @@ VALUES
     ('Wizz Air', 'WIZZ.L', 'GBP', 'LSE'),
     ('Ryanair Holdings', 'RYAAY', 'EUR', 'NMS'),
     ('easyJet', 'EZJ.L', 'GBP', 'LSE'),
-    ('Tesla', 'TSLA', 'USD', 'NMS');
+    ('Tesla', 'TSLA', 'USD', 'NMS'),
+    ('Nortonlifelock Rg', 'NLOK', 'USD', 'NMS'),
+    ('Rolls-Royce Holdings plc', 'RR.L', 'GBP', 'LSE');
 
 delete from exposures;
 INSERT INTO exposures (cur_date, exposure)
@@ -95,7 +97,11 @@ VALUES
     ('patria', 'CETV', 'PRA', 200, 'CZK', '04-01-2018', 100.4000, 90.36),
     ('patria', 'Ryanair Holdings', 'EUR', 90, 'CZK', '05-08-2020', 11.41, 16.9),
     ('patria', 'easyJet', 'NMS', 165, 'USD', '05-08-2020', 5.852, 15.27),
-    ('patria', 'Tesla', 'NMS', 3, 'USD', '12-08-2020', 1552.555, 16.9);
+    ('patria', 'Tesla', 'NMS', 3, 'USD', '12-08-2020', 1552.555, 16.9),
+    ('patria', 'Nortonlifelock Rg', 'NMS', 100, 'USD', '28-08-2020', 23.93, 14.9),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 800, 'GBP', '08-10-2020', 1.356, 5.42),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 550, 'GBP', '09-10-2020', 1.575, 4.33),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1500, 'GBP', '15-10-2020', 1.883, 15.31);
 
 delete from stocks_sells;
 INSERT INTO stocks_sells (provider, stock_name, market, volume, currency, purchase_date, price, fee)
@@ -113,7 +119,7 @@ VALUES
     ('patria', 'MONETA MONEY BANK', 'PRA', 100, 'CZK', '10-01-2020', 83.9000, 80),
     ('patria', 'STOCK', 'PRA', 315, 'CZK', '10-01-2020', 63.6000, 90.15),
     ('patria', 'CETV', 'PRA', 120, 'CZK', '03-12-2018', 76.2000, 80),
-    ('patria', 'CETV', 'PRA', 300, 'CZK', '22-03-2018', 87.6000, 98.55),
+    ('patria', 'CETV', 'PRA', 250, 'CZK', '22-03-2018', 87.6000, 98.55),
     ('patria', 'Boeing', 'NYQ', 10, 'USD', '09-06-2020', 222.4100, 14.9),
     ('patria', 'NVIDIA', 'NSQ', 4, 'USD', '09-06-2020', 361.9100, 14.9),
     ('patria', 'Walt Disney Co', 'NYQ', 10, 'USD', '09-06-2020', 124.2300, 14.9),
@@ -122,4 +128,11 @@ VALUES
     ('patria', 'Apache Corp', 'NYQ', 100, 'USD', '10-04-2020', 15.3900, 14.9),
     ('patria', 'BMW', 'GER', 16, 'EUR', '11-04-2020', 56.4700, 16.9),
     ('patria', 'Wizz Air', 'LSE', 30, 'GBP', '13-06-2020', 32.0600, 14.86),
-    ('patria', 'KOMERCNI BANKA', 'PRA', 50, 'CZK', '01-04-2020', 580.0000, 130);
+    ('patria', 'KOMERCNI BANKA', 'PRA', 50, 'CZK', '01-04-2020', 580.0000, 130),
+    ('patria', 'Grupa Lotos', 'WSE', 47, 'PLN', '26-06-2020', 59.46, 60),
+    ('patria', 'Agree Realty', 'NYQ', 13, 'USD', '28-08-2020', 67.3700, 14.9),
+    ('patria', 'Veolia Environ', 'PAR', 80, 'EUR', '10-09-2020', 19.8600, 16.9),
+    ('patria', 'Microsoft', 'NSQ', 15, 'USD', '10-09-2020', 208.9000, 14.9),
+    ('patria', 'Ryanair Holdings', 'EUR', 90, 'CZK', '21-09-2020', 12.345, 16.9),
+    ('patria', 'easyJet', 'NMS', 165, 'USD', '09-10-2020', 5.264, 15.27),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1350, 'GBP', '13-10-2020', 2.2589, 15.38);

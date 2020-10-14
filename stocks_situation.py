@@ -19,7 +19,6 @@ class currentPortfolio():
         self.invested_amount = invested_amount
 
 
-
 curr_port = currentPortfolio(current_exposure=(invested_amount - invested_amount),
                              invested_amount=abs(invested_amount))
 
