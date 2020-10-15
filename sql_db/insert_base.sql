@@ -130,6 +130,7 @@ VALUES
     ('patria', 'Wizz Air', 'LSE', 30, 'GBP', '13-06-2020', 32.0600, 14.86),
     ('patria', 'KOMERCNI BANKA', 'PRA', 50, 'CZK', '01-04-2020', 580.0000, 130),
     ('patria', 'Grupa Lotos', 'WSE', 47, 'PLN', '26-06-2020', 59.46, 60),
+    ('patria', 'Tesla', 'NMS', 3, 'USD', '26-08-2020', 1975.37, 14.9),
     ('patria', 'Agree Realty', 'NYQ', 13, 'USD', '28-08-2020', 67.3700, 14.9),
     ('patria', 'Veolia Environ', 'PAR', 80, 'EUR', '10-09-2020', 19.8600, 16.9),
     ('patria', 'Microsoft', 'NSQ', 15, 'USD', '10-09-2020', 208.9000, 14.9),
