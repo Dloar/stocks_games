@@ -50,9 +50,8 @@ results = pd.DataFrame(columns=['Open', 'High', 'Low', 'Close', 'Volume', 'Divid
                                 'Company', '6m_history', 'market_cap'])
 
 n_bulks = 1000
-for bulk in range(33, n_bulks): print(bulk)
-    stocks_list_df = pd.DataFrame(columns=['symbol', 'shortName', 'longName', 'currency', 'country', 'market_cap',
-                                           'sector'])
+for bulk in range(33, n_bulks):
+    stocks_list_df = pd.DataFrame(columns=['symbol', 'shortName', 'longName', 'currency', 'country', 'market_cap','sector'])
     for line in range(int(len(tickers_df)/n_bulks)):
         i=bulk * int(len(tickers_df)/n_bulks) + line
         # get data on this ticker
