@@ -10,7 +10,10 @@ from datetime import datetime
 import sys
 
 log_filename = 'log_irp_' + time.strftime("%Y-%m-%d %H;%M;%S", time.gmtime()) + '_run' + '.log'
-log_filepath = os.path.join("/home/pi/Documents/GitHub/stocks_games" + "/stocks_logs/" + log_filename)
+if sys.platform == 'darwin':
+    log_filepath = os.path.join("/Users/ondrejkral/GitHub/stocks_games" + "/stocks_logs/" + log_filename)
+else:
+    log_filepath = os.path.join("/home/pi/Documents/GitHub/stocks_games" + "/stocks_logs/" + log_filename)
 logging.basicConfig(filename=log_filepath, level=logging.DEBUG, format='%(asctime)s:%(lineno)d:%(message)s')
 
 start = time.time()
@@ -46,8 +49,8 @@ tickers_df_index = tickers_df.set_index('Ticker')
 results = pd.DataFrame(columns=['Open', 'High', 'Low', 'Close', 'Volume', 'Dividends', 'Stock Splits', 'absolut_change',
                                 'Company', '6m_history', 'market_cap'])
 
-n_bulks = 8
-for bulk in range(n_bulks):
+n_bulks = 1000
+for bulk in range(33, n_bulks): print(bulk)
     stocks_list_df = pd.DataFrame(columns=['symbol', 'shortName', 'longName', 'currency', 'country', 'market_cap',
                                            'sector'])
     for line in range(int(len(tickers_df)/n_bulks)):
@@ -89,7 +92,6 @@ for bulk in range(n_bulks):
 
             stocks_list_df.loc[len(stocks_list_df)] = [symbol, shortName, longName,
                                                        currency, country, market_cap, sector]
-            logging.warning('Loading failed')
         except Exception:
             logging.warning('Stock skipped' + tickers_df.loc[i, 'Ticker'])
 
@@ -113,7 +115,7 @@ for bulk in range(n_bulks):
         # tickerDf_filtered['stock_symbol'] = symbol
         # stocks_data_res = stocks_data_res.append(tickerDf_filtered)
 
-
+    logging.warning('Data upload initiated.')
     config_conn = getConfigFile()
     conn = mysql.connector.connect(
         host=config_conn.sql_hostname.iloc[0],
@@ -137,5 +139,6 @@ for bulk in range(n_bulks):
         conn.commit()
     cursor.close()
     conn.close()
+    logging.warning(f"The bulk number {bulk} has been updated.")
 
 print('It took', time.time()-start, 'seconds.')
