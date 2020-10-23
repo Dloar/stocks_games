@@ -49,7 +49,7 @@ tickers_df_index = tickers_df.set_index('Ticker')
 results = pd.DataFrame(columns=['Open', 'High', 'Low', 'Close', 'Volume', 'Dividends', 'Stock Splits', 'absolut_change',
                                 'Company', '6m_history', 'market_cap'])
 try:
-    n_bulks = 100
+    n_bulks = 10000
     for bulk in range(n_bulks):
         stocks_list_df = pd.DataFrame(columns=['symbol', 'shortName', 'longName', 'currency', 'country', 'market_cap', 'sector'])
         for line in range(int(len(tickers_df)/n_bulks)):
