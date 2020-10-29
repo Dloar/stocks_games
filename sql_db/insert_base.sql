@@ -28,7 +28,8 @@ VALUES
     ('easyJet', 'EZJ.L', 'GBP', 'LSE'),
     ('Tesla', 'TSLA', 'USD', 'NMS'),
     ('Nortonlifelock Rg', 'NLOK', 'USD', 'NMS'),
-    ('Rolls-Royce Holdings plc', 'RR.L', 'GBP', 'LSE');
+    ('Rolls-Royce Holdings plc', 'RR.L', 'GBP', 'LSE'),
+    ('Xilinx, Inc', 'XLNX', 'USD', 'NSQ');
 
 delete from exposures;
 INSERT INTO exposures (cur_date, exposure)
@@ -101,7 +102,9 @@ VALUES
     ('patria', 'Nortonlifelock Rg', 'NMS', 100, 'USD', '28-08-2020', 23.93, 14.9),
     ('patria', 'Rolls-Royce Holdings plc', 'LSE', 800, 'GBP', '08-10-2020', 1.356, 5.42),
     ('patria', 'Rolls-Royce Holdings plc', 'LSE', 550, 'GBP', '09-10-2020', 1.575, 4.33),
-    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1500, 'GBP', '15-10-2020', 1.883, 15.31);
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1500, 'GBP', '15-10-2020', 1.883, 15.31),
+    ('patria', 'Amazon com Inc', 'NSQ', 2, 'USD', '26-10-2020', 3278.00, 14.9),
+    ('patria', 'Xilinx, Inc', 'NSQ', 12, 'USD', '27-10-2020', 131.77, 14.9);
 
 delete from stocks_sells;
 INSERT INTO stocks_sells (provider, stock_name, market, volume, currency, purchase_date, price, fee)
@@ -136,4 +139,5 @@ VALUES
     ('patria', 'Microsoft', 'NSQ', 15, 'USD', '10-09-2020', 208.9000, 14.9),
     ('patria', 'Ryanair Holdings', 'EUR', 90, 'CZK', '21-09-2020', 12.345, 16.9),
     ('patria', 'easyJet', 'NMS', 165, 'USD', '09-10-2020', 5.264, 15.27),
-    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1350, 'GBP', '13-10-2020', 2.2589, 15.38);
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1350, 'GBP', '13-10-2020', 2.2589, 15.38),
+    ('patria', 'Xilinx, Inc', 'NSQ', 12, 'USD', '27-10-2020', 124.61, 14.9);
