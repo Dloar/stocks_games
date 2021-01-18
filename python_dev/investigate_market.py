@@ -39,19 +39,42 @@ query = '''SELECT * FROM existing_stocks;'''
 stocks_list = pd.read_sql_query(query, conn)
 conn.close()
 
+stocks_list.dropna(subset=['country'], inplace=True)
+stocks_list = stocks_list.loc[stocks_list['market_cap'] > 200000]
 ticker_list = list(stocks_list.loc[:, 'symbol'])
 
 data = yf.download(
         tickers=ticker_list,
         period='1y',
         interval='1d',
-        group_by='ticker',
-        auto_adjust=False,
+        auto_adjust=True,
         prepost=False,
         threads=True,
         proxy=None
     )
 
+data_close = data['Close']
+data_close.iloc[1,:]
+data_close.iloc[-1,:]
+
+data_open = data['Open']
+data_open.iloc[1,:]
+data_open.iloc[-1,:]
+
+daily_price = pd.DataFrame(data=data_open.iloc[-1, :]).merge(pd.DataFrame(data=data_close.iloc[-1, :]), how='inner',
+                                                            right_index=True, left_index=True)
+daily_price.columns = ['Open', 'Close']
+daily_price['change_day[%]'] = ((daily_price['Close'] - daily_price['Open'])/daily_price['Close'])*100
+filtered_prices_df = daily_price.loc[daily_price['change_day[%]'] < -5]
+
+stocks_interest_df = filtered_prices_df.merge(stocks_list[['symbol', 'shortName', 'longName', 'market_cap']],
+                                              how='inner', left_index=True, right_on='symbol')
+stocks_interest_df = stocks_interest_df.loc[stocks_interest_df['market_cap'] > 150000000]
+stocks_interest_df.reset_index(drop=True, inplace=True)
+
+data_volume = data['Volume']
+data_volume.iloc[1,:]
+data_volume.iloc[-1,:]
 
 # for ticker in ticker_list:
 #     data.loc[(ticker,),].T.to_csv('yhist/' + ticker + '.csv', sep=',', encoding='utf-8')

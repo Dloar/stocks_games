@@ -20,10 +20,8 @@ daily_result = portfolio_db['total_absolut_change'].sum()
 
 # Get the situation of the stocks I owned
 stocks_sells_tab = stocks_data.stocks_sells.copy()
-stocks_sells_tab['gain'] = (stocks_sells_tab['price'] * stocks_sells_tab['volume'])
 
-stocks_sells_tab = stocks_sells_tab.groupby(['provider', 'stock_name', 'market', 'currency']).sum()
-
-stocks_symbols_sold_list = pd.merge(stocks_volume_df, stocks_data.stocks_list[['stock_name', 'stock_symbol']],
-                           how='left', on='stock_name')
-
+stocks_symbols_sold_list = pd.merge(stocks_sells_tab, sold_stock_tab, how='inner', on='stock_name')
+stocks_sold_df = stocks_symbols_sold_list[['stock_name', 'stock_symbol', 'currency', 'curr_sit']].drop_duplicates()
+stocks_sold_df.reset_index(drop=True, inplace=True)
+stocks_sold_agr_df = stocks_sold_df.groupby(['stock_name', 'stock_symbol', 'currency']).sum()
