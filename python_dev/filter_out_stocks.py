@@ -25,9 +25,11 @@ else:
     tickers_df = pd.read_csv('/home/pi/Documents/GitHub/stocks_games/stock_list.csv', encoding="ISO-8859-1")
     from functions import getConfigFile
 tickers_df_index = tickers_df.set_index('Ticker')
+tickers_df_index = tickers_df_index.loc[tickers_df_index['Category Name'].notnull()]
 
 results = pd.DataFrame(columns=['Open', 'High', 'Low', 'Close', 'Volume', 'Dividends', 'Stock Splits', 'absolut_change',
                                 'Company', '6m_history', 'market_cap'])
+
 try:
     n_bulks = 100
     for bulk in range(n_bulks):
