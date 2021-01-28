@@ -29,7 +29,8 @@ VALUES
     ('Tesla', 'TSLA', 'USD', 'NMS'),
     ('Nortonlifelock Rg', 'NLOK', 'USD', 'NMS'),
     ('Rolls-Royce Holdings plc', 'RR.L', 'GBP', 'LSE'),
-    ('Xilinx, Inc', 'XLNX', 'USD', 'NSQ');
+    ('Xilinx, Inc', 'XLNX', 'USD', 'NSQ'),
+    ('Scandinavian Airlines', 'SAS', 'SEK', 'XSTO');
 
 delete from exposures;
 INSERT INTO exposures (cur_date, exposure)
@@ -53,7 +54,8 @@ VALUES
     ('2019-11-28', -25000),
     ('2020-03-02', -100000),
     ('2020-04-08', 140000),
-    ('2020-05-20', -13000);
+    ('2020-05-20', -13000),
+    ('2021-01-07', -170000);
 
 delete from stocks_purchases;
 INSERT INTO stocks_purchases (provider, stock_name, market, volume, currency, purchase_date, price, fee)
@@ -73,7 +75,7 @@ VALUES
     ('patria', 'Total SA', 'PAR', 10, 'EUR', '01-04-2020', 33.6650, 16.9),
     ('patria', 'KOMERCNI BANKA', 'PRA', 25, 'CZK', '01-04-2020', 468.0000, 80),
     ('patria', 'Grupa Lotos', 'WSE', 30, 'PLN', '27-03-2020', 53.1000, 60),
-    ('patria', 'NVIDIA', 'NSQ', 5, 'USD', '23-03-2020', 209.3900, 14.9),
+    ('patria', 'NVIDIA', 'NSQ', 5, 'USD', '23-03-2020', 507.1700, 14.9),
     ('patria', 'Intel', 'NSQ', 30, 'USD', '23-03-2020', 48.2400, 14.9),
     ('patria', 'Avast', 'PRA', 295, 'CZK', '31-01-2020', 126.0000, 167.27),
     ('patria', 'Merck', 'NYQ', 11, 'USD', '09-01-2020', 88.9400, 14.9),
@@ -106,7 +108,9 @@ VALUES
     ('patria', 'Rolls-Royce Holdings plc', 'LSE', 5100, 'GBP', '15-10-2020', 0.32, 15.31),
     ('patria', 'Amazon com Inc', 'NSQ', 2, 'USD', '26-10-2020', 3278.00, 14.9),
     ('patria', 'Xilinx, Inc', 'NSQ', 12, 'USD', '27-10-2020', 131.77, 14.9),
-    ('patria', 'Avast', 'PRA', 80, 'CZK', '11-11-2020', 135.45, 90);
+    ('patria', 'Avast', 'PRA', 80, 'CZK', '11-11-2020', 135.45, 90),
+    ('patria', 'Scandinavian Airlines', 'SAS', 7000, 'SEK', '12-02-2021', 1.54, 172),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1800, 'GBP', '12-01-2021', 1.08, 15.31);
 
 delete from stocks_sells;
 INSERT INTO stocks_sells (provider, stock_name, market, volume, currency, purchase_date, price, fee)
@@ -144,4 +148,7 @@ VALUES
     ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1350, 'GBP', '13-10-2020', 2.2589, 15.38),
     ('patria', 'Xilinx, Inc', 'NSQ', 12, 'USD', '27-10-2020', 124.61, 14.9),
     ('patria', 'Total SA', 'PAR', 23, 'EUR', '26-11-2020', 37.875, 16.9),
-    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 3950, 'GBP', '13-10-2020', 1.0827, 15.38);
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 3950, 'GBP', '13-10-2020', 1.0827, 15.38),
+    ('patria', 'NVIDIA', 'NSQ', 5, 'USD', '30-11-2020', 526.30, 14.9),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 3950, 'GBP', '13-10-2020', 1.0827, 15.38),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 3000, 'GBP', '14-12-2020', 1.22, 15.31);
