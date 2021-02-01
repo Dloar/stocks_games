@@ -3,6 +3,7 @@ import os
 import logging
 import yfinance as yf
 import time
+import json
 import numpy as np
 import mysql.connector
 import logging
@@ -42,7 +43,7 @@ conn.close()
 
 stocks_list.dropna(subset=['country'], inplace=True)
 stocks_list = stocks_list.loc[stocks_list['market_cap'] > 200000]
-stocks_list = stocks_list.head(n=300)
+stocks_list = stocks_list.head(n=500)
 ticker_list = list(stocks_list.loc[:, 'symbol'])
 
 start = time.time()
@@ -74,12 +75,18 @@ daily_price = daily_price_temp.merge(pd.DataFrame(data=data_volume.iloc[-1, :]),
 
 daily_price.columns = ['Open', 'Close', 'Volume']
 daily_price['change_day[%]'] = ((daily_price['Close'] - daily_price['Open'])/daily_price['Close'])*100
-filtered_prices_df = daily_price.loc[daily_price['change_day[%]'] < -10]
+filtered_prices_df = daily_price.loc[daily_price['change_day[%]'] != 0]
 
 
 stocks_interest_df = filtered_prices_df.merge(stocks_list[['symbol', 'shortName', 'longName', 'market_cap']],
                                               how='inner', left_index=True, right_on='symbol')
 stocks_interest_df = stocks_interest_df.loc[stocks_interest_df['market_cap'] > 150000000]
 stocks_interest_df.reset_index(drop=True, inplace=True)
+stocks_json = stocks_interest_df.to_json()
 
-stocks_interest_df.write('stocks.json', orient='records',lines=True)
+s3 = boto3.client('s3')
+s3.put_object(
+     Body=stocks_interest_df.to_json(orient='records', lines=True),
+     Bucket='stocks-list-poi',
+     Key='selected-stocks/stocks_output.json'
+)
