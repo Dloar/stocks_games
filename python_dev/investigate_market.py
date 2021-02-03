@@ -43,7 +43,7 @@ conn.close()
 
 stocks_list.dropna(subset=['country'], inplace=True)
 stocks_list = stocks_list.loc[stocks_list['market_cap'] > 200000]
-# stocks_list = stocks_list.head(n=5000)
+stocks_list = stocks_list.head(n=500)
 ticker_list = list(stocks_list.loc[:, 'symbol'])
 
 start = time.time()
@@ -53,7 +53,7 @@ data = yf.download(
         interval='1d',
         auto_adjust=True,
         prepost=False,
-        threads=False,
+        threads=True,
         proxy=None
     )
 print('It took', time.time()-start, 'seconds to download the data.')
@@ -93,5 +93,5 @@ else:
 s3.put_object(
      Body=stocks_interest_df.to_json(orient='records', lines=True),
      Bucket='stocks-list-poi',
-     Key='selected-stocks/stocks_output_rPI.json'
+     Key='selected-stocks/stocks_output_rPi.json'
 )
