@@ -43,7 +43,7 @@ conn.close()
 
 stocks_list.dropna(subset=['country'], inplace=True)
 stocks_list = stocks_list.loc[stocks_list['market_cap'] > 200000]
-stocks_list = stocks_list.head(n=50)
+# stocks_list = stocks_list.head(n=50)
 ticker_list = list(stocks_list.loc[:, 'symbol'])
 
 start = time.time()
@@ -93,5 +93,5 @@ else:
 s3.put_object(
      Body=stocks_interest_df.to_json(orient='records', lines=True),
      Bucket='stocks-list-poi',
-     Key='selected-stocks/stocks_output_rPi.json'
+     Key='selected-stocks/stocks_output.json'
 )
