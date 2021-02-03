@@ -93,5 +93,5 @@ else:
 s3.put_object(
      Body=stocks_interest_df.to_json(orient='records', lines=True),
      Bucket='stocks-list-poi',
-     Key='selected-stocks/stocks_output.json'
+     Key='selected-stocks/stocks_output_rPI.json'
 )
