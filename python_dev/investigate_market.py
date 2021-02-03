@@ -43,17 +43,17 @@ conn.close()
 
 stocks_list.dropna(subset=['country'], inplace=True)
 stocks_list = stocks_list.loc[stocks_list['market_cap'] > 200000]
-stocks_list = stocks_list.head(n=500)
+# stocks_list = stocks_list.head(n=5000)
 ticker_list = list(stocks_list.loc[:, 'symbol'])
 
 start = time.time()
 data = yf.download(
         tickers=ticker_list,
-        period='1mo',
+        period='20d',
         interval='1d',
         auto_adjust=True,
         prepost=False,
-        threads=True,
+        threads=False,
         proxy=None
     )
 print('It took', time.time()-start, 'seconds to download the data.')
@@ -61,21 +61,16 @@ print('It took', time.time()-start, 'seconds to download the data.')
 data_close = data['Close']
 data_open = data['Open']
 data_volume = data['Volume']
-# data_volume.iloc[1,:]
-# data_close.iloc[1,:]
-# data_close.iloc[-1,:]
-# data_close.iloc[-2,:]
-# data_open.iloc[1,:]
-# data_open.iloc[-1,:]
 
-daily_price_temp = pd.DataFrame(data=data_close.iloc[-2, :]).merge(pd.DataFrame(data=data_close.iloc[-1, :]),
+daily_price_temp = pd.DataFrame(data=data_close.iloc[-3, :]).merge(pd.DataFrame(data=data_close.iloc[-2, :]),
                                                                    how='inner', right_index=True, left_index=True)
-daily_price = daily_price_temp.merge(pd.DataFrame(data=data_volume.iloc[-1, :]),
+daily_price = daily_price_temp.merge(pd.DataFrame(data=data_volume.iloc[-2, :]),
                                      how='inner', right_index=True, left_index=True)
+
 
 daily_price.columns = ['Open', 'Close', 'Volume']
 daily_price['change_day[%]'] = ((daily_price['Close'] - daily_price['Open'])/daily_price['Close'])*100
-filtered_prices_df = daily_price.loc[daily_price['change_day[%]'] != 0]
+filtered_prices_df = daily_price.loc[daily_price['change_day[%]'] < -5]
 
 
 stocks_interest_df = filtered_prices_df.merge(stocks_list[['symbol', 'shortName', 'longName', 'market_cap']],
@@ -84,7 +79,17 @@ stocks_interest_df = stocks_interest_df.loc[stocks_interest_df['market_cap'] > 1
 stocks_interest_df.reset_index(drop=True, inplace=True)
 stocks_json = stocks_interest_df.to_json()
 
-s3 = boto3.client('s3')
+
+if sys.platform == 'darwin':
+    s3 = boto3.client('s3')
+else:
+    ACCESS_KEY = config_conn.Access_key_ID.iloc[0]
+    SECRET_KEY = config_conn.Secret_access_key.iloc[0]
+    s3 = boto3.client('s3',
+                      aws_access_key_id=ACCESS_KEY,
+                      aws_secret_access_key=SECRET_KEY
+                      )
+
 s3.put_object(
      Body=stocks_interest_df.to_json(orient='records', lines=True),
      Bucket='stocks-list-poi',
