@@ -65,7 +65,7 @@ def getConfigFile():
                              config_source.sql_main_database, config_source.sql_port, config_source.ssh_host,
                              config_source.ssh_psw, config_source.ssh_user, config_source.ssh_port,
                              config_source.sql_ip, config_source.email_user, config_source.email_psw,
-                             config_source.s3_secret_key, config_source.s3_access_key)
+                             config_source.s3_access_key, config_source.s3_secret_key)
     return config_conn
 
 
