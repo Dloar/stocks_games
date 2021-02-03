@@ -43,7 +43,7 @@ conn.close()
 
 stocks_list.dropna(subset=['country'], inplace=True)
 stocks_list = stocks_list.loc[stocks_list['market_cap'] > 200000]
-# stocks_list = stocks_list.head(n=50)
+stocks_list = stocks_list.head(n=500)
 ticker_list = list(stocks_list.loc[:, 'symbol'])
 
 start = time.time()
@@ -75,7 +75,7 @@ filtered_prices_df = daily_price.loc[daily_price['change_day[%]'] < -5]
 
 stocks_interest_df = filtered_prices_df.merge(stocks_list[['symbol', 'shortName', 'longName', 'market_cap']],
                                               how='inner', left_index=True, right_on='symbol')
-stocks_interest_df = stocks_interest_df.loc[stocks_interest_df['market_cap'] > 150000000]
+stocks_interest_df = stocks_interest_df.loc[stocks_interest_df['market_cap'] > 15000000]
 stocks_interest_df.reset_index(drop=True, inplace=True)
 stocks_json = stocks_interest_df.to_json()
 
