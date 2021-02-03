@@ -62,9 +62,9 @@ data_close = data['Close']
 data_open = data['Open']
 data_volume = data['Volume']
 
-daily_price_temp = pd.DataFrame(data=data_close.iloc[-3, :]).merge(pd.DataFrame(data=data_close.iloc[-2, :]),
+daily_price_temp = pd.DataFrame(data=data_close.iloc[-2, :]).merge(pd.DataFrame(data=data_close.iloc[-1, :]),
                                                                    how='inner', right_index=True, left_index=True)
-daily_price = daily_price_temp.merge(pd.DataFrame(data=data_volume.iloc[-2, :]),
+daily_price = daily_price_temp.merge(pd.DataFrame(data=data_volume.iloc[-1, :]),
                                      how='inner', right_index=True, left_index=True)
 
 
