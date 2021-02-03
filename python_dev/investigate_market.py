@@ -83,8 +83,8 @@ stocks_json = stocks_interest_df.to_json()
 if sys.platform == 'darwin':
     s3 = boto3.client('s3')
 else:
-    ACCESS_KEY = config_conn.Access_key_ID.iloc[0]
-    SECRET_KEY = config_conn.Secret_access_key.iloc[0]
+    ACCESS_KEY = config_conn.s3_access_key.iloc[0]
+    SECRET_KEY = config_conn.s3_secret_key.iloc[0]
     s3 = boto3.client('s3',
                       aws_access_key_id=ACCESS_KEY,
                       aws_secret_access_key=SECRET_KEY
