@@ -43,7 +43,7 @@ conn.close()
 
 stocks_list.dropna(subset=['country'], inplace=True)
 stocks_list = stocks_list.loc[stocks_list['market_cap'] > 200000]
-stocks_list = stocks_list.head(n=500)
+# stocks_list = stocks_list.head(n=500)
 ticker_list = list(stocks_list.loc[:, 'symbol'])
 
 start = time.time()
