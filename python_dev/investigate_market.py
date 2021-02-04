@@ -43,7 +43,6 @@ conn.close()
 
 stocks_list.dropna(subset=['country'], inplace=True)
 stocks_list = stocks_list.loc[stocks_list['market_cap'] > 200000]
-# stocks_list = stocks_list.head(n=500)
 ticker_list = list(stocks_list.loc[:, 'symbol'])
 
 start = time.time()
@@ -62,15 +61,22 @@ data_close = data['Close']
 data_open = data['Open']
 data_volume = data['Volume']
 
-daily_price_temp = pd.DataFrame(data=data_close.iloc[-2, :]).merge(pd.DataFrame(data=data_close.iloc[-1, :]),
-                                                                   how='inner', right_index=True, left_index=True)
-daily_price = daily_price_temp.merge(pd.DataFrame(data=data_volume.iloc[-1, :]),
-                                     how='inner', right_index=True, left_index=True)
+delay = 1
+daily_price = pd.DataFrame({'Close_td': data_close.iloc[-(delay), :]}).merge(
+    pd.DataFrame({'Close_1d': data_close.iloc[-(delay+1), :]}),
+    how='inner', right_index=True, left_index=True).merge(
+    pd.DataFrame({'Close_5d': data_close.iloc[-(delay+5), :]}), how='inner', right_index=True, left_index=True).merge(
+    pd.DataFrame({'Close_10d': data_close.iloc[-(delay+10), :]}), how='inner', right_index=True, left_index=True).merge(
+    pd.DataFrame({'Close_20d': data_close.iloc[-(data_close.shape[0]-1), :]}), how='inner', right_index=True,
+    left_index=True).merge(
+    pd.DataFrame({'Close_Vol': data_volume.iloc[-delay, :]}), how='inner', right_index=True, left_index=True)
 
-
-daily_price.columns = ['Open', 'Close', 'Volume']
-daily_price['change_day[%]'] = ((daily_price['Close'] - daily_price['Open'])/daily_price['Close'])*100
-filtered_prices_df = daily_price.loc[daily_price['change_day[%]'] < -5]
+daily_price['change_1day[%]'] = ((daily_price['Close_td'] - daily_price['Close_1d'])/daily_price['Close_1d'])*100
+daily_price['change_5day[%]'] = ((daily_price['Close_td'] - daily_price['Close_5d'])/daily_price['Close_5d'])*100
+daily_price['change_10day[%]'] = ((daily_price['Close_td'] - daily_price['Close_10d'])/daily_price['Close_10d'])*100
+daily_price['change_20day[%]'] = ((daily_price['Close_td'] - daily_price['Close_20d'])/daily_price['Close_20d'])*100
+filtered_prices_df = daily_price.loc[daily_price['change_1day[%]'] < -5]
+filtered_prices_df['extreme_values'] = np.where(filtered_prices_df['change_1day[%]'] < -300, 0, 1)
 
 
 stocks_interest_df = filtered_prices_df.merge(stocks_list[['symbol', 'shortName', 'longName', 'market_cap']],
