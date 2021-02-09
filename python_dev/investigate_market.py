@@ -43,6 +43,7 @@ conn.close()
 
 stocks_list.dropna(subset=['country'], inplace=True)
 stocks_list = stocks_list.loc[stocks_list['market_cap'] > 200000]
+stocks_list = stocks_list.head(5000)
 ticker_list = list(stocks_list.loc[:, 'symbol'])
 
 start = time.time()
@@ -71,21 +72,20 @@ daily_price = pd.DataFrame({'Close_td': data_close.iloc[-(delay), :]}).merge(
     left_index=True).merge(
     pd.DataFrame({'Close_Vol': data_volume.iloc[-delay, :]}), how='inner', right_index=True, left_index=True)
 
-daily_price['change_1day[%]'] = ((daily_price['Close_td'] - daily_price['Close_1d'])/daily_price['Close_1d'])*100
-daily_price['change_5day[%]'] = ((daily_price['Close_td'] - daily_price['Close_5d'])/daily_price['Close_5d'])*100
-daily_price['change_10day[%]'] = ((daily_price['Close_td'] - daily_price['Close_10d'])/daily_price['Close_10d'])*100
-daily_price['change_20day[%]'] = ((daily_price['Close_td'] - daily_price['Close_20d'])/daily_price['Close_20d'])*100
-filtered_prices_df = daily_price.loc[daily_price['change_1day[%]'] < -5]
-filtered_prices_df['extreme_values'] = np.where(filtered_prices_df['change_1day[%]'] < -300, 0, 1)
-
+daily_price['rel_change_1day'] = ((daily_price['Close_td'] - daily_price['Close_1d'])/daily_price['Close_1d'])*100
+daily_price['rel_change_5day'] = ((daily_price['Close_td'] - daily_price['Close_5d'])/daily_price['Close_5d'])*100
+daily_price['rel_change_10day'] = ((daily_price['Close_td'] - daily_price['Close_10d'])/daily_price['Close_10d'])*100
+daily_price['rel_change_20day'] = ((daily_price['Close_td'] - daily_price['Close_20d'])/daily_price['Close_20d'])*100
+filtered_prices_df = daily_price.loc[daily_price['rel_change_1day'] < -5]
+filtered_prices_df['extreme_values'] = np.where(filtered_prices_df['rel_change_1day'] < -300, 1, 0)
 
 stocks_interest_df = filtered_prices_df.merge(stocks_list[['symbol', 'shortName', 'longName', 'market_cap']],
                                               how='inner', left_index=True, right_on='symbol')
 stocks_interest_df = stocks_interest_df.loc[stocks_interest_df['market_cap'] > 15000000]
 stocks_interest_df.reset_index(drop=True, inplace=True)
-stocks_json = stocks_interest_df.to_json()
+top_pics_df = stocks_interest_df.loc[stocks_interest_df['extreme_values'] == 0].sort_values(['rel_change_1day']).head(5)
 
-
+### Saving results to S3
 if sys.platform == 'darwin':
     s3 = boto3.client('s3')
 else:
@@ -99,5 +99,32 @@ else:
 s3.put_object(
      Body=stocks_interest_df.to_json(orient='records', lines=True),
      Bucket='stocks-list-poi',
-     Key='selected-stocks/stocks_output.json'
+     Key='selected-stocks/whole_selection/stocks_output.json'
+)
+
+
+top_tickers_list = list(top_pics_df['symbol'])
+
+start = time.time()
+data = yf.download(
+        tickers=top_tickers_list,
+        period='1y',
+        interval='1d',
+        auto_adjust=True,
+        prepost=False,
+        threads=False,
+        proxy=None
+    )
+
+print('It took', time.time()-start, 'seconds to download the data.')
+
+data_sel = data['Close'].unstack().reset_index()
+
+data_sel.columns = ['Symbol', 'Date', 'Price']
+data_sel['Date'] = str(data_sel['Date'])
+
+s3.put_object(
+     Body=data_sel.to_json(orient='records', lines=True),
+     Bucket='stocks-list-poi',
+     Key='selected-stocks/top_picks/top_picks_stocks.json'
 )
