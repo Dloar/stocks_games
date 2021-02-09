@@ -43,7 +43,6 @@ conn.close()
 
 stocks_list.dropna(subset=['country'], inplace=True)
 stocks_list = stocks_list.loc[stocks_list['market_cap'] > 200000]
-stocks_list = stocks_list.head(5000)
 ticker_list = list(stocks_list.loc[:, 'symbol'])
 
 start = time.time()
@@ -84,7 +83,6 @@ stocks_interest_df = filtered_prices_df.merge(stocks_list[['symbol', 'shortName'
 stocks_interest_df = stocks_interest_df.loc[stocks_interest_df['market_cap'] > 15000000]
 stocks_interest_df.reset_index(drop=True, inplace=True)
 top_pics_df = stocks_interest_df.loc[stocks_interest_df['extreme_values'] == 0].sort_values(['rel_change_1day']).head(5)
-
 ### Saving results to S3
 if sys.platform == 'darwin':
     s3 = boto3.client('s3')
@@ -97,34 +95,35 @@ else:
                       )
 
 s3.put_object(
-     Body=stocks_interest_df.to_json(orient='records', lines=True),
-     Bucket='stocks-list-poi',
-     Key='selected-stocks/whole_selection/stocks_output.json'
+    Body=stocks_interest_df.to_json(orient='records', lines=True),
+    Bucket='stocks-list-poi',
+    Key='selected-stocks/whole_selection/stocks_output.json'
 )
 
+if len(top_pics_df) > 0:
 
-top_tickers_list = list(top_pics_df['symbol'])
+    top_tickers_list = list(top_pics_df['symbol'])
 
-start = time.time()
-data = yf.download(
-        tickers=top_tickers_list,
-        period='1y',
-        interval='1d',
-        auto_adjust=True,
-        prepost=False,
-        threads=False,
-        proxy=None
+    start = time.time()
+    data = yf.download(
+            tickers=top_tickers_list,
+            period='1y',
+            interval='1d',
+            auto_adjust=True,
+            prepost=False,
+            threads=False,
+            proxy=None
+        )
+
+    print('It took', time.time()-start, 'seconds to download the data.')
+
+    data_sel = data['Close'].unstack().reset_index()
+
+    data_sel.columns = ['Symbol', 'Date', 'Price']
+    data_sel['Date'] = str(data_sel['Date'])
+
+    s3.put_object(
+         Body=data_sel.to_json(orient='records', lines=True),
+         Bucket='stocks-list-poi',
+         Key='selected-stocks/top_picks/top_picks_stocks.json'
     )
-
-print('It took', time.time()-start, 'seconds to download the data.')
-
-data_sel = data['Close'].unstack().reset_index()
-
-data_sel.columns = ['Symbol', 'Date', 'Price']
-data_sel['Date'] = str(data_sel['Date'])
-
-s3.put_object(
-     Body=data_sel.to_json(orient='records', lines=True),
-     Bucket='stocks-list-poi',
-     Key='selected-stocks/top_picks/top_picks_stocks.json'
-)
