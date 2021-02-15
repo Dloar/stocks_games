@@ -21,12 +21,12 @@ logging.basicConfig(filename=log_filepath, level=logging.DEBUG, format='%(asctim
 start = time.time()
 # Load stock tickers
 if sys.platform == 'darwin':
-    tickers_df = pd.read_csv('/Users/ondrejkral/GitHub/stocks_games/stock_list.csv', encoding="ISO-8859-1")
+    # tickers_df = pd.read_csv('/Users/ondrejkral/GitHub/stocks_games/stock_list.csv', encoding="ISO-8859-1")
     from python_dev.functions import getConfigFile
 else:
-    tickers_df = pd.read_csv('/home/pi/Documents/GitHub/stocks_games/stock_list.csv', encoding="ISO-8859-1")
+    # tickers_df = pd.read_csv('/home/pi/Documents/GitHub/stocks_games/stock_list.csv', encoding="ISO-8859-1")
     from functions import getConfigFile
-tickers_df_index = tickers_df.set_index('Ticker')
+# tickers_df_index = tickers_df.set_index('Ticker')
 
 config_conn = getConfigFile()
 conn = mysql.connector.connect(
