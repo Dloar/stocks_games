@@ -58,7 +58,7 @@ data = yf.download(
     )
 print('It took', time.time()-start, 'seconds to download the data.')
 
-data_close = data['Close']
+data_close = data['Close'].copy()
 data_volume = data['Volume']
 
 selected_stocks = list()
@@ -74,21 +74,22 @@ for stock_name in data_close.columns:
     dataframe_temp['indi_1'] = np.where(dataframe_temp['∆_1'] > +0.1, 1, 0)
     dataframe_temp['indi_3'] = np.where(dataframe_temp['∆_3'] < -0.1, 1, 0)
     dataframe_temp['indi_5'] = np.where(dataframe_temp['∆_5'] < -0.1, 1, 0)
-    dataframe_temp['inidi_tot'] = np.where((dataframe_temp['indi_5'] == 1) | (dataframe_temp['indi_3'] == 1),
+    dataframe_temp['indi_tot'] = np.where((dataframe_temp['indi_5'] == 1) | (dataframe_temp['indi_3'] == 1),
                                            np.where(dataframe_temp['indi_1'] == 1, 1, 0),
                                            0)
+
     if any(dataframe_temp['inidi_tot'] == 1):
         selected_stocks += [stock_name]
 
-
+data_close_df = data['Close'][selected_stocks]
 
 delay = 1
-daily_price = pd.DataFrame({'Close_td': data_close.iloc[-(delay), :]}).merge(
-    pd.DataFrame({'Close_1d': data_close.iloc[-(delay+1), :]}),
+daily_price = pd.DataFrame({'Close_td': data_close_df.iloc[-(delay), :]}).merge(
+    pd.DataFrame({'Close_1d': data_close_df.iloc[-(delay+1), :]}),
     how='inner', right_index=True, left_index=True).merge(
-    pd.DataFrame({'Close_5d': data_close.iloc[-(delay+5), :]}), how='inner', right_index=True, left_index=True).merge(
-    pd.DataFrame({'Close_10d': data_close.iloc[-(delay+10), :]}), how='inner', right_index=True, left_index=True).merge(
-    pd.DataFrame({'Close_20d': data_close.iloc[-(data_close.shape[0]-1), :]}), how='inner', right_index=True,
+    pd.DataFrame({'Close_5d': data_close_df.iloc[-(delay+5), :]}), how='inner', right_index=True, left_index=True).merge(
+    pd.DataFrame({'Close_10d': data_close_df.iloc[-(delay+10), :]}), how='inner', right_index=True, left_index=True).merge(
+    pd.DataFrame({'Close_20d': data_close_df.iloc[-(data_close_df.shape[0]-1), :]}), how='inner', right_index=True,
     left_index=True).merge(
     pd.DataFrame({'Close_Vol': data_volume.iloc[-delay, :]}), how='inner', right_index=True, left_index=True)
 
@@ -96,7 +97,7 @@ daily_price['rel_change_1day'] = ((daily_price['Close_td'] - daily_price['Close_
 daily_price['rel_change_5day'] = ((daily_price['Close_td'] - daily_price['Close_5d'])/daily_price['Close_5d'])*100
 daily_price['rel_change_10day'] = ((daily_price['Close_td'] - daily_price['Close_10d'])/daily_price['Close_10d'])*100
 daily_price['rel_change_20day'] = ((daily_price['Close_td'] - daily_price['Close_20d'])/daily_price['Close_20d'])*100
-filtered_prices_df = daily_price.loc[daily_price['rel_change_1day'] < -5]
+filtered_prices_df = daily_price.loc[daily_price['rel_change_1day'] < -10]
 filtered_prices_df['extreme_values'] = np.where(filtered_prices_df['rel_change_1day'] < -300, 1, 0)
 
 stocks_interest_df = filtered_prices_df.merge(stocks_list[['symbol', 'shortName', 'longName', 'market_cap']],
