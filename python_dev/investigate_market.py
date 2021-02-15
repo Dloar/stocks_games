@@ -43,12 +43,13 @@ conn.close()
 
 stocks_list.dropna(subset=['country'], inplace=True)
 stocks_list = stocks_list.loc[stocks_list['market_cap'] > 200000]
+stocks_list = stocks_list.head(500)
 ticker_list = list(stocks_list.loc[:, 'symbol'])
 
 start = time.time()
 data = yf.download(
         tickers=ticker_list,
-        period='20d',
+        period='1y',
         interval='1d',
         auto_adjust=True,
         prepost=False,
@@ -58,8 +59,28 @@ data = yf.download(
 print('It took', time.time()-start, 'seconds to download the data.')
 
 data_close = data['Close']
-data_open = data['Open']
 data_volume = data['Volume']
+
+selected_stocks = list()
+for stock_name in data_close.columns:
+    column_temp = data_close.loc[:, stock_name]
+    dataframe_temp = pd.DataFrame(data=column_temp)
+    dataframe_temp['t-1'] = dataframe_temp[stock_name].shift(-1)
+    dataframe_temp['t-3'] = dataframe_temp[stock_name].shift(-3)
+    dataframe_temp['t-5'] = dataframe_temp[stock_name].shift(-5)
+    dataframe_temp['∆_1'] = ((dataframe_temp[stock_name] - dataframe_temp['t-1'])/dataframe_temp[stock_name])
+    dataframe_temp['∆_3'] = ((dataframe_temp['t-1'] - dataframe_temp['t-3'])/dataframe_temp['t-1'])
+    dataframe_temp['∆_5'] = ((dataframe_temp['t-3'] - dataframe_temp['t-5'])/dataframe_temp['t-3'])
+    dataframe_temp['indi_1'] = np.where(dataframe_temp['∆_1'] > +0.1, 1, 0)
+    dataframe_temp['indi_3'] = np.where(dataframe_temp['∆_3'] < -0.1, 1, 0)
+    dataframe_temp['indi_5'] = np.where(dataframe_temp['∆_5'] < -0.1, 1, 0)
+    dataframe_temp['inidi_tot'] = np.where((dataframe_temp['indi_5'] == 1) | (dataframe_temp['indi_3'] == 1),
+                                           np.where(dataframe_temp['indi_1'] == 1, 1, 0),
+                                           0)
+    if any(dataframe_temp['inidi_tot'] == 1):
+        selected_stocks += [stock_name]
+
+
 
 delay = 1
 daily_price = pd.DataFrame({'Close_td': data_close.iloc[-(delay), :]}).merge(
