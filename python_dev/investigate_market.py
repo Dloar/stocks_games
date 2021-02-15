@@ -43,7 +43,6 @@ conn.close()
 
 stocks_list.dropna(subset=['country'], inplace=True)
 stocks_list = stocks_list.loc[stocks_list['market_cap'] > 200000]
-stocks_list = stocks_list.head(500)
 ticker_list = list(stocks_list.loc[:, 'symbol'])
 
 start = time.time()
@@ -94,9 +93,9 @@ daily_price = pd.DataFrame({'Close_td': data_close_df.iloc[-(delay), :]}).merge(
     pd.DataFrame({'Close_Vol': data_volume.iloc[-delay, :]}), how='inner', right_index=True, left_index=True)
 
 daily_price['rel_change_1day'] = ((daily_price['Close_td'] - daily_price['Close_1d'])/daily_price['Close_1d'])*100
-daily_price['rel_change_5day'] = ((daily_price['Close_td'] - daily_price['Close_5d'])/daily_price['Close_5d'])*100
-daily_price['rel_change_10day'] = ((daily_price['Close_td'] - daily_price['Close_10d'])/daily_price['Close_10d'])*100
-daily_price['rel_change_20day'] = ((daily_price['Close_td'] - daily_price['Close_20d'])/daily_price['Close_20d'])*100
+daily_price['rel_change_5day'] = ((daily_price['Close_1d'] - daily_price['Close_5d'])/daily_price['Close_5d'])*100
+daily_price['rel_change_10day'] = ((daily_price['Close_5d'] - daily_price['Close_10d'])/daily_price['Close_10d'])*100
+daily_price['rel_change_20day'] = ((daily_price['Close_10d'] - daily_price['Close_20d'])/daily_price['Close_20d'])*100
 filtered_prices_df = daily_price.loc[daily_price['rel_change_1day'] < -10]
 filtered_prices_df['extreme_values'] = np.where(filtered_prices_df['rel_change_1day'] < -300, 1, 0)
 
