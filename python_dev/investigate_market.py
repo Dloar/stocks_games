@@ -97,7 +97,7 @@ daily_price['rel_change_1day'] = ((daily_price['Close_td'] - daily_price['Close_
 daily_price['rel_change_5day'] = ((daily_price['Close_td'] - daily_price['Close_5d'])/daily_price['Close_5d'])*100
 daily_price['rel_change_10day'] = ((daily_price['Close_td'] - daily_price['Close_10d'])/daily_price['Close_10d'])*100
 daily_price['rel_change_20day'] = ((daily_price['Close_td'] - daily_price['Close_20d'])/daily_price['Close_20d'])*100
-filtered_prices_df = daily_price.loc[daily_price['rel_change_1day'] < -10]
+filtered_prices_df = daily_price.loc[daily_price['rel_change_1day'] < -7]
 filtered_prices_df['extreme_values'] = np.where(filtered_prices_df['rel_change_1day'] < -300, 1, 0)
 
 stocks_interest_df = filtered_prices_df.merge(stocks_list[['symbol', 'shortName', 'longName', 'market_cap']],
