@@ -41,9 +41,11 @@ def getConfigFile():
         sql_ip = str()
         email_user = str()
         email_psw = str()
+        s3_access_key = str()
+        s3_secret_key = str()
 
         def __init__(self, sql_hostname, sql_username, sql_password, sql_main_database, sql_port, ssh_host,
-                     ssh_psw, ssh_user, ssh_port, sql_ip, email_user, email_psw):
+                     ssh_psw, ssh_user, ssh_port, sql_ip, email_user, email_psw, s3_access_key, s3_secret_key):
             self.sql_hostname = sql_hostname
             self.sql_username = sql_username
             self.sql_password = sql_password
@@ -56,11 +58,14 @@ def getConfigFile():
             self.sql_ip = sql_ip
             self.email_user = email_user
             self.email_psw = email_psw
+            self.s3_access_key = s3_access_key
+            self.s3_secret_key = s3_secret_key
 
     config_conn = ConfigFile(config_source.sql_hostname, config_source.sql_username, config_source.sql_password,
                              config_source.sql_main_database, config_source.sql_port, config_source.ssh_host,
                              config_source.ssh_psw, config_source.ssh_user, config_source.ssh_port,
-                             config_source.sql_ip, config_source.email_user, config_source.email_psw)
+                             config_source.sql_ip, config_source.email_user, config_source.email_psw,
+                             config_source.s3_access_key, config_source.s3_secret_key)
     return config_conn
 
 
