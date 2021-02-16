@@ -43,6 +43,7 @@ conn.close()
 
 stocks_list.dropna(subset=['country'], inplace=True)
 stocks_list = stocks_list.loc[stocks_list['market_cap'] > 200000]
+# stocks_list = stocks_list.head(15)
 ticker_list = list(stocks_list.loc[:, 'symbol'])
 
 start = time.time()
@@ -77,7 +78,7 @@ for stock_name in data_close.columns:
                                            np.where(dataframe_temp['indi_1'] == 1, 1, 0),
                                            0)
 
-    if any(dataframe_temp['inidi_tot'] == 1):
+    if any(dataframe_temp['indi_tot'] == 1):
         selected_stocks += [stock_name]
 
 data_close_df = data['Close'][selected_stocks]
