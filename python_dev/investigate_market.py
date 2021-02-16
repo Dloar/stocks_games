@@ -19,14 +19,12 @@ else:
 logging.basicConfig(filename=log_filepath, level=logging.DEBUG, format='%(asctime)s:%(lineno)d:%(message)s')
 
 start = time.time()
+
 # Load stock tickers
 if sys.platform == 'darwin':
-    # tickers_df = pd.read_csv('/Users/ondrejkral/GitHub/stocks_games/stock_list.csv', encoding="ISO-8859-1")
     from python_dev.functions import getConfigFile
 else:
-    # tickers_df = pd.read_csv('/home/pi/Documents/GitHub/stocks_games/stock_list.csv', encoding="ISO-8859-1")
     from functions import getConfigFile
-# tickers_df_index = tickers_df.set_index('Ticker')
 
 config_conn = getConfigFile()
 conn = mysql.connector.connect(
@@ -43,7 +41,7 @@ conn.close()
 
 stocks_list.dropna(subset=['country'], inplace=True)
 stocks_list = stocks_list.loc[stocks_list['market_cap'] > 200000]
-# stocks_list = stocks_list.head(15)
+stocks_list = stocks_list.head(8000)
 ticker_list = list(stocks_list.loc[:, 'symbol'])
 
 start = time.time()
