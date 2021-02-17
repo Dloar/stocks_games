@@ -6,8 +6,6 @@ if sys.platform == 'darwin':
     from python_dev.functions import loadData, getCurrencyRates, updateExchangeRates
 else:
     from functions import loadData, getCurrencyRates, updateExchangeRates
-
-
 logging.basicConfig(format='%(asctime)s:%(lineno)d:%(message)s', level=logging.DEBUG)
 
 stocks_data = loadData()
