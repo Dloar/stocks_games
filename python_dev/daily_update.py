@@ -1,5 +1,10 @@
 import pandas as pd
-from python_dev.functions import loadData, getCurrentSituation
+import sys
+
+if sys.platform == 'darwin':
+    from python_dev. functions import loadData, getCurrentSituation
+else:
+    from functions import loadData, getCurrentSituation
 
 stocks_data = loadData()
 
