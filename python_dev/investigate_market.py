@@ -8,14 +8,15 @@ import numpy as np
 import mysql.connector
 import logging
 import sys
+import os
 from datetime import datetime
 import boto3
 
 log_filename = 'log_stocks_' + time.strftime("%Y-%m-%d %H;%M;%S", time.gmtime()) + '_run' + '.log'
 if sys.platform == 'darwin':
-    log_filepath = os.path.join("/Users/ondrejkral/GitHub/stocks_games" + "/stocks_logs/" + log_filename)
+    log_filepath = os.path.join(os.environ['PWD'] + "/stocks_logs/" + log_filename)
 else:
-    log_filepath = os.path.join("/home/pi/Documents/GitHub/stocks_games" + "/stocks_logs/" + log_filename)
+    log_filepath = os.path.join(os.environ['STOCKS_HOME'] + "/stocks_logs/" + log_filename)
 logging.basicConfig(filename=log_filepath, level=logging.DEBUG, format='%(asctime)s:%(lineno)d:%(message)s')
 
 start = time.time()
