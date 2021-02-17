@@ -41,7 +41,6 @@ conn.close()
 
 stocks_list.dropna(subset=['country'], inplace=True)
 stocks_list = stocks_list.loc[stocks_list['market_cap'] > 200000]
-stocks_list = stocks_list.head(8000)
 ticker_list = list(stocks_list.loc[:, 'symbol'])
 
 start = time.time()
@@ -59,6 +58,7 @@ print('It took', time.time()-start, 'seconds to download the data.')
 data_close = data['Close'].copy()
 data_volume = data['Volume']
 
+# parameters_df = pd.DataFrame(columns=['symbol', 'alfa', 'beta', 'omega'])
 selected_stocks = list()
 for stock_name in data_close.columns:
     column_temp = data_close.loc[:, stock_name]
@@ -75,13 +75,15 @@ for stock_name in data_close.columns:
     dataframe_temp['indi_tot'] = np.where((dataframe_temp['indi_5'] == 1) | (dataframe_temp['indi_3'] == 1),
                                            np.where(dataframe_temp['indi_1'] == 1, 1, 0),
                                            0)
+    # temp_df = dataframe_temp.loc[dataframe_temp['indi_tot'] ==1]
+    # parameters = [np.mean(temp_df['∆_1']), np.mean(temp_df['∆_3']), np.mean(temp_df['∆_5'])]
 
     if any(dataframe_temp['indi_tot'] == 1):
         selected_stocks += [stock_name]
 
 data_close_df = data['Close'][selected_stocks]
 
-delay = 2
+delay = 1
 daily_price = pd.DataFrame({'Close_td': data_close_df.iloc[-(delay), :]}).merge(
     pd.DataFrame({'Close_1d': data_close_df.iloc[-(delay+1), :]}),
     how='inner', right_index=True, left_index=True).merge(
@@ -95,15 +97,16 @@ daily_price['rel_change_1day'] = ((daily_price['Close_td'] - daily_price['Close_
 daily_price['rel_change_5day'] = ((daily_price['Close_1d'] - daily_price['Close_5d'])/daily_price['Close_5d'])*100
 daily_price['rel_change_10day'] = ((daily_price['Close_5d'] - daily_price['Close_10d'])/daily_price['Close_10d'])*100
 daily_price['rel_change_20day'] = ((daily_price['Close_10d'] - daily_price['Close_20d'])/daily_price['Close_20d'])*100
-filtered_prices_df = daily_price.loc[daily_price['rel_change_1day'] < -10]
+filtered_prices_df = daily_price.loc[daily_price['rel_change_1day'] < -8]
 filtered_prices_df['extreme_values'] = np.where(filtered_prices_df['rel_change_1day'] < -300, 1, 0)
 
 stocks_interest_df = filtered_prices_df.merge(stocks_list[['symbol', 'shortName', 'longName', 'market_cap']],
                                               how='inner', left_index=True, right_on='symbol')
-stocks_interest_df = stocks_interest_df.loc[stocks_interest_df['market_cap'] > 15000000]
+stocks_interest_df = stocks_interest_df.loc[stocks_interest_df['market_cap'] > 200000]
 stocks_interest_df.reset_index(drop=True, inplace=True)
 top_pics_df = stocks_interest_df.loc[stocks_interest_df['extreme_values'] == 0].sort_values(['rel_change_1day']).head(5)
-### Saving results to S3
+
+# Saving results to S3
 if sys.platform == 'darwin':
     s3 = boto3.client('s3')
 else:
