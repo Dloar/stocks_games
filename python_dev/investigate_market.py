@@ -42,6 +42,7 @@ conn.close()
 
 stocks_list.dropna(subset=['country'], inplace=True)
 stocks_list = stocks_list.loc[stocks_list['market_cap'] > 200000]
+# stocks_list = stocks_list.head(1)
 ticker_list = list(stocks_list.loc[:, 'symbol'])
 
 start = time.time()
@@ -88,8 +89,10 @@ delay = 1
 daily_price = pd.DataFrame({'Close_td': data_close_df.iloc[-(delay), :]}).merge(
     pd.DataFrame({'Close_1d': data_close_df.iloc[-(delay+1), :]}),
     how='inner', right_index=True, left_index=True).merge(
-    pd.DataFrame({'Close_5d': data_close_df.iloc[-(delay+5), :]}), how='inner', right_index=True, left_index=True).merge(
-    pd.DataFrame({'Close_10d': data_close_df.iloc[-(delay+10), :]}), how='inner', right_index=True, left_index=True).merge(
+    pd.DataFrame({'Close_5d': data_close_df.iloc[-(delay+5), :]}), how='inner', right_index=True,
+    left_index=True).merge(
+    pd.DataFrame({'Close_10d': data_close_df.iloc[-(delay+10), :]}), how='inner', right_index=True,
+    left_index=True).merge(
     pd.DataFrame({'Close_20d': data_close_df.iloc[-(data_close_df.shape[0]-1), :]}), how='inner', right_index=True,
     left_index=True).merge(
     pd.DataFrame({'Close_Vol': data_volume.iloc[-delay, :]}), how='inner', right_index=True, left_index=True)
