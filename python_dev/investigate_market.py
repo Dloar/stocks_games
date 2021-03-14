@@ -37,12 +37,20 @@ conn = mysql.connector.connect(
 )
 
 query = '''SELECT * FROM existing_stocks;'''
-stocks_list = pd.read_sql_query(query, conn)
+stocks_list_all = pd.read_sql_query(query, conn)
 conn.close()
 
-stocks_list.dropna(subset=['country'], inplace=True)
-stocks_list = stocks_list.loc[stocks_list['market_cap'] > 200000]
-# stocks_list = stocks_list.head(1)
+selected_markets = ['United States', 'United Kingdom ' 'Ukraine', 'Switzerland', 'Sweden', 'Spain', 'Russia', 'Romania',
+                    'Portugal', 'Poland', 'Norway', 'Netherlands', 'Monaco', 'Malta', 'Luxembourg', 'Lithuania',
+                    'Liechtenstein', 'Latvia', 'Italy', 'Isle of Man', 'Ireland', 'Iceland', 'Hungary', 'Greece',
+                    'Germany', 'France', 'Finland', 'Estonia', 'Denmark', 'Czech Republic', 'Cyprus', 'Belgium',
+                    'Austria']
+
+stocks_list_all.dropna(subset=['country'], inplace=True)
+stocks_list = stocks_list_all.loc[stocks_list_all['country'].isin(selected_markets)]
+stocks_list = stocks_list.loc[stocks_list['market_cap'] > 150000000]
+stocks_list.reset_index(drop=True, inplace=True)
+# stocks_list = stocks_list.head(100)
 ticker_list = list(stocks_list.loc[:, 'symbol'])
 
 start = time.time()
