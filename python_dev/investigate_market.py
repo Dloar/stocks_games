@@ -50,7 +50,7 @@ stocks_list_all.dropna(subset=['country'], inplace=True)
 stocks_list = stocks_list_all.loc[stocks_list_all['country'].isin(selected_markets)]
 stocks_list = stocks_list.loc[stocks_list['market_cap'] > 150000000]
 stocks_list.reset_index(drop=True, inplace=True)
-# stocks_list = stocks_list.head(100)
+stocks_list = stocks_list.head(20)
 ticker_list = list(stocks_list.loc[:, 'symbol'])
 
 start = time.time()
@@ -73,16 +73,16 @@ selected_stocks = list()
 for stock_name in data_close.columns:
     column_temp = data_close.loc[:, stock_name]
     dataframe_temp = pd.DataFrame(data=column_temp)
-    dataframe_temp['t-1'] = dataframe_temp[stock_name].shift(-1)
-    dataframe_temp['t-3'] = dataframe_temp[stock_name].shift(-3)
-    dataframe_temp['t-5'] = dataframe_temp[stock_name].shift(-5)
+    dataframe_temp['t-1'] = dataframe_temp[stock_name].shift(1)
+    dataframe_temp['t-m'] = dataframe_temp[stock_name].shift(+20)
+    dataframe_temp['t-q'] = dataframe_temp[stock_name].shift(+60)
     dataframe_temp['∆_1'] = ((dataframe_temp[stock_name] - dataframe_temp['t-1'])/dataframe_temp[stock_name])
-    dataframe_temp['∆_3'] = ((dataframe_temp['t-1'] - dataframe_temp['t-3'])/dataframe_temp['t-1'])
-    dataframe_temp['∆_5'] = ((dataframe_temp['t-3'] - dataframe_temp['t-5'])/dataframe_temp['t-3'])
-    dataframe_temp['indi_1'] = np.where(dataframe_temp['∆_1'] > +0.1, 1, 0)
-    dataframe_temp['indi_3'] = np.where(dataframe_temp['∆_3'] < -0.1, 1, 0)
-    dataframe_temp['indi_5'] = np.where(dataframe_temp['∆_5'] < -0.1, 1, 0)
-    dataframe_temp['indi_tot'] = np.where((dataframe_temp['indi_5'] == 1) | (dataframe_temp['indi_3'] == 1),
+    dataframe_temp['∆_m'] = ((dataframe_temp['t-1'] - dataframe_temp['t-m'])/dataframe_temp['t-1'])
+    dataframe_temp['∆_q'] = ((dataframe_temp['t-m'] - dataframe_temp['t-q'])/dataframe_temp['t-m'])
+    dataframe_temp['indi_1'] = np.where(dataframe_temp['∆_1'] < -0.1, 1, 0)
+    dataframe_temp['indi_m'] = np.where(dataframe_temp['∆_m'] < -0, 1, 0)
+    dataframe_temp['indi_q'] = np.where(dataframe_temp['∆_q'] < -0, 1, 0)
+    dataframe_temp['indi_tot'] = np.where((dataframe_temp['indi_q'] == 1) | (dataframe_temp['indi_m'] == 1),
                                            np.where(dataframe_temp['indi_1'] == 1, 1, 0),
                                            0)
     # temp_df = dataframe_temp.loc[dataframe_temp['indi_tot'] ==1]
