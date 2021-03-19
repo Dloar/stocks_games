@@ -109,6 +109,7 @@ VALUES
     ('patria', 'Rolls-Royce Holdings plc', 'LSE', 550, 'GBP', '09-10-2020', 1.575, 4.33),
     ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1500, 'GBP', '15-10-2020', 1.883, 15.31),
     ('patria', 'Rolls-Royce Holdings plc', 'LSE', 5100, 'GBP', '15-10-2020', 0.32, 15.31),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 5300, 'GBP', '15-10-2020', 0.32, 15.31),
     ('patria', 'Amazon com Inc', 'NSQ', 2, 'USD', '26-10-2020', 3278.00, 14.9),
     ('patria', 'Xilinx, Inc', 'NSQ', 12, 'USD', '27-10-2020', 131.77, 14.9),
     ('patria', 'Avast', 'PRA', 80, 'CZK', '11-11-2020', 135.45, 90),
