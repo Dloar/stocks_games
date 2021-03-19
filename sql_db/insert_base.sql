@@ -109,7 +109,7 @@ VALUES
     ('patria', 'Rolls-Royce Holdings plc', 'LSE', 550, 'GBP', '09-10-2020', 1.575, 4.33),
     ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1500, 'GBP', '15-10-2020', 1.883, 15.31),
     ('patria', 'Rolls-Royce Holdings plc', 'LSE', 5100, 'GBP', '15-10-2020', 0.32, 15.31),
-    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 5300, 'GBP', '15-10-2020', 0.32, 15.31),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 4300, 'GBP', '15-10-2020', 0.32, 15.31),
     ('patria', 'Amazon com Inc', 'NSQ', 2, 'USD', '26-10-2020', 3278.00, 14.9),
     ('patria', 'Xilinx, Inc', 'NSQ', 12, 'USD', '27-10-2020', 131.77, 14.9),
     ('patria', 'Avast', 'PRA', 80, 'CZK', '11-11-2020', 135.45, 90),
@@ -158,6 +158,6 @@ VALUES
     ('patria', 'NVIDIA', 'NSQ', 5, 'USD', '30-11-2020', 526.30, 14.9),
     ('patria', 'Rolls-Royce Holdings plc', 'LSE', 3950, 'GBP', '13-10-2020', 1.0827, 15.38),
     ('patria', 'Rolls-Royce Holdings plc', 'LSE', 3000, 'GBP', '14-12-2020', 1.22, 15.31),
-    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1000, 'GBP', '18-03-2021', 1.277, 15.31),
     ('patria', 'Scandinavian Airlines', 'SAS', 7000, 'SEK', '25-01-2021', 1.642, 172),
-    ('patria', 'Nortonlifelock Rg', 'NMS', 100, 'USD', '28-08-2020', 21.43, 14.9);
+    ('patria', 'Nortonlifelock Rg', 'NMS', 100, 'USD', '28-08-2020', 21.43, 14.9),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1000, 'GBP', '18-03-2021', 1.277, 15.31);
