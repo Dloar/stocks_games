@@ -50,7 +50,7 @@ stocks_list_all.dropna(subset=['country'], inplace=True)
 stocks_list = stocks_list_all.loc[stocks_list_all['country'].isin(selected_markets)]
 stocks_list = stocks_list.loc[stocks_list['market_cap'] > 150000000]
 stocks_list.reset_index(drop=True, inplace=True)
-stocks_list = stocks_list.head(100)
+# stocks_list = stocks_list.head(100)
 ticker_list = list(stocks_list.loc[:, 'symbol'])
 
 start = time.time()
