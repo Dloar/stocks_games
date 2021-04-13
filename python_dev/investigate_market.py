@@ -50,7 +50,7 @@ stocks_list_all.dropna(subset=['country'], inplace=True)
 stocks_list = stocks_list_all.loc[stocks_list_all['country'].isin(selected_markets)]
 stocks_list = stocks_list.loc[stocks_list['market_cap'] > 150000000]
 stocks_list.reset_index(drop=True, inplace=True)
-# stocks_list = stocks_list.head(20)
+stocks_list = stocks_list.head(100)
 ticker_list = list(stocks_list.loc[:, 'symbol'])
 
 start = time.time()
@@ -131,8 +131,8 @@ else:
 
 s3.put_object(
     Body=stocks_interest_df.to_json(orient='records', lines=True),
-    Bucket='stocks-list-poi',
-    Key='selected-stocks/whole_selection/stocks_output.json'
+    Bucket=config_conn.s3_bucket_name.iloc[0],
+    Key='selected-stocks/daily-selection/stocks_output.json'
 )
 
 if len(top_pics_df) > 0:
@@ -159,6 +159,6 @@ if len(top_pics_df) > 0:
 
     s3.put_object(
          Body=data_sel.to_json(orient='records', lines=True),
-         Bucket='stocks-list-poi',
+         Bucket=config_conn.s3_bucket_name.iloc[0],
          Key='selected-stocks/top_picks/top_picks_stocks.json'
     )
