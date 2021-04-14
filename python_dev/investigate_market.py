@@ -50,7 +50,7 @@ stocks_list_all.dropna(subset=['country'], inplace=True)
 stocks_list = stocks_list_all.loc[stocks_list_all['country'].isin(selected_markets)]
 stocks_list = stocks_list.loc[stocks_list['market_cap'] > 150000000]
 stocks_list.reset_index(drop=True, inplace=True)
-# stocks_list = stocks_list.head(100)
+# stocks_list = stocks_list.head(500)
 ticker_list = list(stocks_list.loc[:, 'symbol'])
 
 start = time.time()
@@ -118,6 +118,9 @@ stocks_interest_df = stocks_interest_df.loc[stocks_interest_df['market_cap'] > 2
 stocks_interest_df.reset_index(drop=True, inplace=True)
 top_pics_df = stocks_interest_df.loc[stocks_interest_df['extreme_values'] == 0].sort_values(['rel_change_1day']).head(5)
 
+summary_df = top_pics_df[['shortName', 'longName', 'symbol', 'rel_change_1day']]
+summary_df['yahoo_link'] = 'https://finance.yahoo.com/quote/' + summary_df["symbol"]
+
 # Saving results to S3
 if sys.platform == 'darwin':
     s3 = boto3.client('s3')
@@ -133,6 +136,11 @@ s3.put_object(
     Body=stocks_interest_df.to_json(orient='records', lines=True),
     Bucket=config_conn.s3_bucket_name.iloc[0],
     Key='selected-stocks/daily-selection/stocks_output.json'
+)
+s3.put_object(
+    Body=summary_df.to_json(orient='records', lines=True),
+    Bucket=config_conn.s3_bucket_name.iloc[0],
+    Key='selected-stocks/daily-summary/stocks_summary.json'
 )
 
 if len(top_pics_df) > 0:
