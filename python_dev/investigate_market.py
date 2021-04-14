@@ -37,11 +37,20 @@ conn = mysql.connector.connect(
 )
 
 query = '''SELECT * FROM existing_stocks;'''
-stocks_list = pd.read_sql_query(query, conn)
+stocks_list_all = pd.read_sql_query(query, conn)
 conn.close()
 
-stocks_list.dropna(subset=['country'], inplace=True)
-stocks_list = stocks_list.loc[stocks_list['market_cap'] > 200000]
+selected_markets = ['United States', 'United Kingdom ' 'Ukraine', 'Switzerland', 'Sweden', 'Spain', 'Russia', 'Romania',
+                    'Portugal', 'Poland', 'Norway', 'Netherlands', 'Monaco', 'Malta', 'Luxembourg', 'Lithuania',
+                    'Liechtenstein', 'Latvia', 'Italy', 'Isle of Man', 'Ireland', 'Iceland', 'Hungary', 'Greece',
+                    'Germany', 'France', 'Finland', 'Estonia', 'Denmark', 'Czech Republic', 'Cyprus', 'Belgium',
+                    'Austria']
+
+stocks_list_all.dropna(subset=['country'], inplace=True)
+stocks_list = stocks_list_all.loc[stocks_list_all['country'].isin(selected_markets)]
+stocks_list = stocks_list.loc[stocks_list['market_cap'] > 150000000]
+stocks_list.reset_index(drop=True, inplace=True)
+# stocks_list = stocks_list.head(100)
 ticker_list = list(stocks_list.loc[:, 'symbol'])
 
 start = time.time()
@@ -64,16 +73,16 @@ selected_stocks = list()
 for stock_name in data_close.columns:
     column_temp = data_close.loc[:, stock_name]
     dataframe_temp = pd.DataFrame(data=column_temp)
-    dataframe_temp['t-1'] = dataframe_temp[stock_name].shift(-1)
-    dataframe_temp['t-3'] = dataframe_temp[stock_name].shift(-3)
-    dataframe_temp['t-5'] = dataframe_temp[stock_name].shift(-5)
+    dataframe_temp['t-1'] = dataframe_temp[stock_name].shift(1)
+    dataframe_temp['t-m'] = dataframe_temp[stock_name].shift(+20)
+    dataframe_temp['t-q'] = dataframe_temp[stock_name].shift(+60)
     dataframe_temp['∆_1'] = ((dataframe_temp[stock_name] - dataframe_temp['t-1'])/dataframe_temp[stock_name])
-    dataframe_temp['∆_3'] = ((dataframe_temp['t-1'] - dataframe_temp['t-3'])/dataframe_temp['t-1'])
-    dataframe_temp['∆_5'] = ((dataframe_temp['t-3'] - dataframe_temp['t-5'])/dataframe_temp['t-3'])
-    dataframe_temp['indi_1'] = np.where(dataframe_temp['∆_1'] > +0.1, 1, 0)
-    dataframe_temp['indi_3'] = np.where(dataframe_temp['∆_3'] < -0.1, 1, 0)
-    dataframe_temp['indi_5'] = np.where(dataframe_temp['∆_5'] < -0.1, 1, 0)
-    dataframe_temp['indi_tot'] = np.where((dataframe_temp['indi_5'] == 1) | (dataframe_temp['indi_3'] == 1),
+    dataframe_temp['∆_m'] = ((dataframe_temp['t-1'] - dataframe_temp['t-m'])/dataframe_temp['t-1'])
+    dataframe_temp['∆_q'] = ((dataframe_temp['t-m'] - dataframe_temp['t-q'])/dataframe_temp['t-m'])
+    dataframe_temp['indi_1'] = np.where(dataframe_temp['∆_1'] < -0.1, 1, 0)
+    dataframe_temp['indi_m'] = np.where(dataframe_temp['∆_m'] < -0, 1, 0)
+    dataframe_temp['indi_q'] = np.where(dataframe_temp['∆_q'] < -0, 1, 0)
+    dataframe_temp['indi_tot'] = np.where((dataframe_temp['indi_q'] == 1) | (dataframe_temp['indi_m'] == 1),
                                            np.where(dataframe_temp['indi_1'] == 1, 1, 0),
                                            0)
     # temp_df = dataframe_temp.loc[dataframe_temp['indi_tot'] ==1]
@@ -88,8 +97,10 @@ delay = 1
 daily_price = pd.DataFrame({'Close_td': data_close_df.iloc[-(delay), :]}).merge(
     pd.DataFrame({'Close_1d': data_close_df.iloc[-(delay+1), :]}),
     how='inner', right_index=True, left_index=True).merge(
-    pd.DataFrame({'Close_5d': data_close_df.iloc[-(delay+5), :]}), how='inner', right_index=True, left_index=True).merge(
-    pd.DataFrame({'Close_10d': data_close_df.iloc[-(delay+10), :]}), how='inner', right_index=True, left_index=True).merge(
+    pd.DataFrame({'Close_5d': data_close_df.iloc[-(delay+5), :]}), how='inner', right_index=True,
+    left_index=True).merge(
+    pd.DataFrame({'Close_10d': data_close_df.iloc[-(delay+10), :]}), how='inner', right_index=True,
+    left_index=True).merge(
     pd.DataFrame({'Close_20d': data_close_df.iloc[-(data_close_df.shape[0]-1), :]}), how='inner', right_index=True,
     left_index=True).merge(
     pd.DataFrame({'Close_Vol': data_volume.iloc[-delay, :]}), how='inner', right_index=True, left_index=True)
@@ -120,8 +131,8 @@ else:
 
 s3.put_object(
     Body=stocks_interest_df.to_json(orient='records', lines=True),
-    Bucket='stocks-list-poi',
-    Key='selected-stocks/whole_selection/stocks_output.json'
+    Bucket=config_conn.s3_bucket_name.iloc[0],
+    Key='selected-stocks/daily-selection/stocks_output.json'
 )
 
 if len(top_pics_df) > 0:
@@ -148,6 +159,6 @@ if len(top_pics_df) > 0:
 
     s3.put_object(
          Body=data_sel.to_json(orient='records', lines=True),
-         Bucket='stocks-list-poi',
+         Bucket=config_conn.s3_bucket_name.iloc[0],
          Key='selected-stocks/top_picks/top_picks_stocks.json'
     )

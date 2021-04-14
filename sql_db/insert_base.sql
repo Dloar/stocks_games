@@ -30,7 +30,9 @@ VALUES
     ('Nortonlifelock Rg', 'NLOK', 'USD', 'NMS'),
     ('Rolls-Royce Holdings plc', 'RR.L', 'GBP', 'LSE'),
     ('Xilinx, Inc', 'XLNX', 'USD', 'NSQ'),
-    ('Scandinavian Airlines', 'SAS', 'SEK', 'XSTO');
+    ('Scandinavian Airlines', 'SAS', 'SEK', 'XSTO'),
+    ('Vitrolife Rg', 'VITR', 'SEK', 'XSTO'),
+    ('CD Projekt SA', 'CDR', 'PLN', 'XWAR');
 
 delete from exposures;
 INSERT INTO exposures (cur_date, exposure)
@@ -55,7 +57,8 @@ VALUES
     ('2020-03-02', -100000),
     ('2020-04-08', 140000),
     ('2020-05-20', -13000),
-    ('2021-01-07', -170000);
+    ('2021-01-07', -170000),
+    ('2021-01-07', 300000);
 
 delete from stocks_purchases;
 INSERT INTO stocks_purchases (provider, stock_name, market, volume, currency, purchase_date, price, fee)
@@ -104,13 +107,17 @@ VALUES
     ('patria', 'Nortonlifelock Rg', 'NMS', 100, 'USD', '28-08-2020', 23.93, 14.9),
     ('patria', 'Rolls-Royce Holdings plc', 'LSE', 800, 'GBP', '08-10-2020', 1.356, 5.42),
     ('patria', 'Rolls-Royce Holdings plc', 'LSE', 550, 'GBP', '09-10-2020', 1.575, 4.33),
+    ('patria', 'Avast', 'PRA', 80, 'CZK', '11-10-2020', 135.4500, 80),
     ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1500, 'GBP', '15-10-2020', 1.883, 15.31),
     ('patria', 'Rolls-Royce Holdings plc', 'LSE', 5100, 'GBP', '15-10-2020', 0.32, 15.31),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 4300, 'GBP', '15-10-2020', 0.32, 15.31),
     ('patria', 'Amazon com Inc', 'NSQ', 2, 'USD', '26-10-2020', 3278.00, 14.9),
     ('patria', 'Xilinx, Inc', 'NSQ', 12, 'USD', '27-10-2020', 131.77, 14.9),
-    ('patria', 'Avast', 'PRA', 80, 'CZK', '11-11-2020', 135.45, 90),
+    ('patria', 'Avast', 'PRA', 250, 'CZK', '5-11-2020', 141.4500, 80),
     ('patria', 'Scandinavian Airlines', 'SAS', 7000, 'SEK', '12-02-2021', 1.54, 172),
-    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1800, 'GBP', '12-01-2021', 1.08, 15.31);
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1800, 'GBP', '12-01-2021', 1.08, 15.31),
+    ('patria', 'CD Projekt SA', 'WSE', 84, 'PLN', '02-03-2021', 236.60, 15.31),
+    ('patria', 'Vitrolife Rg', 'LSE', 30, 'SEK', '16-03-2021', 265.60, 172);
 
 delete from stocks_sells;
 INSERT INTO stocks_sells (provider, stock_name, market, volume, currency, purchase_date, price, fee)
@@ -151,4 +158,7 @@ VALUES
     ('patria', 'Rolls-Royce Holdings plc', 'LSE', 3950, 'GBP', '13-10-2020', 1.0827, 15.38),
     ('patria', 'NVIDIA', 'NSQ', 5, 'USD', '30-11-2020', 526.30, 14.9),
     ('patria', 'Rolls-Royce Holdings plc', 'LSE', 3950, 'GBP', '13-10-2020', 1.0827, 15.38),
-    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 3000, 'GBP', '14-12-2020', 1.22, 15.31);
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 3000, 'GBP', '14-12-2020', 1.22, 15.31),
+    ('patria', 'Scandinavian Airlines', 'SAS', 7000, 'SEK', '25-01-2021', 1.642, 172),
+    ('patria', 'Nortonlifelock Rg', 'NMS', 100, 'USD', '28-08-2020', 21.43, 14.9),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1000, 'GBP', '18-03-2021', 1.277, 15.31);
