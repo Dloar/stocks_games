@@ -32,7 +32,10 @@ VALUES
     ('Xilinx, Inc', 'XLNX', 'USD', 'NSQ'),
     ('Scandinavian Airlines', 'SAS', 'SEK', 'XSTO'),
     ('Vitrolife Rg', 'VITR', 'SEK', 'XSTO'),
-    ('CD Projekt SA', 'CDR', 'PLN', 'XWAR');
+    ('CD Projekt SA', 'CDR', 'PLN', 'XWAR'),
+    ('Star Bulk Carriers Corp', 'SBLK', 'USD', 'NSQ'),
+    ('Snowflake Rg', 'SNOW', 'USD', 'NMS'),
+    ('Illumina, Inc', 'ILMN', 'USD', 'NSQ');
 
 delete from exposures;
 INSERT INTO exposures (cur_date, exposure)
@@ -117,7 +120,21 @@ VALUES
     ('patria', 'Scandinavian Airlines', 'SAS', 7000, 'SEK', '12-02-2021', 1.54, 172),
     ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1800, 'GBP', '12-01-2021', 1.08, 15.31),
     ('patria', 'CD Projekt SA', 'WSE', 84, 'PLN', '02-03-2021', 236.60, 15.31),
-    ('patria', 'Vitrolife Rg', 'LSE', 30, 'SEK', '16-03-2021', 265.60, 172);
+    ('patria', 'Vitrolife Rg', 'LSE', 30, 'SEK', '16-03-2021', 265.60, 172),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1200, 'GBP', '23-03-2021', 1.056, 15.31),
+    ('patria', 'CD Projekt SA', 'WSE', 25, 'PLN', '01-04-2021', 188.95, 15.31),
+    ('patria', 'Star Bulk Carriers Corp', 'NSQ', 100, 'USD', '18-05-2021', 21.04, 14.9),
+    ('patria', 'Vitrolife Rg', 'LSE', 9, 'SEK', '16-03-2021', 393.40, 172),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1000, 'GBP', '12-7-2021', 0.9675, 15.31),
+    ('patria', 'Vitrolife Rg', 'LSE', 21, 'SEK', '15-07-2021', 416.40, 172),
+    ('patria', 'Illumina, Inc', 'NSQ', 5, 'USD', '16-07-2021', 465.7, 14.9),
+    ('patria', 'CD Projekt SA', 'WSE', 41, 'PLN', '22-10-2021', 182.56, 15.31),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1000, 'GBP', '01-11-2021', 1.3304, 15.31),
+    ('patria', 'Snowflake Rg', 'NSE', 9, 'USD', '01-11-2021', 353.84, 14.9),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1000, 'GBP', '01-11-2021', 1.3304, 15.31),
+    ('patria', 'NVIDIA', 'NSQ', 5, 'USD', '09-11-2021', 317.2, 14.9),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1600, 'GBP', '27-11-2021', 1.2306, 15.31),
+    ('patria', 'Illumina, Inc', 'NSQ', 3, 'USD', '02-12-2021', 356.4699, 14.9);
 
 delete from stocks_sells;
 INSERT INTO stocks_sells (provider, stock_name, market, volume, currency, purchase_date, price, fee)
@@ -161,4 +178,7 @@ VALUES
     ('patria', 'Rolls-Royce Holdings plc', 'LSE', 3000, 'GBP', '14-12-2020', 1.22, 15.31),
     ('patria', 'Scandinavian Airlines', 'SAS', 7000, 'SEK', '25-01-2021', 1.642, 172),
     ('patria', 'Nortonlifelock Rg', 'NMS', 100, 'USD', '28-08-2020', 21.43, 14.9),
-    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1000, 'GBP', '18-03-2021', 1.277, 15.31);
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1000, 'GBP', '18-03-2021', 1.277, 15.31),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 3000, 'GBP', '16-10-2021', 1.451, 15.31),
+    ('patria', 'Rolls-Royce Holdings plc', 'LSE', 1500, 'GBP', '11-11-2021', 1.4717, 15.31),
+    ('patria', 'Avast', 'PRA', 800, 'CZK', '16-11-2020', 177.75, 545);
