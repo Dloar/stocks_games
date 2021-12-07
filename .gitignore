@@ -135,5 +135,5 @@ dmypy.json
 # Others
 __pycache__/functions.cpython-37.pyc
 stock_config.yaml
-cluster.txt
+tech_dev/cluster.txt
 remove_logs.sh

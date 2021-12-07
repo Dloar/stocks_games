@@ -1,24 +1,25 @@
-#####
-#
-#'''''''
-#
-#######
-import yaml
+"""
+These are functions for all stock related functions.
+"""
 import os
+import logging
+import sys
+
+import yaml
 import pandas as pd
 import pandas_datareader.data as web
 import mysql.connector
-import logging
 import yfinance as yf
-import sys
+
 from datetime import datetime, date, timedelta
+from typing import Dict, Any, ClassVar, List, AnyStr
 
 
-def getConfigFile():
+def getConfigFile() -> ClassVar:
     """
-    
-    :return:
-    """
+    Get config file and parse the information.
+    :return: config file object
+    """
     if sys.platform == 'darwin':
         with open(os.path.join(os.environ['PWD'] + "/stock_config.yaml")) as yml_file:
             cfg = yaml.safe_load(yml_file)
@@ -72,7 +73,12 @@ def getConfigFile():
     return config_conn
 
 
-def loadData():
+def loadData() -> ClassVar:
+    """
+    Connecting to database and loading the essetial data info
+    :return: Data as a object with tables
+    """
+
     config_conn = getConfigFile()
     conn = mysql.connector.connect(
         host=config_conn.sql_hostname.iloc[0],
@@ -119,12 +125,12 @@ def loadData():
     return stocks_data
 
 
-def getCurrencyRates(currencies_list, yesterday):
+def getCurrencyRates(currencies_list: List, yesterday: AnyStr) -> pd.DataFrame:
     """
     Downloading actual currency from the yahoo webpages.
     :param currencies_list:
     :param yest_day:
-    :return:
+    :return: table with exchange rates
     """
     exchange_rates = pd.DataFrame(columns=['Close'])
     for cur in currencies_list:
@@ -144,7 +150,7 @@ def getCurrencyRates(currencies_list, yesterday):
     return exchange_rates
 
 
-def updateExchangeRates(exchange_rate):
+def updateExchangeRates(exchange_rate: pd.DataFrame) -> AnyStr:
     """
 
     :param exchange_rate:
@@ -181,13 +187,13 @@ def updateExchangeRates(exchange_rate):
     return 'Exchange Rates updated.'
 
 
-def getCurrentSituation(stocks_symbols_list, stocks_volume_df, stocks_data):
+def getCurrentSituation(stocks_symbols_list, stocks_volume_df, stocks_data) -> tuple:
     """
-
-    :param stocks_symbols_list:
-    :param stocks_volume_df:
-    :param stocks_data:
-    :return:
+    Get the current situation of owned stocks
+    :param stocks_symbols_list: list of owned stocks
+    :param stocks_volume_df:  volume of owned data
+    :param stocks_data: stocks source data
+    :return: tuple with sold stocks table and table with portfolio development
     """
     sold_stock = getSoldStocksList(stocks_data=stocks_data)
 
@@ -233,7 +239,7 @@ def getCurrentSituation(stocks_symbols_list, stocks_volume_df, stocks_data):
     return portfolio_db, sold_stock_tab
 
 
-def getSoldStocksList(stocks_data):
+def getSoldStocksList(stocks_data: pd.DataFrame) -> pd.DataFrame:
     """
 
     :param stocks_data:
@@ -254,8 +260,8 @@ def getSoldStocksList(stocks_data):
 
 def getDailyChange():
     """
-
-    :return:
+    Get daily developemnt of all stocks in interest.
+    :return: tuple with four tables
     """
     stocks_data = loadData()
 
